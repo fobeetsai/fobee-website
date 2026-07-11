@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "title": "工程現場日語實戰教材",
+      "category": "engineering",
+      "label": "工程日語 · 互動教材",
+      "mark": "現場",
+      "badge": "Engineering Japanese",
+      "summary": "以建築、土木與現場協調為主題，把專業術語、會議表達與真實溝通情境整合成可操作教材。",
+      "link": "https://claude.ai/public/artifacts/791f67f8-32ec-4fe5-9605-8c9e27f916a1",
+      "cover": ""
+    },
+    {
+      "title": "中日雙語情境學習",
+      "category": "conversation",
+      "label": "情境會話 · 雙語學習",
+      "mark": "対話",
+      "badge": "Situational Learning",
+      "summary": "用對話、任務與提問帶動輸出，讓學習者不只是看得懂，更能在工作與生活中真正說出口。",
+      "link": "https://claude.ai/public/artifacts/1119ac75-122e-4c4e-aadb-dbd83029e156",
+      "cover": ""
+    },
+    {
+      "title": "職場語感與文化溝通",
+      "category": "culture",
+      "label": "文化理解 · 互動教材",
+      "mark": "文化",
+      "badge": "Culture & Language",
+      "summary": "從台日文化差異切入，整理職場語感、隱性規則與溝通策略，讓語言學習跨過文法正確但氣氛不對的那道牆。",
+      "link": "https://claude.ai/public/artifacts/80be4662-e7f7-441f-b45d-33bf3ff703ee",
+      "cover": ""
+    }
+  ]
+}

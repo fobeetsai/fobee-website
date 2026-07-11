@@ -1,0 +1,35 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "portfolio"
+    label: "教學作品集"
+    files:
+      - name: "portfolio_items"
+        label: "作品項目"
+        file: "data/portfolio.json"
+        format: "json"
+        fields:
+          - label: "作品"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.title}}｜{{fields.category}}"
+            fields:
+              - { label: "作品名稱", name: "title", widget: "string" }
+              - label: "分類"
+                name: "category"
+                widget: "select"
+                options:
+                  - { label: "工程日語", value: "engineering" }
+                  - { label: "情境會話", value: "conversation" }
+                  - { label: "文化教材", value: "culture" }
+              - { label: "卡片小分類", name: "label", widget: "string", hint: "例如：工程日語 · 互動教材" }
+              - { label: "封面大字", name: "mark", widget: "string", required: false }
+              - { label: "英文副標", name: "badge", widget: "string", required: false }
+              - { label: "作品簡介", name: "summary", widget: "text" }
+              - { label: "作品連結", name: "link", widget: "string", hint: "貼上 YouTube、Claude Artifact 或其他公開網址" }
+              - { label: "封面圖片", name: "cover", widget: "image", required: false }

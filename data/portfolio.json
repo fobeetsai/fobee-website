@@ -1,6 +1,16 @@
 {
   "items": [
     {
+      "title": "Fobee 教學作品館",
+      "category": "engineering",
+      "label": "教學作品總覽 · 持續更新",
+      "mark": "作品館",
+      "badge": "Teaching Portfolio",
+      "summary": "集中收錄工程日語、日語精讀、職場與投資主題、情境會話及台日文化翻譯等互動教材。",
+      "link": "https://fobee-teaching-portfolio.fobee2.chatgpt.site",
+      "cover": ""
+    },
+    {
       "title": "工程現場日語實戰教材",
       "category": "engineering",
       "label": "工程日語 · 互動教材",

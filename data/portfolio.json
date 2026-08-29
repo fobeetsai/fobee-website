@@ -11,6 +11,16 @@
       "cover": ""
     },
     {
+      "title": "トンネル工事用語 OJT",
+      "category": "engineering",
+      "label": "隧道工程 · OJT 現場教材",
+      "mark": "現場",
+      "badge": "Tunnel Engineering OJT",
+      "summary": "以隧道工程現場常用術語為核心，整合台日對譯、單字卡、隨堂測驗、發音、學習進度與成績管理。",
+      "link": "/works/tunnel-ojt.html",
+      "cover": "/assets/tunnel-ojt.jpg"
+    },
+    {
       "title": "工程現場日語實戰教材",
       "category": "engineering",
       "label": "工程日語 · 互動教材",

@@ -1,18 +1,1395 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
+<!doctype html>
+<html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>トンネル工事用語 OJT｜FOBEE</title>
-<style>
-*{box-sizing:border-box}body{margin:0;background:#f7f3ea;color:#17212b;font-family:"Noto Sans TC","Noto Sans JP",system-ui,sans-serif}.wrap{max-width:1400px;margin:0 auto;padding:32px 20px 56px}.top{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:22px;flex-wrap:wrap}h1{font-size:clamp(24px,4vw,40px);margin:0}.sub{color:#6b6258;margin-top:6px}.back{display:inline-block;padding:10px 16px;border:1px solid #1b4f63;border-radius:8px;color:#1b4f63;text-decoration:none;background:#fff}.card{background:#fff;border:1px solid #ded6c8;border-radius:16px;padding:14px;box-shadow:0 12px 36px rgba(25,35,45,.08)}img{display:block;width:100%;height:auto;border-radius:10px}.note{margin-top:18px;color:#625b53;font-size:14px;line-height:1.8}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>トンネル工事用語 OJT</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f6f7;
+      --panel: #ffffff;
+      --panel-2: #fafbfc;
+      --ink: #151b22;
+      --muted: #5f6975;
+      --line: #d9dee5;
+      --line-strong: #c5ccd5;
+      --teal: #006f86;
+      --teal-dark: #00576a;
+      --teal-soft: #e8f4f6;
+      --yellow: #f6c53f;
+      --yellow-soft: #fff5d1;
+      --green-soft: #edf8ef;
+      --danger: #b42318;
+      --shadow: 0 12px 28px rgba(21, 27, 34, 0.08);
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Noto Sans JP", "Noto Sans TC", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+      letter-spacing: 0;
+    }
+
+    button, input, select {
+      font: inherit;
+      letter-spacing: 0;
+    }
+
+    button {
+      cursor: pointer;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--ink);
+      border-radius: var(--radius);
+      min-height: 38px;
+      padding: 8px 12px;
+      transition: background .16s ease, border-color .16s ease, color .16s ease, transform .16s ease;
+    }
+
+    button:hover { border-color: var(--line-strong); }
+    button:active { transform: translateY(1px); }
+    button:focus-visible, input:focus-visible, select:focus-visible {
+      outline: 3px solid rgba(0, 111, 134, .22);
+      outline-offset: 2px;
+    }
+
+    .app-shell {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: grid;
+      grid-template-columns: auto 1fr auto auto auto;
+      align-items: center;
+      gap: 18px;
+      padding: 0 24px;
+      min-height: 68px;
+      background: rgba(255, 255, 255, .96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      min-width: 260px;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 6px;
+      background: var(--yellow);
+      color: #111;
+      flex: 0 0 auto;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: clamp(22px, 2.2vw, 31px);
+      line-height: 1.08;
+      font-weight: 800;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .nav button {
+      border-color: transparent;
+      border-radius: 0;
+      background: transparent;
+      min-width: 92px;
+      font-weight: 700;
+      color: #303943;
+      border-bottom: 3px solid transparent;
+    }
+
+    .nav button.active {
+      color: var(--teal);
+      border-bottom-color: var(--teal);
+    }
+
+    .global-search {
+      position: relative;
+      min-width: min(300px, 28vw);
+    }
+
+    .global-search input,
+    .side-search input,
+    select {
+      width: 100%;
+      min-height: 40px;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      background: var(--panel);
+      color: var(--ink);
+      padding: 9px 12px;
+    }
+
+    .mode-toggle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--panel);
+      min-width: 164px;
+    }
+
+    .mode-toggle button {
+      border: 0;
+      border-radius: 0;
+      font-weight: 800;
+      background: transparent;
+    }
+
+    .mode-toggle button.active {
+      background: var(--teal);
+      color: #fff;
+    }
+
+    .portfolio-back {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 8px 12px;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      background: var(--panel);
+      color: var(--teal-dark);
+      font-weight: 800;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .portfolio-back:hover {
+      border-color: var(--teal);
+      background: var(--teal-soft);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 238px minmax(0, 1fr);
+      min-height: calc(100vh - 68px);
+    }
+
+    .sidebar {
+      border-right: 1px solid var(--line);
+      background: #fbfcfd;
+      padding: 22px 18px;
+    }
+
+    .side-section + .side-section { margin-top: 30px; }
+
+    .side-section h2 {
+      margin: 0 0 12px;
+      font-size: 16px;
+      line-height: 1.2;
+    }
+
+    .topic-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .topic-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: flex-start;
+      width: 100%;
+      min-height: 50px;
+      text-align: left;
+      font-weight: 750;
+      background: var(--panel);
+    }
+
+    .topic-btn svg,
+    .chip svg,
+    .nav svg {
+      width: 20px;
+      height: 20px;
+      flex: 0 0 auto;
+    }
+
+    .topic-btn.active {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #fff;
+      box-shadow: 0 10px 18px rgba(0, 111, 134, .18);
+    }
+
+    .main {
+      padding: 16px;
+      min-width: 0;
+    }
+
+    .workbench {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(330px, .85fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    .panel-header h2 {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.25;
+    }
+
+    .panel-body { padding: 16px; }
+
+    .tunnel-stage {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 180px;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .tunnel-visual {
+      position: relative;
+      min-height: 372px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #1d2228;
+      border: 1px solid var(--line-strong);
+    }
+
+    .tunnel-visual img {
+      width: 100%;
+      height: 100%;
+      min-height: 372px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .marker {
+      position: absolute;
+      width: 31px;
+      height: 31px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--teal);
+      color: #fff;
+      border: 2px solid #fff;
+      font-weight: 800;
+      box-shadow: 0 4px 14px rgba(0,0,0,.28);
+    }
+
+    .marker.active {
+      background: var(--yellow);
+      color: #141414;
+      border-color: #141414;
+    }
+
+    .term-index {
+      display: grid;
+      gap: 8px;
+      align-content: start;
+    }
+
+    .term-index button {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      align-items: center;
+      gap: 8px;
+      padding: 8px;
+      text-align: left;
+      min-height: 44px;
+      font-weight: 700;
+    }
+
+    .term-index button.active {
+      background: var(--teal-soft);
+      border-color: var(--teal);
+      color: var(--teal-dark);
+    }
+
+    .num {
+      display: inline-grid;
+      place-items: center;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: var(--teal);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .term-index button.active .num {
+      background: var(--yellow);
+      color: #111;
+    }
+
+    .detail-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .detail-title h2 { font-size: 20px; }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: var(--yellow-soft);
+      border: 1px solid #efd372;
+      font-size: 12px;
+      font-weight: 800;
+      color: #563c00;
+    }
+
+    .kv {
+      display: grid;
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .kv-row {
+      display: grid;
+      grid-template-columns: 142px 1fr;
+      min-height: 45px;
+    }
+
+    .kv-row > div {
+      padding: 10px 12px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .kv-label {
+      background: var(--panel-2);
+      color: var(--muted);
+      font-weight: 750;
+    }
+
+    ruby rt {
+      font-size: .62em;
+      color: var(--teal-dark);
+      font-weight: 700;
+    }
+
+    .example-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .example {
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 13px;
+      min-height: 112px;
+    }
+
+    .example h3 {
+      margin: 0 0 8px;
+      font-size: 15px;
+    }
+
+    .example p { margin: 0; }
+
+    .term-highlight {
+      border-bottom: 2px dotted var(--teal);
+      background: linear-gradient(transparent 60%, rgba(246, 197, 63, .42) 0);
+      cursor: help;
+    }
+
+    .section-stack {
+      display: grid;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .table-wrap {
+      overflow: auto;
+      max-height: 444px;
+      border-top: 1px solid var(--line);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 780px;
+      font-size: 14px;
+    }
+
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: #eef2f5;
+      color: #313a44;
+      font-weight: 800;
+    }
+
+    tr.active-row td {
+      background: #e4f3f7;
+      color: #063f4d;
+      font-weight: 700;
+    }
+
+    tbody tr { cursor: pointer; }
+    tbody tr:hover td { background: #f3f8fa; }
+
+    .dialogue {
+      display: grid;
+      gap: 10px;
+    }
+
+    .line {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 10px;
+      align-items: start;
+    }
+
+    .speaker {
+      font-weight: 800;
+      color: var(--teal-dark);
+      padding-top: 7px;
+    }
+
+    .bubble {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 10px 12px;
+      background: var(--panel-2);
+    }
+
+    .bubble.tw {
+      background: var(--green-soft);
+      border-color: #bdddc4;
+    }
+
+    .quiz-area {
+      display: grid;
+      gap: 12px;
+    }
+
+    .quiz-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .options {
+      display: grid;
+      gap: 9px;
+    }
+
+    .options button {
+      text-align: left;
+      min-height: 46px;
+      background: var(--panel-2);
+    }
+
+    .options button.correct {
+      border-color: #3a9b56;
+      background: #eaf8ed;
+      color: #135e2a;
+      font-weight: 800;
+    }
+
+    .options button.wrong {
+      border-color: var(--danger);
+      background: #fff0ef;
+      color: var(--danger);
+      font-weight: 800;
+    }
+
+    .feedback {
+      min-height: 30px;
+      color: var(--muted);
+    }
+
+    .action-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .primary {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #fff;
+      font-weight: 800;
+    }
+
+    .primary:hover {
+      background: var(--teal-dark);
+      border-color: var(--teal-dark);
+    }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .review-item {
+      border: 1px solid var(--line);
+      background: var(--panel-2);
+      border-radius: var(--radius);
+      padding: 12px;
+    }
+
+    .review-item h3 {
+      margin: 0 0 8px;
+      font-size: 14px;
+      color: var(--teal-dark);
+    }
+
+    .review-item p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .hidden { display: none !important; }
+
+    .tooltip {
+      position: fixed;
+      z-index: 50;
+      display: none;
+      width: min(360px, calc(100vw - 24px));
+      padding: 10px 12px;
+      border-radius: var(--radius);
+      background: #111820;
+      color: #fff;
+      box-shadow: 0 16px 34px rgba(0,0,0,.24);
+      font-size: 13px;
+    }
+
+    @media (max-width: 1180px) {
+      .topbar {
+        grid-template-columns: 1fr auto auto;
+        grid-auto-rows: auto;
+        padding: 10px 16px;
+      }
+      .brand { min-width: 0; }
+      .nav {
+        grid-column: 1 / -1;
+        justify-content: flex-start;
+        order: 3;
+        overflow-x: auto;
+      }
+      .global-search { min-width: 230px; }
+      .layout {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        position: static;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+        padding: 14px 16px;
+      }
+      .side-section {
+        display: grid;
+        grid-template-columns: 100px 1fr;
+        gap: 12px;
+        align-items: start;
+      }
+      .side-section + .side-section { margin-top: 12px; }
+      .topic-list {
+        grid-template-columns: repeat(6, minmax(120px, 1fr));
+        overflow-x: auto;
+      }
+      .topic-btn { min-height: 44px; }
+      .workbench {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .topbar {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .brand h1 {
+        font-size: 22px;
+        white-space: normal;
+      }
+      .global-search,
+      .mode-toggle {
+        width: 100%;
+        min-width: 0;
+      }
+      .portfolio-back {
+        width: 100%;
+      }
+      .side-section {
+        grid-template-columns: 1fr;
+      }
+      .topic-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .main { padding: 12px; }
+      .tunnel-stage,
+      .example-grid,
+      .review-grid {
+        grid-template-columns: 1fr;
+      }
+      .tunnel-visual,
+      .tunnel-visual img {
+        min-height: 260px;
+      }
+      .term-index {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .kv-row {
+        grid-template-columns: 1fr;
+      }
+      .line {
+        grid-template-columns: 1fr;
+      }
+      .speaker { padding-top: 0; }
+    }
+  </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="top"><div><h1>トンネル工事用語 OJT</h1><div class="sub">隧道工程用語・台日對譯・現場會話・測驗介面</div></div><a class="back" href="/#portfolio">← 回作品集</a></div>
-  <div class="card"><img src="/assets/tunnel-ojt.jpg" alt="トンネル工事用語 OJT"></div>
-  <p class="note">本作品整理隧道工程現場常用術語與台日對譯，包含單字卡、隨堂測驗、發音、進度與成績管理等 OJT 學習介面。</p>
-</div>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" width="38" height="38" fill="none">
+            <path d="M8 38V25C8 16 15 9 24 9s16 7 16 16v13" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+            <path d="M15 38V25c0-5 4-9 9-9s9 4 9 9v13" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            <path d="M4 38h40" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+            <path d="M24 17v21" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h1>トンネル工事用語 OJT</h1>
+      </div>
+
+      <nav class="nav" aria-label="main">
+        <button class="active" type="button" data-view="terms">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H20v17H8.5A3.5 3.5 0 0 0 5 22V5.5Z" stroke="currentColor" stroke-width="2"/><path d="M5 5.5A3.5 3.5 0 0 0 1.5 2H1v17h.5A3.5 3.5 0 0 1 5 22" stroke="currentColor" stroke-width="2"/></svg>
+          用語
+        </button>
+        <button type="button" data-view="compare">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 7h11l-3-3m3 3-3 3M17 17H6l3 3m-3-3 3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          対訳
+        </button>
+        <button type="button" data-view="dialogue">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16v10H8l-4 4V5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          現場会話
+        </button>
+        <button type="button" data-view="quiz">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 17h.01M9.5 9a2.5 2.5 0 1 1 4.4 1.62c-.97.9-1.9 1.36-1.9 2.88" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg>
+          クイズ
+        </button>
+      </nav>
+
+      <label class="global-search">
+        <span class="hidden">検索</span>
+        <input id="searchInput" type="search" placeholder="検索">
+      </label>
+
+      <div class="mode-toggle" aria-label="learning direction">
+        <button id="modeTw" class="active" type="button">台→日</button>
+        <button id="modeJp" type="button">日→台</button>
+      </div>
+      <a class="portfolio-back" href="/#portfolio">回作品集</a>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar">
+        <section class="side-section">
+          <h2>検索</h2>
+          <label class="side-search">
+            <span class="hidden">検索</span>
+            <input id="sideSearchInput" type="search" placeholder="用語・かな・拼音">
+          </label>
+        </section>
+
+        <section class="side-section">
+          <h2>トピック</h2>
+          <div class="topic-list" id="topicList"></div>
+        </section>
+      </aside>
+
+      <main class="main">
+        <div class="workbench">
+          <section class="panel" id="termsView">
+            <div class="panel-header">
+              <h2>山岳トンネル標準断面（NATM）</h2>
+              <span class="tag" id="currentTopicLabel">掘削</span>
+            </div>
+            <div class="panel-body">
+              <div class="tunnel-stage">
+                <div class="tunnel-visual" aria-label="tunnel cutaway">
+                  <img src="/assets/tunnel-cutaway.png" alt="NATM tunnel construction cutaway">
+                  <div id="markers"></div>
+                </div>
+                <div class="term-index" id="termIndex"></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel" id="detailPanel">
+            <div class="panel-header">
+              <div class="detail-title">
+                <span class="num" id="detailNum">1</span>
+                <h2 id="detailName">切羽</h2>
+              </div>
+              <span class="tag" id="detailTag">掘削</span>
+            </div>
+            <div class="panel-body">
+              <div class="kv" id="termDetail"></div>
+              <div class="example-grid" id="exampleGrid"></div>
+            </div>
+          </section>
+        </div>
+
+        <div class="section-stack">
+          <section class="panel" id="compareView">
+            <div class="panel-header">
+              <h2>用語一覧（検索・選択）</h2>
+              <span class="tag" id="resultCount">0 件</span>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>日本語</th>
+                    <th>読み方</th>
+                    <th>台湾華語（繁體中文）</th>
+                    <th>拼音</th>
+                    <th>分類</th>
+                    <th>OJT note</th>
+                  </tr>
+                </thead>
+                <tbody id="termRows"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="panel hidden" id="dialogueView">
+            <div class="panel-header">
+              <h2>現場会話（ロールプレイ）</h2>
+              <span class="tag" id="dialogueTopic">支保</span>
+            </div>
+            <div class="panel-body">
+              <div class="dialogue" id="dialogueLines"></div>
+            </div>
+          </section>
+
+          <section class="panel hidden" id="quizView">
+            <div class="panel-header">
+              <h2>クイズ</h2>
+              <span class="tag" id="scoreLabel">0 / 0</span>
+            </div>
+            <div class="panel-body">
+              <div class="quiz-area">
+                <div class="quiz-meta">
+                  <span id="quizType">用語</span>
+                  <span id="quizProgress">1 / 1</span>
+                </div>
+                <h3 id="quizQuestion"></h3>
+                <div class="options" id="quizOptions"></div>
+                <div class="feedback" id="quizFeedback"></div>
+                <div class="action-row">
+                  <button class="primary" id="nextQuiz" type="button">次へ</button>
+                  <button id="resetQuiz" type="button">リセット</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-header">
+              <h2>現場で使う確認表現</h2>
+              <span class="tag">朝礼・巡視・検査・引渡し</span>
+            </div>
+            <div class="panel-body">
+              <div class="review-grid">
+                <div class="review-item">
+                  <h3>朝礼</h3>
+                  <p>本日の切羽はD測線まで進めます。湧水が増えたら直ちに報告してください。</p>
+                </div>
+                <div class="review-item">
+                  <h3>巡視</h3>
+                  <p>吹付け厚、ロックボルトの本数、鋼製支保工の建込み位置を確認します。</p>
+                </div>
+                <div class="review-item">
+                  <h3>検査</h3>
+                  <p>防水シートの破れと継手部を写真で残し、補修後に再確認します。</p>
+                </div>
+                <div class="review-item">
+                  <h3>引渡し</h3>
+                  <p>覆工コンクリートの打設記録、計測値、是正履歴をまとめて提出します。</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="tooltip" id="tooltip" role="tooltip"></div>
+
+  <script>
+    const topics = [
+      { id: "all", label: "全て", icon: "grid" },
+      { id: "excavation", label: "掘削", icon: "excavation" },
+      { id: "support", label: "支保", icon: "arch" },
+      { id: "lining", label: "覆工", icon: "lining" },
+      { id: "waterproof", label: "防水", icon: "drop" },
+      { id: "safety", label: "安全", icon: "helmet" }
+    ];
+
+    const terms = [
+      {
+        id: 1,
+        topic: "excavation",
+        ja: "切羽",
+        kana: "きりは",
+        zh: "開挖面／掌子面",
+        pinyin: "kai1 wa1 mian4 / zhang3 zi3 mian4",
+        cue: "excavation face",
+        note: "掘削の最前面。崩落、湧水、地山状態の確認が重要。",
+        marker: { left: 43, top: 46 },
+        jaExample: "<ruby>切羽<rt>きりは</rt></ruby>の崩落を防ぐため、作業前に地山を確認します。",
+        zhExample: "作業前要確認<ruby>開挖面<rt>kai1 wa1 mian4</rt></ruby>的岩盤狀況，避免坍落。"
+      },
+      {
+        id: 2,
+        topic: "support",
+        ja: "ロックボルト",
+        kana: "ろっくぼると",
+        zh: "岩栓／岩釘",
+        pinyin: "yan2 shuan1 / yan2 ding1",
+        cue: "rock bolt",
+        note: "地山を内部から補強する部材。長さ、間隔、定着状況を確認する。",
+        marker: { left: 15, top: 22 },
+        jaExample: "<ruby>ロックボルト<rt>ろっくぼると</rt></ruby>は設計の間隔で施工されていますか。",
+        zhExample: "<ruby>岩栓<rt>yan2 shuan1</rt></ruby>是否依照設計間距施工？"
+      },
+      {
+        id: 3,
+        topic: "support",
+        ja: "吹付けコンクリート",
+        kana: "ふきつけこんくりーと",
+        zh: "噴凝土／噴射混凝土",
+        pinyin: "pen1 ning2 tu3 / pen1 she4 hun4 ning2 tu3",
+        cue: "shotcrete",
+        note: "掘削直後の地山を早期に安定させる。厚さ、はね返り、空洞を確認する。",
+        marker: { left: 31, top: 34 },
+        jaExample: "<ruby>吹付けコンクリート<rt>ふきつけこんくりーと</rt></ruby>の厚さを天端と側壁で確認してください。",
+        zhExample: "請確認拱頂與側壁的<ruby>噴凝土<rt>pen1 ning2 tu3</rt></ruby>厚度。"
+      },
+      {
+        id: 4,
+        topic: "support",
+        ja: "鋼製支保工",
+        kana: "こうせいしほこう",
+        zh: "鋼支保",
+        pinyin: "gang1 zhi1 bao3",
+        cue: "steel rib support",
+        note: "トンネル断面を保持する鋼材。建込み位置、脚部、間隔のずれを確認する。",
+        marker: { left: 56, top: 39 },
+        jaExample: "<ruby>鋼製支保工<rt>こうせいしほこう</rt></ruby>の建込み位置が中心線からずれていないか確認します。",
+        zhExample: "確認<ruby>鋼支保<rt>gang1 zhi1 bao3</rt></ruby>安裝位置是否偏離中心線。"
+      },
+      {
+        id: 5,
+        topic: "waterproof",
+        ja: "防水シート",
+        kana: "ぼうすいしーと",
+        zh: "防水膜／防水布",
+        pinyin: "fang2 shui3 mo2 / fang2 shui3 bu4",
+        cue: "waterproof membrane",
+        note: "覆工前に設置する防水層。破れ、溶着幅、貫通部の処理を確認する。",
+        marker: { left: 72, top: 38 },
+        jaExample: "<ruby>防水シート<rt>ぼうすいしーと</rt></ruby>に破れがないか、照明を当てて確認します。",
+        zhExample: "用照明確認<ruby>防水膜<rt>fang2 shui3 mo2</rt></ruby>是否破損。"
+      },
+      {
+        id: 6,
+        topic: "lining",
+        ja: "覆工コンクリート",
+        kana: "ふっこうこんくりーと",
+        zh: "襯砌混凝土",
+        pinyin: "chen4 qi4 hun4 ning2 tu3",
+        cue: "final lining concrete",
+        note: "最終的な内面コンクリート。打設記録、厚さ、ひび割れを管理する。",
+        marker: { left: 64, top: 58 },
+        jaExample: "<ruby>覆工コンクリート<rt>ふっこうこんくりーと</rt></ruby>の打設前に型枠と鉄筋を確認します。",
+        zhExample: "澆置<ruby>襯砌混凝土<rt>chen4 qi4 hun4 ning2 tu3</rt></ruby>前，要確認模板與鋼筋。"
+      },
+      {
+        id: 7,
+        topic: "lining",
+        ja: "インバート",
+        kana: "いんばーと",
+        zh: "仰拱",
+        pinyin: "yang3 gong3",
+        cue: "invert",
+        note: "トンネル下部の構造。閉合時期が遅れると変形リスクが上がる。",
+        marker: { left: 52, top: 82 },
+        jaExample: "<ruby>インバート<rt>いんばーと</rt></ruby>の閉合時期を工程表で確認してください。",
+        zhExample: "請在進度表確認<ruby>仰拱<rt>yang3 gong3</rt></ruby>閉合時間。"
+      },
+      {
+        id: 8,
+        topic: "excavation",
+        ja: "ずり出し",
+        kana: "ずりだし",
+        zh: "出碴",
+        pinyin: "chu1 zha3",
+        cue: "muck hauling",
+        note: "掘削土砂を坑外へ搬出する作業。車両動線と退避場所を確認する。",
+        marker: { left: 24, top: 76 },
+        jaExample: "<ruby>ずり出し<rt>ずりだし</rt></ruby>中は坑内車両の動線に入らないでください。",
+        zhExample: "<ruby>出碴<rt>chu1 zha3</rt></ruby>時不要進入坑內車輛動線。"
+      },
+      {
+        id: 9,
+        topic: "safety",
+        ja: "湧水",
+        kana: "ゆうすい",
+        zh: "湧水",
+        pinyin: "yong3 shui3",
+        cue: "water inflow",
+        note: "切羽や側壁から水が出る現象。排水、電気設備、地山安定に影響する。",
+        marker: { left: 36, top: 66 },
+        jaExample: "<ruby>湧水<rt>ゆうすい</rt></ruby>が増えた場合は、作業を止めて監督員へ報告します。",
+        zhExample: "如果<ruby>湧水<rt>yong3 shui3</rt></ruby>增加，應停止作業並回報監造。"
+      },
+      {
+        id: 10,
+        topic: "safety",
+        ja: "計測管理",
+        kana: "けいそくかんり",
+        zh: "監測管理",
+        pinyin: "jian1 ce4 guan3 li3",
+        cue: "monitoring control",
+        note: "内空変位、天端沈下などを測定し、支保パターンの妥当性を判断する。",
+        marker: { left: 84, top: 24 },
+        jaExample: "<ruby>計測管理<rt>けいそくかんり</rt></ruby>の結果を見て、支保パターンを確認します。",
+        zhExample: "依據<ruby>監測管理<rt>jian1 ce4 guan3 li3</rt></ruby>結果確認支保型式是否合適。"
+      },
+      {
+        id: 11,
+        topic: "safety",
+        ja: "換気",
+        kana: "かんき",
+        zh: "通風",
+        pinyin: "tong1 feng1",
+        cue: "ventilation",
+        note: "粉じん、排ガス、酸欠を防ぐ。換気設備の停止は作業継続判断に直結する。",
+        marker: { left: 45, top: 20 },
+        jaExample: "<ruby>換気<rt>かんき</rt></ruby>が止まった場合は、坑内作業を継続できません。",
+        zhExample: "若<ruby>通風<rt>tong1 feng1</rt></ruby>停止，坑內作業不可繼續。"
+      },
+      {
+        id: 12,
+        topic: "support",
+        ja: "先受け工",
+        kana: "さきうけこう",
+        zh: "超前支撐",
+        pinyin: "chao1 qian2 zhi1 cheng1",
+        cue: "forepoling / pre-support",
+        note: "切羽前方の地山を事前に支える工法。脆弱地山や坑口部で使う。",
+        marker: { left: 76, top: 17 },
+        jaExample: "<ruby>先受け工<rt>さきうけこう</rt></ruby>の施工範囲を図面と現地で照合します。",
+        zhExample: "把<ruby>超前支撐<rt>chao1 qian2 zhi1 cheng1</rt></ruby>施工範圍與圖面、現場核對。"
+      }
+    ];
+
+    const dialogues = [
+      ["職長", "jp", "切羽の湧水が昨日より増えています。先受け工を追加する必要がありますか。"],
+      ["台湾エンジニア", "tw", "湧水量と内空変位を確認します。設計変更が必要ならRFIを出します。"],
+      ["日本エンジニア", "jp", "吹付けコンクリートの厚さは天端10cm、側壁8cmで記録してください。"],
+      ["作業員", "jp", "了解しました。ロックボルトの本数と定着長も写真に残します。"],
+      ["台灣工程師", "tw", "防水膜焊接完成後，請先不要覆工，我們要做破損檢查。"],
+      ["日本エンジニア", "jp", "検査後に補修箇所をマーキングして、覆工前に再確認します。"]
+    ];
+
+    const quiz = [
+      {
+        type: "用語",
+        q: "「吹付けコンクリート」の主な目的はどれですか。",
+        options: ["地山の緩みを抑え、早期に安定させる", "坑内の排水を行う", "覆工コンクリートの型枠になる", "車両の走行を補助する"],
+        answer: 0,
+        exp: "掘削直後に吹き付け、地山の緩みや剥落を抑えます。"
+      },
+      {
+        type: "読み方",
+        q: "「切羽」の読み方はどれですか。",
+        options: ["きりは", "せつばね", "きれば", "きりばね"],
+        answer: 0,
+        exp: "トンネル掘削の最前面は「切羽（きりは）」です。"
+      },
+      {
+        type: "翻訳",
+        q: "台湾華語の「防水膜」に近い日本語はどれですか。",
+        options: ["防水シート", "鋼製支保工", "計測管理", "ずり出し"],
+        answer: 0,
+        exp: "覆工前に設置する防水層として「防水シート」と言います。"
+      },
+      {
+        type: "現場判断",
+        q: "湧水が急に増えた時、最初に取るべき対応はどれですか。",
+        options: ["作業を止めて状況を報告する", "覆工を急いで打設する", "換気を止める", "写真を撮らずに作業を続ける"],
+        answer: 0,
+        exp: "湧水増加は地山安定や電気安全に関わるため、停止と報告が先です。"
+      },
+      {
+        type: "用語",
+        q: "「インバート」はトンネルのどの部分を指しますか。",
+        options: ["下部の仰拱構造", "坑口の看板", "換気設備", "防水膜の継手"],
+        answer: 0,
+        exp: "インバートはトンネル下部の構造で、断面を閉合して安定性に関わります。"
+      }
+    ];
+
+    const state = {
+      topic: "excavation",
+      selectedId: 1,
+      view: "terms",
+      mode: "tw-ja",
+      query: "",
+      quizIndex: 0,
+      score: 0,
+      answered: false
+    };
+
+    const el = (id) => document.getElementById(id);
+
+    function icon(name) {
+      const icons = {
+        grid: '<svg viewBox="0 0 24 24" fill="none"><path d="M4 4h6v6H4V4Zm10 0h6v6h-6V4ZM4 14h6v6H4v-6Zm10 0h6v6h-6v-6Z" stroke="currentColor" stroke-width="2"/></svg>',
+        excavation: '<svg viewBox="0 0 24 24" fill="none"><path d="m4 17 5-5 3 3-5 5H4v-3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m9 12 6-6 3 3-6 6" stroke="currentColor" stroke-width="2"/><path d="M14 6 12 4m6 6 2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+        arch: '<svg viewBox="0 0 24 24" fill="none"><path d="M4 20v-7a8 8 0 1 1 16 0v7" stroke="currentColor" stroke-width="2"/><path d="M8 20v-7a4 4 0 1 1 8 0v7" stroke="currentColor" stroke-width="2"/><path d="M2 20h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+        lining: '<svg viewBox="0 0 24 24" fill="none"><path d="M5 20V11a7 7 0 0 1 14 0v9" stroke="currentColor" stroke-width="2"/><path d="M9 20v-9a3 3 0 0 1 6 0v9" stroke="currentColor" stroke-width="2"/></svg>',
+        drop: '<svg viewBox="0 0 24 24" fill="none"><path d="M12 3s6 6.2 6 11a6 6 0 0 1-12 0c0-4.8 6-11 6-11Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>',
+        helmet: '<svg viewBox="0 0 24 24" fill="none"><path d="M4 14a8 8 0 0 1 16 0v3H4v-3Z" stroke="currentColor" stroke-width="2"/><path d="M2 20h20M9 6v11m6-11v11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>'
+      };
+      return icons[name] || icons.grid;
+    }
+
+    function currentTerms() {
+      const q = state.query.trim().toLowerCase();
+      return terms.filter((term) => {
+        const matchTopic = state.topic === "all" || term.topic === state.topic;
+        const hay = [term.ja, term.kana, term.zh, term.pinyin, term.cue, term.note].join(" ").toLowerCase();
+        return matchTopic && (!q || hay.includes(q));
+      });
+    }
+
+    function selectedTerm() {
+      return terms.find((term) => term.id === state.selectedId) || currentTerms()[0] || terms[0];
+    }
+
+    function topicLabel(id) {
+      return (topics.find((topic) => topic.id === id) || topics[0]).label;
+    }
+
+    function renderTopics() {
+      el("topicList").innerHTML = topics.map((topic) => `
+        <button class="topic-btn ${topic.id === state.topic ? "active" : ""}" type="button" data-topic="${topic.id}">
+          ${icon(topic.icon)}
+          <span>${topic.label}</span>
+        </button>
+      `).join("");
+      document.querySelectorAll("[data-topic]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          state.topic = btn.dataset.topic;
+          const first = currentTerms()[0];
+          if (first) state.selectedId = first.id;
+          render();
+        });
+      });
+    }
+
+    function renderMarkers(list) {
+      const active = selectedTerm();
+      el("markers").innerHTML = list.map((term) => `
+        <button class="marker ${term.id === active.id ? "active" : ""}" type="button" data-id="${term.id}"
+          style="left:${term.marker.left}%; top:${term.marker.top}%"
+          aria-label="${term.ja}">
+          ${term.id}
+        </button>
+      `).join("");
+      document.querySelectorAll(".marker").forEach((marker) => {
+        marker.addEventListener("click", () => {
+          state.selectedId = Number(marker.dataset.id);
+          render();
+        });
+      });
+    }
+
+    function renderTermIndex(list) {
+      el("termIndex").innerHTML = list.slice(0, 8).map((term) => `
+        <button class="${term.id === state.selectedId ? "active" : ""}" type="button" data-id="${term.id}">
+          <span class="num">${term.id}</span>
+          <span>${term.ja}</span>
+        </button>
+      `).join("");
+      document.querySelectorAll("#termIndex [data-id]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          state.selectedId = Number(btn.dataset.id);
+          render();
+        });
+      });
+    }
+
+    function renderDetail() {
+      const term = selectedTerm();
+      el("detailNum").textContent = term.id;
+      el("detailName").textContent = term.ja;
+      el("detailTag").textContent = topicLabel(term.topic);
+      el("currentTopicLabel").textContent = topicLabel(state.topic);
+      const rows = [
+        ["読み方（日本語）", term.kana],
+        ["意味（日本語）", term.note],
+        ["用語（台湾）", term.zh],
+        ["拼音（台湾）", term.pinyin],
+        ["技術 cue", term.cue]
+      ];
+      el("termDetail").innerHTML = rows.map(([label, value]) => `
+        <div class="kv-row">
+          <div class="kv-label">${label}</div>
+          <div><span class="term-highlight" tabindex="0" data-tip="${term.ja} / ${term.zh} / ${term.cue}">${value}</span></div>
+        </div>
+      `).join("");
+      el("exampleGrid").innerHTML = `
+        <div class="example">
+          <h3>日本語の例文</h3>
+          <p>${term.jaExample}</p>
+        </div>
+        <div class="example">
+          <h3>台湾華語（繁體中文）的例句</h3>
+          <p>${term.zhExample}</p>
+        </div>
+      `;
+      bindTooltips();
+    }
+
+    function renderTable(list) {
+      el("resultCount").textContent = `${list.length} 件`;
+      el("termRows").innerHTML = list.map((term) => `
+        <tr class="${term.id === state.selectedId ? "active-row" : ""}" data-id="${term.id}">
+          <td>${term.id}</td>
+          <td>${term.ja}</td>
+          <td>${term.kana}</td>
+          <td>${term.zh}</td>
+          <td>${term.pinyin}</td>
+          <td>${topicLabel(term.topic)}</td>
+          <td>${term.note}</td>
+        </tr>
+      `).join("");
+      document.querySelectorAll("#termRows tr").forEach((row) => {
+        row.addEventListener("click", () => {
+          state.selectedId = Number(row.dataset.id);
+          state.view = "terms";
+          render();
+        });
+      });
+    }
+
+    function renderDialogue() {
+      const term = selectedTerm();
+      el("dialogueTopic").textContent = topicLabel(term.topic);
+      el("dialogueLines").innerHTML = dialogues.map(([speaker, lang, text]) => `
+        <div class="line">
+          <div class="speaker">${speaker}</div>
+          <div class="bubble ${lang === "tw" ? "tw" : ""}">${text}</div>
+        </div>
+      `).join("");
+    }
+
+    function renderQuiz() {
+      const item = quiz[state.quizIndex];
+      el("quizType").textContent = item.type;
+      el("quizProgress").textContent = `${state.quizIndex + 1} / ${quiz.length}`;
+      el("scoreLabel").textContent = `${state.score} / ${quiz.length}`;
+      el("quizQuestion").textContent = item.q;
+      el("quizFeedback").textContent = state.answered ? item.exp : "";
+      el("quizOptions").innerHTML = item.options.map((option, i) => `
+        <button type="button" data-answer="${i}">${String.fromCharCode(65 + i)}. ${option}</button>
+      `).join("");
+      document.querySelectorAll("#quizOptions button").forEach((btn) => {
+        btn.addEventListener("click", () => answerQuiz(Number(btn.dataset.answer)));
+      });
+    }
+
+    function answerQuiz(index) {
+      if (state.answered) return;
+      const item = quiz[state.quizIndex];
+      state.answered = true;
+      if (index === item.answer) state.score += 1;
+      document.querySelectorAll("#quizOptions button").forEach((btn) => {
+        const i = Number(btn.dataset.answer);
+        if (i === item.answer) btn.classList.add("correct");
+        if (i === index && i !== item.answer) btn.classList.add("wrong");
+      });
+      el("quizFeedback").textContent = item.exp;
+      el("scoreLabel").textContent = `${state.score} / ${quiz.length}`;
+    }
+
+    function renderView() {
+      const isDialogue = state.view === "dialogue";
+      const isQuiz = state.view === "quiz";
+      el("dialogueView").classList.toggle("hidden", !isDialogue);
+      el("quizView").classList.toggle("hidden", !isQuiz);
+      el("compareView").classList.toggle("hidden", false);
+      document.querySelectorAll(".nav button").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.view === state.view);
+      });
+    }
+
+    function scrollActiveView() {
+      if (state.view === "compare") {
+        el("compareView").scrollIntoView({ block: "start" });
+      } else if (state.view === "dialogue") {
+        el("dialogueView").scrollIntoView({ block: "start" });
+      } else if (state.view === "quiz") {
+        el("quizView").scrollIntoView({ block: "start" });
+      } else {
+        el("termsView").scrollIntoView({ block: "start" });
+      }
+    }
+
+    function bindTooltips() {
+      const tip = el("tooltip");
+      document.querySelectorAll(".term-highlight").forEach((node) => {
+        const show = (x, y) => {
+          tip.textContent = node.dataset.tip;
+          tip.style.display = "block";
+          const left = Math.min(x + 12, window.innerWidth - tip.offsetWidth - 12);
+          const top = Math.min(y + 12, window.innerHeight - tip.offsetHeight - 12);
+          tip.style.left = `${left}px`;
+          tip.style.top = `${top}px`;
+        };
+        node.addEventListener("mousemove", (event) => show(event.clientX, event.clientY));
+        node.addEventListener("focus", () => show(24, 116));
+        node.addEventListener("mouseleave", () => tip.style.display = "none");
+        node.addEventListener("blur", () => tip.style.display = "none");
+      });
+    }
+
+    function setQuery(value) {
+      state.query = value;
+      el("searchInput").value = value;
+      el("sideSearchInput").value = value;
+      const first = currentTerms()[0];
+      if (first && !currentTerms().some((term) => term.id === state.selectedId)) {
+        state.selectedId = first.id;
+      }
+      render();
+    }
+
+    function render() {
+      const list = currentTerms();
+      renderTopics();
+      renderMarkers(list.length ? list : terms);
+      renderTermIndex(list.length ? list : terms);
+      renderDetail();
+      renderTable(list);
+      renderDialogue();
+      renderQuiz();
+      renderView();
+      el("modeTw").classList.toggle("active", state.mode === "tw-ja");
+      el("modeJp").classList.toggle("active", state.mode === "jp-tw");
+      document.documentElement.lang = state.mode === "tw-ja" ? "zh-Hant" : "ja";
+    }
+
+    document.querySelectorAll(".nav button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        state.view = btn.dataset.view;
+        render();
+        scrollActiveView();
+      });
+    });
+
+    el("searchInput").addEventListener("input", (event) => setQuery(event.target.value));
+    el("sideSearchInput").addEventListener("input", (event) => setQuery(event.target.value));
+
+    el("modeTw").addEventListener("click", () => {
+      state.mode = "tw-ja";
+      render();
+    });
+    el("modeJp").addEventListener("click", () => {
+      state.mode = "jp-tw";
+      render();
+    });
+
+    el("nextQuiz").addEventListener("click", () => {
+      state.quizIndex = (state.quizIndex + 1) % quiz.length;
+      state.answered = false;
+      renderQuiz();
+    });
+
+    el("resetQuiz").addEventListener("click", () => {
+      state.quizIndex = 0;
+      state.score = 0;
+      state.answered = false;
+      renderQuiz();
+    });
+
+    render();
+  </script>
 </body>
 </html>
+

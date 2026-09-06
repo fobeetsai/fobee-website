@@ -1,6 +1,16 @@
 {
   "items": [
     {
+      "title": "中日翻譯練習室",
+      "category": "conversation",
+      "label": "雙向翻譯 · 假名與拼音",
+      "mark": "翻譯",
+      "badge": "Japanese × Chinese",
+      "summary": "日文假名、中文拼音與懸停揭示答案，搭配我的最愛、間隔複習及文法庫候選分析，練習中日雙向翻譯。",
+      "link": "/works/bilingual-study/",
+      "cover": ""
+    },
+    {
       "title": "Fobee 教學作品館",
       "category": "engineering",
       "label": "教學作品總覽 · 持續更新",

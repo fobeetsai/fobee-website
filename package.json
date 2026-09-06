@@ -1,0 +1,1 @@
+{"name":"fobee-website","private":true,"version":"1.1.0","dependencies":{"@mozilla/readability":"0.6.0","jsdom":"26.1.0","ipaddr.js":"2.2.0"}}

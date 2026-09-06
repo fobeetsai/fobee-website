@@ -1,3 +1,2 @@
-import {guard,readJSON,response,failure,fetchPublicHTML,extractArticle,StudyError} from '../lib/study.mjs';
-export default async request=>{try{guard(request);const input=await readJSON(request);if(typeof input.url!=='string'||input.url.length>2500)throw new StudyError('請提供有效的文章網址。');const page=await fetchPublicHTML(input.url);const article=extractArticle(page.html,page.url,page.type);if(article.text.length>30000)throw new StudyError('文章正文超過 30,000 字，請貼上要練習的章節。',413,'ARTICLE_TOO_LONG');return response(article);}catch(e){return failure(e);}};
-export const config={path:'/api/study/source',rateLimit:{windowLimit:10,windowSize:60,aggregateBy:['ip','domain']}};
+export default () => Response.json({error:'網址自動擷取已停用，請手動貼上中日對照教材。',code:'SOURCE_DISABLED'},{status:410,headers:{'Cache-Control':'no-store'}});
+export const config={path:'/api/study/source'};

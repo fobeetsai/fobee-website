@@ -10,3 +10,8 @@
   to = "/404.html"
   status = 404
   force = true
+
+[[headers]]
+  for = "/works/bilingual-study/*"
+  [headers.values]
+    Content-Security-Policy = "connect-src 'self';"

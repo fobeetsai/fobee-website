@@ -45,7 +45,7 @@ async function cpuEngine(){
  let abort;
  return {benchmark:()=>w.createCompletion('<|im_start|>user\nTranslate to Japanese: I would like a small package.<|im_end|>\n<|im_start|>assistant\n',{nPredict:30,useCache:false,stopTokens:[w.getEOS(),w.getEOT()],sampling:{temp:0.1}}),unload:()=>w.exit(),interruptGenerate:()=>abort?.abort(),chat:{completions:{create:async({messages})=>{
    abort=new AbortController();const input=messages.map(m=>'<|im_start|>'+m.role+'\n'+m.content+'<|im_end|>\n').join('')+'<|im_start|>assistant\n';
-   const stream=await w.createCompletion(input,{nPredict:1800,stream:true,useCache:false,abortSignal:abort.signal,stopTokens:[w.getEOS(),w.getEOT()],sampling:{temp:0.65,top_k:30,top_p:0.9,penalty_repeat:1.05,grammar:LESSON_GRAMMAR}});
+   const stream=await w.createCompletion(input,{nPredict:1800,stream:true,useCache:false,abortSignal:abort.signal,stopTokens:[w.getEOS(),w.getEOT()],sampling:{temp:0.65,top_k:30,top_p:0.9,penalty_repeat:1.05}});
    return (async function*(){let previous='';for await(const c of stream){const part=c.currentText.slice(previous.length);previous=c.currentText;yield {choices:[{delta:{content:part}}]};}})();
  }}}};
 }

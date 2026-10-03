@@ -1372,6 +1372,39 @@
     color: var(--ink);
     word-break: break-all;
   }
+  .contact-card .ch-sub {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+
+  .btn-openchat {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #06C755;
+    color: #fff;
+    padding: 13px 26px;
+    font-size: 14.5px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    border-radius: 999px;
+    box-shadow: 0 4px 16px rgba(6, 199, 85, 0.25);
+    transition: all .25s;
+    text-decoration: none;
+  }
+  .btn-openchat:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(6, 199, 85, 0.35);
+    color: #fff;
+  }
+  .btn-openchat svg {
+    width: 20px;
+    height: 20px;
+    fill: #fff;
+    flex-shrink: 0;
+  }
 
   .contact-cta {
     display: inline-flex;
@@ -1534,9 +1567,9 @@
 </header>
 
 <!-- ============== FLOATING LINE BUTTON ============== -->
-<a href="https://line.me/ti/p/~fobeetsai" class="float-line" target="_blank" rel="noopener">
+<a href="https://openchat.line.me/tw/cover/ZjQDlO8ZM2pNj_RLuBBBFk_kKgJFcW3PZy_xGPBKTYq59aOB6HbQnczgiWg" class="float-line" target="_blank" rel="noopener">
   <svg viewBox="0 0 24 24"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
-  <span data-i18n="float.line">LINE 聯繫</span>
+  <span data-i18n="float.line">LINE 社群</span>
   <span class="pulse"></span>
 </a>
 
@@ -1892,8 +1925,15 @@
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
       </div>
       <div class="teach-format-text" data-i18n="teach.format" data-i18n-html="true">
-        <strong>形式：</strong>線上 1 對 1 或小團體（2 〜 4 人）教學。課程依程度、職業與實際需求設計，並可運用 AI 即時產生專屬例句、情境、教材與練習。詳細費用、頻率與內容請透過 LINE 討論。
+        <strong>形式：</strong>線上 1 對 1 或小團體（2 〜 4 人）教學。課程依程度、職業與實際需求設計，並可運用 AI 即時產生專屬例句、情境、教材與練習。詳細費用、頻率與內容歡迎加入 LINE 社群或透過 Email 討論。
       </div>
+    </div>
+
+    <div style="text-align:center; margin-top:28px;">
+      <a href="https://openchat.line.me/tw/cover/ZjQDlO8ZM2pNj_RLuBBBFk_kKgJFcW3PZy_xGPBKTYq59aOB6HbQnczgiWg" class="btn-openchat" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        <span data-i18n="teach.btn_openchat">加入 LINE 社群 · 諮詢教學與客製課程</span>
+      </a>
     </div>
   </div>
 </section>
@@ -1946,6 +1986,12 @@
       </article>
     </div>
     <p class="portfolio-note" data-i18n="portfolio.note">作品集將持續更新。課程教材會依學員程度、職種與實際需求重新設計。</p>
+    <div style="text-align:center; margin-top:24px;">
+      <a href="https://openchat.line.me/tw/cover/ZjQDlO8ZM2pNj_RLuBBBFk_kKgJFcW3PZy_xGPBKTYq59aOB6HbQnczgiWg" class="btn-openchat" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        <span data-i18n="portfolio.btn_openchat">進入 LINE 社群交流 · 索取教材範本</span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -2061,23 +2107,25 @@
     案件詢問．<span class="em">直接聯繫</span>
   </h2>
   <p class="lede" data-i18n="contact.lede">
-    口譯案件、教學諮詢、合作邀約，皆歡迎透過以下任一管道聯繫。FOBEE 將親自回覆。
+    口譯專案請透過 Email 聯繫；日語／中文教學諮詢與教材交流，歡迎加入專屬 LINE 社群。
   </p>
 
   <div class="contact-grid">
-    <a class="contact-card" href="https://line.me/ti/p/~fobeetsai" target="_blank" rel="noopener">
+    <a class="contact-card" href="https://openchat.line.me/tw/cover/ZjQDlO8ZM2pNj_RLuBBBFk_kKgJFcW3PZy_xGPBKTYq59aOB6HbQnczgiWg" target="_blank" rel="noopener">
       <div class="ic line-bg">
         <svg viewBox="0 0 24 24"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
       </div>
-      <div class="ch-label">LINE</div>
-      <div class="ch-val">fobeetsai</div>
+      <div class="ch-label" data-i18n="contact.line.label">LINE 社群</div>
+      <div class="ch-val" data-i18n="contact.line.val">建築・土木・日語專精</div>
+      <div class="ch-sub" data-i18n="contact.line.sub">語言學習與現場交流</div>
     </a>
     <a class="contact-card" href="mailto:fobee2@gmail.com">
       <div class="ic email-bg">
         <svg viewBox="0 0 24 24"><path d="M22 6l-10 7L2 6" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><rect x="2" y="4" width="20" height="16" rx="2" fill="none" stroke="#fff" stroke-width="2.2"/></svg>
       </div>
-      <div class="ch-label">EMAIL</div>
+      <div class="ch-label" data-i18n="contact.email.label">EMAIL</div>
       <div class="ch-val">fobee2@gmail.com</div>
+      <div class="ch-sub" data-i18n="contact.email.sub">口譯案・商務合作洽詢</div>
     </a>
     <a class="contact-card" href="https://youtube.com/@tsaichinlan" target="_blank" rel="noopener">
       <div class="ic yt-bg">
@@ -2085,12 +2133,13 @@
       </div>
       <div class="ch-label">YOUTUBE</div>
       <div class="ch-val">@tsaichinlan</div>
+      <div class="ch-sub" data-i18n="contact.yt.sub">影音教學與現場分享</div>
     </a>
   </div>
 
-  <a href="https://line.me/ti/p/~fobeetsai" class="contact-cta" target="_blank" rel="noopener">
+  <a href="https://openchat.line.me/tw/cover/ZjQDlO8ZM2pNj_RLuBBBFk_kKgJFcW3PZy_xGPBKTYq59aOB6HbQnczgiWg" class="contact-cta" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
-    <span data-i18n="contact.cta">立即透過 LINE 聯繫</span>
+    <span data-i18n="contact.cta">加入 LINE 社群（日語／中文學習與交流）</span>
   </a>
 </section>
 
@@ -2138,7 +2187,7 @@
       "nav.testi": "學員評價",
       "nav.contact": "聯絡",
       "nav.cta": "詢問口譯",
-      "float.line": "LINE 聯繫",
+      "float.line": "LINE 社群",
 
       "hero.eyebrow": "JAPANESE INTERPRETATION · TAIPEI",
       "hero.title": '日中技術口譯',
@@ -2217,7 +2266,8 @@
       "teach.c.f2": "中高級．商務／生活中文",
       "teach.c.f3": "繁體中文與台灣文化",
       "teach.c.f4": "AI 生成個人化情境與即時練習",
-      "teach.format": "<strong>形式：</strong>線上 1 對 1 或小團體（2 〜 4 人）教學。課程依程度、職業與實際需求設計，並可運用 AI 即時產生專屬例句、情境、教材與練習。詳細費用、頻率與內容請透過 LINE 討論。",
+      "teach.format": "<strong>形式：</strong>線上 1 對 1 或小團體（2 〜 4 人）教學。課程依程度、職業與實際需求設計，並可運用 AI 即時產生專屬例句、情境、教材與練習。詳細費用、頻率與內容歡迎加入 LINE 社群或透過 Email 討論。",
+      "teach.btn_openchat": "加入 LINE 社群 · 諮詢教學與客製課程",
 
 
       "portfolio.eyebrow": "TEACHING PORTFOLIO · 教學作品集",
@@ -2238,6 +2288,7 @@
       "portfolio.p3.desc": "從台日文化差異切入，整理職場語感、隱性規則與溝通策略，讓語言學習跨過「文法正確但氣氛不對」的那道牆。",
       "portfolio.open": "開啟作品",
       "portfolio.note": "作品集將持續更新。課程教材會依學員程度、職種與實際需求重新設計。",
+      "portfolio.btn_openchat": "進入 LINE 社群交流 · 索取教材範本",
 
       "clients.eyebrow": "PAST CLIENTS · 服務實績",
       "clients.h2": '與<span class="em">日商一線企業</span>長期合作',
@@ -2263,8 +2314,14 @@
 
       "contact.eyebrow": "CONTACT · 聯絡方式",
       "contact.h2": '案件詢問．<span class="em">直接聯繫</span>',
-      "contact.lede": "口譯案件、教學諮詢、合作邀約，皆歡迎透過以下任一管道聯繫。FOBEE 將親自回覆。",
-      "contact.cta": "立即透過 LINE 聯繫",
+      "contact.lede": "口譯專案請透過 Email 聯繫；日語／中文教學諮詢與教材交流，歡迎加入專屬 LINE 社群。",
+      "contact.line.label": "LINE 社群",
+      "contact.line.val": "建築・土木・日語專精",
+      "contact.line.sub": "語言學習與現場交流",
+      "contact.email.label": "EMAIL",
+      "contact.email.sub": "口譯案・商務合作洽詢",
+      "contact.yt.sub": "影音教學與現場分享",
+      "contact.cta": "加入 LINE 社群（日語／中文學習與交流）",
 
       "footer.tagline": "日中技術口譯．名古屋大學 修士<br/>小型技術會議．現場協調．AI 個人化教學",
       "footer.copy": "© 2026 FOBEE．日中技術口譯．All rights reserved."
@@ -2282,7 +2339,7 @@
       "nav.testi": "受講者の声",
       "nav.contact": "お問合せ",
       "nav.cta": "通訳のご依頼",
-      "float.line": "LINEで連絡",
+      "float.line": "LINE オープンチャット",
 
       "hero.eyebrow": "日中通訳・台北",
       "hero.title": '日中技術通訳',
@@ -2361,7 +2418,8 @@
       "teach.c.f2": "中上級・ビジネス／生活中国語",
       "teach.c.f3": "繁体字中国語と台湾文化",
       "teach.c.f4": "AIで個別の場面と練習をその場で作成",
-      "teach.format": "<strong>形式：</strong>オンライン1対1または少人数（2〜4名）。レベル、職種、実際の課題に合わせて設計し、AIで専用例文、場面、教材、練習をその場で作成できます。料金、頻度、内容はLINEにてご相談ください。",
+      "teach.format": "<strong>形式：</strong>オンライン1対1または少人数（2〜4名）。レベル、職種、実際の課題に合わせて設計し、AIで専用例文、場面、教材、練習をその場で作成できます。受講料、頻度、内容などの詳細は、LINE オープンチャットまたはメールにてご相談ください。",
+      "teach.btn_openchat": "LINE オープンチャットに参加 · レッスン相談",
 
 
       "portfolio.eyebrow": "TEACHING PORTFOLIO · 教材ポートフォリオ",
@@ -2382,6 +2440,7 @@
       "portfolio.p3.desc": "日台の文化差から、職場のニュアンス、暗黙のルール、伝え方を整理。文法は正しいのに空気がずれる問題を超えます。",
       "portfolio.open": "作品を見る",
       "portfolio.note": "ポートフォリオは随時更新します。教材は受講者のレベル、職種、目的に合わせて再設計します。",
+      "portfolio.btn_openchat": "LINE オープンチャットで交流 · 教材サンプルを見る",
 
       "clients.eyebrow": "実績",
       "clients.h2": '<span class="em">日系トップ企業</span>との長期協業',
@@ -2407,8 +2466,14 @@
 
       "contact.eyebrow": "お問い合わせ",
       "contact.h2": '案件のご相談．<span class="em">直接ご連絡ください</span>',
-      "contact.lede": "通訳案件、レッスンご相談、コラボレーションのお誘いなど、以下いずれかの方法でお気軽にご連絡ください。FOBEE本人がご対応いたします。",
-      "contact.cta": "LINEで今すぐ連絡する",
+      "contact.lede": "通訳案件のご依頼はメールにて、日本語・中国語レッスンや教材に関するご相談は LINE オープンチャットにてお気軽にご連絡ください。",
+      "contact.line.label": "LINE オープンチャット",
+      "contact.line.val": "建築・土木・技術日本語",
+      "contact.line.sub": "語学学習・実務交流",
+      "contact.email.label": "EMAIL",
+      "contact.email.sub": "通訳案件・ビジネス商談",
+      "contact.yt.sub": "動画解説・現場ノウハウ",
+      "contact.cta": "LINE オープンチャットに参加する",
 
       "footer.tagline": "日中技術通訳・名古屋大学 修士<br/>少人数の技術会議・現場調整・AI個別最適化レッスン",
       "footer.copy": "© 2026 FOBEE・日中技術通訳・All rights reserved."
@@ -2426,7 +2491,7 @@
       "nav.testi": "Reviews",
       "nav.contact": "Contact",
       "nav.cta": "Hire Now",
-      "float.line": "Chat on LINE",
+      "float.line": "LINE OpenChat",
 
       "hero.eyebrow": "JAPANESE-CHINESE INTERPRETATION · TAIPEI",
       "hero.title": 'JP-ZH Technical Interpreting',
@@ -2505,7 +2570,8 @@
       "teach.c.f2": "Intermediate · Business / daily Chinese",
       "teach.c.f3": "Traditional Chinese & Taiwanese culture",
       "teach.c.f4": "AI-generated scenarios and instant practice",
-      "teach.format": "<strong>Format:</strong> Online one-on-one or small groups (2–4 people). Lessons are designed around level, profession, and real needs, with AI used to create custom examples, scenarios, materials, and exercises instantly. Discuss pricing, frequency, and content via LINE.",
+      "teach.format": "<strong>Format:</strong> Online one-on-one or small groups (2–4 people). Lessons are designed around level, profession, and real needs, with AI used to create custom examples, scenarios, materials, and exercises instantly. Discuss pricing, frequency, and content via LINE OpenChat or email.",
+      "teach.btn_openchat": "Join LINE OpenChat · Inquire about lessons",
 
 
       "portfolio.eyebrow": "TEACHING PORTFOLIO",
@@ -2526,6 +2592,7 @@
       "portfolio.p3.desc": "Taiwan-Japan cultural differences, tacit workplace rules, and communication strategies beyond grammatically correct but socially awkward language.",
       "portfolio.open": "Open project",
       "portfolio.note": "The portfolio will keep growing. Materials are redesigned for each learner's level, profession, and practical needs.",
+      "portfolio.btn_openchat": "Join LINE OpenChat · Access sample materials",
 
       "clients.eyebrow": "PAST CLIENTS",
       "clients.h2": 'Long-term work with <span class="em">leading Japanese firms</span>',
@@ -2551,8 +2618,14 @@
 
       "contact.eyebrow": "CONTACT",
       "contact.h2": 'Project inquiries · <span class="em">reach out directly</span>',
-      "contact.lede": "Interpretation bookings, tutoring inquiries, and partnership opportunities are all welcome via the channels below. FOBEE responds personally.",
-      "contact.cta": "Reach out via LINE",
+      "contact.lede": "For interpreting projects, please contact via Email; for language tutoring and materials, welcome to join our LINE OpenChat.",
+      "contact.line.label": "LINE OPENCHAT",
+      "contact.line.val": "Architecture & Civil Japanese",
+      "contact.line.sub": "Language & Practice Community",
+      "contact.email.label": "EMAIL",
+      "contact.email.sub": "Interpreting & Business Inquiries",
+      "contact.yt.sub": "Video Lessons & Field Insights",
+      "contact.cta": "Join our LINE OpenChat",
 
       "footer.tagline": "Japanese-Chinese Technical Interpreter · M.A. Nagoya University<br/>Small Technical Meetings · On-site Coordination · AI-Personalized Learning",
       "footer.copy": "© 2026 FOBEE · Japanese-Chinese Technical Interpreting · All rights reserved."

@@ -1,6 +1,16 @@
 {
   "items": [
     {
+      "title": "潛盾圖解・中日雙向學習",
+      "category": "engineering",
+      "label": "現場教材 · 圖解 × 完整長片",
+      "mark": "現場",
+      "badge": "Shield Bilingual Learning",
+      "summary": "從 10 歲也能懂的圖示開始，分類學習 24 個術語、施工流程與中日會話。內含約 73 分鐘完整長片、章節跳轉、互動實驗及測驗。",
+      "link": "/works/field/shield-bilingual-ojt/",
+      "cover": ""
+    },
+    {
       "title": "中日翻譯練習室",
       "category": "conversation",
       "label": "雙向翻譯 · 假名與拼音",

@@ -1093,16 +1093,106 @@
       };
     }
 
+    // Microsoft Neural TTS Voice Engine (Strictly NO Google TTS)
+    const MS_TTS_SUBDIR = 'tts-siteprep';
+    const MS_TTS_MAP = {"ja-JP:ボーリング": "c081e6929d13fa.mp3", "zh-TW:地質鑽探": "320379f9da2530.mp3", "ja-JP:本線トンネルの線形に沿って、30m間隔でボーリング調査を実施する。": "c814a57cc31a79.mp3", "zh-TW:沿著捷運主線隧道中心線，每隔三十公尺進行一次地質鑽探調查。": "c47295251ae70c.mp3", "ja-JP:やぐら": "93417bace5c873.mp3", "zh-TW:鑽探架／井架": "1d63dcebad74a2.mp3", "ja-JP:強風時にはボーリングやぐらの転倒防止ワイヤーの張りを再点検する。": "ea6070574f3999.mp3", "zh-TW:強風或颱風來臨前，必須重新檢視鑽探井架之防傾倒鋼索張力。": "c2adbe7b9f9fe1.mp3", "ja-JP:スイベルヘッド": "cd19b6e1b7ee8d.mp3", "zh-TW:旋轉水龍頭（吊掛旋轉接頭）": "eb9a47a28888be.mp3", "ja-JP:ボーリング作業開始前に、スイベルヘッドのシールパッキン摩耗と泥水漏れがないか点検する。": "a1e47ef2a65940.mp3", "zh-TW:鑽探作業開始前，應確實檢視旋轉水龍頭之密封墊圈磨耗及泥漿洩漏情形。": "2f5a62c5e41db7.mp3", "ja-JP:土質柱状図": "e6c9f83b559555.mp3", "zh-TW:土質柱狀圖": "6b4dfdaff27ff1.mp3", "ja-JP:土質柱状図から、地下20m付近に厚い粘性土層が存在することが確認された。": "e057d687eda077.mp3", "zh-TW:從土質柱狀圖可知，地下二十公尺附近存在一層厚實的黏土層。": "c33ae119e24c86.mp3", "ja-JP:メタルクラウン": "4b14ead1cec2fd.mp3", "zh-TW:金屬鑽頭（鎢鋼鑽冠）": "90820e4c9404c7.mp3", "ja-JP:硬質地盤の掘削にあたり、メタルクラウンのビット摩耗状況を定期的に確認する。": "47d3d213dbb871.mp3", "zh-TW:切削硬質地層時，應定期查驗金屬鑽頭之刃齒磨耗程度。": "03f9eff5c3a272.mp3", "ja-JP:標準貫入試験 (SPT)": "876190ec6e144b.mp3", "zh-TW:標準貫入試驗 (SPT)": "86fb1f8950c9ce.mp3", "ja-JP:N値が50を超える硬質砂礫層に到達した時点で、標準貫入試験の打撃を終了する。": "aafe5f2709879d.mp3", "zh-TW:當貫入達到N值大於五十的硬質砂礫層時，即完成該回標準貫入試驗。": "986772f43b4535.mp3", "ja-JP:平板載荷試験": "75cf65fd341297.mp3", "zh-TW:平板載重試驗": "8a43936b1c9447.mp3", "ja-JP:直接基礎の施工前に、平板載荷試験を行って地盤の許容支持力を確認する。": "3c8dc70d7d0c2d.mp3", "zh-TW:在淺基礎施作前，必須進行平板載重試驗以確認地盤之容許承載力。": "1041d8ec5d6b62.mp3", "ja-JP:反力式平板載荷試験": "8074067ddd8bdc.mp3", "zh-TW:反力式平板載重試驗": "d3e5b0ffd4aaee.mp3", "ja-JP:反力式載荷試験では、アンカー鋼棒の定着力とダイヤルゲージの精度が極めて重要である。": "9e2b23d1b60a6e.mp3", "zh-TW:進行反力式載重試驗時，地錨鋼棒之定著力與千分錶（位移計）的精確度極為關鍵。": "5ca66f62309248.mp3", "ja-JP:ベーンせん断試験": "81861f5eb54da1.mp3", "zh-TW:十字剪力試驗 (Vane Shear)": "c767b5317f1a20.mp3", "ja-JP:沖積粘土層の安定性を評価するため、ボーリング孔を利用してベーン試験を実施した。": "ddc1bcc9bc258b.mp3", "zh-TW:為評估沖積黏土層之開挖邊坡穩定性，利用鑽孔進行原位十字剪力試驗。": "4f65e696e48659.mp3", "ja-JP:サウンディング試験": "e8f90f23cadfc7.mp3", "zh-TW:探測試驗 (Sounding)": "4a7d0900e11bcd.mp3", "ja-JP:オランダ式二重コーン貫入試験により、先端抵抗と周面摩擦力を分離して測定する。": "e3f571855e5639.mp3", "zh-TW:透過荷蘭式雙重錐貫入試驗，可將錐尖阻力與桿身周面摩擦力分開測定。": "bed00496e878f1.mp3", "ja-JP:試掘確認": "86ed32c3f79895.mp3", "ja-JP:試掘確認 (しくつ)": "86ed32c3f79895.mp3", "zh-TW:管線試挖會勘": "621292007901a5.mp3", "ja-JP:連続地中壁の施工前に、関係機関立会いのもとで試掘を行い、支障物がないことを確認した。": "b6db1ae63557a8.mp3", "zh-TW:連續壁施作前，在管線事業單位會同下進行試挖，確認開挖導溝下方無既有管線障礙物。": "ba0a850ee3c065.mp3", "ja-JP:地中レーダー探査 (GPR)": "22ac1bd2cc3eb4.mp3", "zh-TW:透地雷達探勘 (GPR)": "07a92eb31e8e09.mp3", "ja-JP:道路下の不明埋設管と空洞の有無を把握するため、地中レーダー探査を実施した。": "bb6e6a83292add.mp3", "zh-TW:為掌握路面下方之不明管線與地盤空洞，於工區周邊進行透地雷達掃描探勘。": "674918bd6358c1.mp3", "ja-JP:共同溝": "fef5c1747d9795.mp3", "ja-JP:共同溝 (きょうどうこう)": "fef5c1747d9795.mp3", "zh-TW:共同管道": "3b5bd684a1db42.mp3", "ja-JP:シールドトンネルの掘進ルートが既設共同溝と近接するため、防護工法を検討する。": "5c6459e73d6b01.mp3", "zh-TW:潛盾隧道掘進路線與既有共同管道極為接近，須研擬相鄰防護與自動化監測對策。": "41a19ff3dcb71c.mp3", "ja-JP:空洞探査": "000547ee056965.mp3", "zh-TW:地盤空洞探勘": "2e1ca515524fec.mp3", "ja-JP:下水管の老朽化による土砂流出が疑われたため、ファイバースコープで空洞探査を行った。": "a873fabe4befc7.mp3", "zh-TW:因懷疑老舊下水道周邊發生漏砂，使用工業內視鏡進入管體進行周邊空洞探查。": "fa9d7d7e3807b7.mp3", "ja-JP:水準測量 (レベル測量)": "4d23c009f36e4b.mp3", "zh-TW:水準測量（高程測量）": "ec94a58a187307.mp3", "ja-JP:地盤沈下の推移を監視するため、毎日定時に水準測量を実施して地表面変位を記録する。": "bac53e1c5f4333.mp3", "zh-TW:為監控地盤沉陷趨勢，每日固定時間實施精密水準測量以記錄地表變位。": "75561b29b1caf8.mp3", "ja-JP:トランシット測量": "27f8e4b481220c.mp3", "zh-TW:經緯儀測量": "58161000e3b35e.mp3", "ja-JP:基準墨出しおよび構造物の建方精度を確認するため、電子セオドライトによる測量を行う。": "f863ec2e271a44.mp3", "zh-TW:為確認基準放樣線與結構物組裝垂直度，使用電子經緯儀進行角度量測。": "f236b71b7e91d5.mp3", "ja-JP:トータルステーション (TS)": "89cb6f88145185.mp3", "zh-TW:全站儀測量 (Total Station)": "f79783bc9c7474.mp3", "ja-JP:プリズムを視準点に設置し、トータルステーションでシールド発進立坑の三次元座標を取得する。": "df7d4b40dcbfde.mp3", "zh-TW:將反射稜鏡架設於視準點上，以全站儀精準量測潛盾發進井之三維控制座標。": "1b573979a36afe.mp3", "ja-JP:導線測量 (トラバース測量)": "5a2bd4cde54073.mp3", "zh-TW:導線測量（進測法）": "c3009e2f4e9b4c.mp3", "ja-JP:工区周囲の見通しが利かないため、閉合トラバース測量を実施して基準点を設置した。": "d9eefcf384776a.mp3", "zh-TW:由於工區周遭視線受遮蔽，採用閉合導線測量法引測並布設施工基準控制點。": "34deac66b1e13e.mp3", "ja-JP:交会法": "95f4d1e2bf10d6.mp3", "ja-JP:交会法 (こうかいほう)": "95f4d1e2bf10d6.mp3", "zh-TW:前方交會法": "8800ec795e59cf.mp3", "ja-JP:河川対岸の障害物位置を特定するため、既知点A・Bから交会法を用いて求点Pを測定した。": "2ac5c7c96ecca7.mp3", "zh-TW:為確定河川對岸障礙物之精確位置，由已知點A與B採用前方交會法測定目標點P。": "252e8afebb1b28.mp3", "ja-JP:丁類危険性工作場所審査": "659f04f57f8835.mp3", "zh-TW:丁類危險性工作場所審查": "b304a0840e7ab4.mp3", "ja-JP:シールド本坑の掘削開始30日前までに、労働検査処への丁類危評審査申請を完了させる。": "87799173b411f7.mp3", "zh-TW:必須於潛盾主隧道掘進開工三十日之前，完成向勞檢處申報丁類危評並取得審查合格函。": "f56447ea81f12c.mp3", "ja-JP:交通維持計画 (交維プラン)": "6f514df29823d0.mp3", "zh-TW:交通維持計畫（交維計畫）": "476f84d1e653b1.mp3", "ja-JP:交通維持計画が交通局に承認された後、警察分局へ道路使用許可を正式申請する。": "0c2b8d36434ca9.mp3", "zh-TW:待交通維持計畫取得交通局正式核定函後，始得向轄區警察分局申請道路使用許可證。": "c3f4abc76ac84c.mp3", "ja-JP:道路掘削許可証": "44b883cf0132f1.mp3", "zh-TW:市區道路挖掘許可證": "e19d24cdcaa75a.mp3", "ja-JP:道路掘削許可証の有効期間内に、連続壁ガイドウォール箇所の埋設物試掘を完了させる。": "82c8aefdf4766d.mp3", "zh-TW:必須於市區道路挖掘許可證核准之有效工期內，完成連續壁導溝位置之管線試挖工作。": "a8c1c8d984856a.mp3", "ja-JP:危険性機械等使用検査": "50709742a873eb.mp3", "zh-TW:危險性機械及設備使用檢查": "b529744b14eb48.mp3", "ja-JP:発進立坑に設置した50tクレーンは、代検機関の落成検査に合格し使用合格証を取得済みである。": "21d4e17d93f3e6.mp3", "zh-TW:發進井架設之五十噸固定式起重機，已通過代檢機構竣工檢查並取得有效使用合格證。": "7ac35d9387065c.mp3", "ja-JP:安全衛生協議組織": "86a79597dad859.mp3", "zh-TW:職業安全衛生協議組織": "ee63f048105c2f.mp3", "ja-JP:毎朝の協議組織ミーティングにおいて、坑内立入人数と重機作業エリアの干渉を調整する。": "a5802c253aa3b7.mp3", "zh-TW:每日晨間召開安全衛生協議組織會議，協調進入坑內作業人數與大型重機動線干涉。": "6d3aee6f340dad.mp3", "zh-TW:報告所長，捷運深開挖所需的丁類危評計畫書，已在開工前30日提送勞動檢查處審查；交維計畫也取得交通局核定函了。": "68dac2c06d8660.mp3", "ja-JP:了解しました。前面道路の試掘作業における水道管やガス管の立会い協議はどうなっていますか。": "88eef59ad49576.mp3", "zh-TW:今天下午已會同管線事業單位進行人工試挖，並配合透地雷達完成管位深度標定，絕不會損壞地下設施。": "149f3cb7c3f64f.mp3", "ja-JP:ボーリング作業開始前に、スイベルヘッドの点検を行ってください。": "38555035ad1c0e.mp3"};
+    let __msTtsAudio = null;
+
+    function cleanTtsText(text, lang) {
+      let t = String(text || '').trim();
+      if ((lang || 'ja-JP').toLowerCase().startsWith('ja')) {
+        t = t.replace(/[（\(][ぁ-んァ-ンー・\s\/／]+[）\)]/g, '');
+      }
+      t = t.replace(/^\d+\.\d+\s*/, '');
+      return t.trim();
+    }
+
+    function pickMicrosoftVoice(lang) {
+      if (!('speechSynthesis' in window)) return null;
+      const voices = window.speechSynthesis.getVoices() || [];
+      const isJa = (lang || 'ja-JP').toLowerCase().startsWith('ja');
+      const langPrefix = isJa ? 'ja' : 'zh';
+
+      // Strictly exclude any Google voice
+      const nonGoogle = voices.filter(v => !/google/i.test(v.name || '') && !/google/i.test(v.voiceURI || ''));
+      const langVoices = nonGoogle.filter(v => (v.lang || '').toLowerCase().startsWith(langPrefix));
+
+      if (isJa) {
+        return (
+          langVoices.find(v => /Microsoft.*Nanami/i.test(v.name)) ||
+          langVoices.find(v => /Microsoft.*Keita/i.test(v.name)) ||
+          langVoices.find(v => /Microsoft.*(Natural|Online)/i.test(v.name)) ||
+          langVoices.find(v => /Microsoft.*(Haruka|Ayumi|Ichiro|Sayaka)/i.test(v.name)) ||
+          langVoices.find(v => /Microsoft/i.test(v.name)) ||
+          langVoices[0] ||
+          null
+        );
+      } else {
+        const twVoices = langVoices.filter(v => /tw|hant/i.test(v.lang || '') || /Taiwan|HsiaoChen|YunJhe|HsiaoYu|Hanhan|Zhiwei|Yating/i.test(v.name || ''));
+        return (
+          twVoices.find(v => /Microsoft.*HsiaoChen/i.test(v.name)) ||
+          twVoices.find(v => /Microsoft.*YunJhe/i.test(v.name)) ||
+          twVoices.find(v => /Microsoft.*(Natural|Online)/i.test(v.name)) ||
+          twVoices.find(v => /Microsoft.*(Hanhan|Zhiwei|Yating)/i.test(v.name)) ||
+          twVoices.find(v => /Microsoft/i.test(v.name)) ||
+          langVoices.find(v => /Microsoft/i.test(v.name)) ||
+          twVoices[0] ||
+          langVoices[0] ||
+          null
+        );
+      }
+    }
+
+    function speakWithMicrosoftSynthesis(text, lang) {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const clean = cleanTtsText(text, lang);
+      const u = new SpeechSynthesisUtterance(clean);
+      u.lang = lang || 'ja-JP';
+      u.rate = 0.96;
+      const msVoice = pickMicrosoftVoice(u.lang);
+      if (msVoice) {
+        u.voice = msVoice;
+      }
+      window.speechSynthesis.speak(u);
+    }
+
     function speakText(text, lang) {
+      const targetLang = lang || 'ja-JP';
+      const raw = String(text || '').trim();
+      if (!raw) return;
+
+      if (__msTtsAudio) {
+        try { __msTtsAudio.pause(); __msTtsAudio.currentTime = 0; } catch (e) {}
+        __msTtsAudio = null;
+      }
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = lang;
-        utterance.rate = 0.95;
-        window.speechSynthesis.speak(utterance);
-      } else {
-        alert('您的瀏覽器不支援語音播放。');
       }
+
+      const clean = cleanTtsText(raw, targetLang);
+      const fname = MS_TTS_MAP[targetLang + ':' + raw] || MS_TTS_MAP[targetLang + ':' + clean];
+
+      if (fname) {
+        const localUrl = `./assets/${MS_TTS_SUBDIR}/${fname}`;
+        const remoteUrl = `https://fobee.netlify.app/works/assets/${MS_TTS_SUBDIR}/${fname}`;
+        const audio = new Audio(localUrl);
+        __msTtsAudio = audio;
+        audio.play().catch(() => {
+          const backupAudio = new Audio(remoteUrl);
+          __msTtsAudio = backupAudio;
+          backupAudio.play().catch(() => {
+            speakWithMicrosoftSynthesis(clean, targetLang);
+          });
+        });
+        return;
+      }
+
+      speakWithMicrosoftSynthesis(clean, targetLang);
+    }
+
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.onvoiceschanged = () => { pickMicrosoftVoice('ja-JP'); };
     }
 
     function resetDialogue() {

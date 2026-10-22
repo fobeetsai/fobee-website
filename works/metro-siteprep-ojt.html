@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>捷運土木工程 OJT 雙語實務：第一單元【開工準備・現地調查與測量篇】 | 土木・メトロ工事 OJT 実務教材：第1単元【着工準備・原位置試験と測量編】</title>
+  <style>
+    :root {
+      --primary-dark: #004d61;
+      --primary-teal: #00687f;
+      --primary-light: #e6f4f8;
+      --accent-yellow: #f59e0b;
+      --accent-gold: #fbbf24;
+      --bg-page: #f1f5f9;
+      --bg-card: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border-color: #cbd5e1;
+      --pinyin-color: #7c3aed;
+      --kana-color: #c2410c;
+      --success-green: #10b981;
+      --danger-red: #ef4444;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.06);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif; background: var(--bg-page); color: var(--text-main); line-height: 1.5; font-size: 14px; }
+    
+    /* Top Header Bar */
+    header { background: #000; color: #fff; height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow-md); }
+    .header-left { display: flex; align-items: center; gap: 12px; }
+    .tunnel-logo { width: 34px; height: 34px; background: var(--accent-yellow); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+    .header-title { font-size: 1.15rem; font-weight: 700; letter-spacing: 0.5px; }
+    
+    .nav-tabs { display: flex; gap: 4px; }
+    .nav-tab-item { background: transparent; border: none; color: #94a3b8; padding: 8px 16px; border-radius: var(--radius-sm); font-size: 0.95rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.2s; }
+    .nav-tab-item.active, .nav-tab-item:hover { color: #fff; background: rgba(255,255,255,0.12); }
+    .nav-tab-item.active { border-bottom: 2px solid var(--accent-yellow); border-radius: var(--radius-sm) var(--radius-sm) 0 0; }
+
+    .header-right { display: flex; align-items: center; gap: 12px; }
+    .header-search { display: flex; align-items: center; background: #1e293b; border-radius: 20px; padding: 4px 12px; width: 220px; border: 1px solid #334155; }
+    .header-search input { background: transparent; border: none; color: #fff; outline: none; width: 100%; font-size: 0.85rem; }
+    
+    .mode-switch-group { display: flex; background: #1e293b; border-radius: var(--radius-sm); padding: 2px; border: 1px solid #334155; }
+    .mode-btn { background: transparent; border: none; color: #94a3b8; padding: 4px 10px; font-size: 0.85rem; font-weight: 600; cursor: pointer; border-radius: 4px; transition: 0.2s; }
+    .mode-btn.active { background: var(--primary-teal); color: #fff; }
+
+    /* App Container Layout */
+    .app-container { display: grid; grid-template-columns: 240px 1fr; gap: 16px; max-width: 1480px; margin: 16px auto; padding: 0 16px; }
+
+    /* Left Sidebar */
+    .sidebar { display: flex; flex-direction: column; gap: 16px; }
+    .sidebar-card { background: var(--bg-card); border-radius: var(--radius-md); padding: 14px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); }
+    .sidebar-heading { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    .search-box-sidebar input { width: 100%; padding: 8px 12px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); font-size: 0.9rem; outline: none; transition: 0.2s; }
+    .search-box-sidebar input:focus { border-color: var(--primary-teal); box-shadow: 0 0 0 2px rgba(0,104,127,0.15); }
+
+    .topic-list { display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
+    .topic-btn { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border: 1px solid transparent; background: transparent; border-radius: var(--radius-sm); cursor: pointer; text-align: left; font-size: 0.95rem; font-weight: 600; color: var(--text-main); transition: 0.2s; }
+    .topic-btn:hover { background: #f1f5f9; }
+    .topic-btn.active { background: var(--primary-dark); color: #fff; }
+    .topic-icon { font-size: 1.2rem; }
+
+    /* Main Workspace Grid */
+    .main-workspace { display: flex; flex-direction: column; gap: 16px; }
+    
+    /* Top Section: Diagram (Left) & Term Details (Right) */
+    .top-panel-grid { display: grid; grid-template-columns: 460px 1fr; gap: 16px; }
+
+    /* Interactive Diagram Card */
+    .diagram-card { background: var(--bg-card); border-radius: var(--radius-md); padding: 14px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); display: flex; flex-direction: column; }
+    .card-header-bar { font-size: 1rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+    .diagram-container { position: relative; width: 100%; height: 260px; background: #0f172a; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid #1e293b; }
+    
+    .pin-badge { position: absolute; width: 26px; height: 26px; background: var(--accent-yellow); color: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; cursor: pointer; box-shadow: 0 0 10px rgba(245,158,11,0.6); border: 2px solid #fff; transition: transform 0.2s, background 0.2s; z-index: 10; }
+    .pin-badge:hover, .pin-badge.active { transform: scale(1.25); background: #ff3e3e; color: #fff; }
+    
+    .diagram-legend { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 10px; font-size: 0.82rem; }
+    .legend-item { display: flex; align-items: center; gap: 6px; padding: 4px 8px; background: #f8fafc; border-radius: 4px; cursor: pointer; border: 1px solid var(--border-color); transition: 0.15s; }
+    .legend-item:hover, .legend-item.active { background: var(--primary-light); border-color: var(--primary-teal); color: var(--primary-dark); font-weight: 700; }
+    .legend-num { width: 18px; height: 18px; background: var(--primary-teal); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
+    .diagram-footer-note { font-size: 0.75rem; color: var(--text-muted); margin-top: 8px; text-align: center; }
+
+    /* Selected Term Detail Card */
+    .term-detail-card { background: var(--bg-card); border-radius: var(--radius-md); padding: 14px 18px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between; }
+    .detail-top-title { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid var(--primary-light); }
+    .detail-badge { background: var(--primary-dark); color: #fff; font-size: 0.8rem; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
+    .detail-term-name { font-size: 1.3rem; font-weight: 800; color: var(--primary-dark); }
+    .detail-sub-name { font-size: 1rem; color: var(--text-muted); font-weight: 600; margin-left: 6px; }
+
+    .meta-table { width: 100%; border-collapse: collapse; margin-bottom: 12px; }
+    .meta-table th { text-align: left; width: 120px; padding: 5px 8px; font-size: 0.85rem; color: var(--text-muted); background: #f8fafc; border: 1px solid var(--border-color); font-weight: 600; }
+    .meta-table td { padding: 5px 10px; font-size: 0.9rem; border: 1px solid var(--border-color); color: var(--text-main); }
+    .pinyin-val { color: var(--pinyin-color); font-weight: 600; font-family: monospace, sans-serif; font-size: 0.95rem; }
+    .kana-val { color: var(--kana-color); font-weight: 600; }
+
+    .examples-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 6px; }
+    .example-box { background: #f8fafc; border-radius: var(--radius-sm); padding: 10px 12px; border: 1px solid var(--border-color); border-left: 4px solid var(--primary-teal); position: relative; }
+    .example-box.tw-box { border-left-color: var(--pinyin-color); }
+    .example-title { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center; }
+    .speech-icon-btn { background: none; border: none; cursor: pointer; color: var(--primary-teal); font-size: 1.1rem; padding: 2px 4px; border-radius: 4px; }
+    .speech-icon-btn:hover { background: rgba(0,104,127,0.1); }
+    .example-line { font-size: 0.88rem; color: var(--text-main); margin-bottom: 4px; line-height: 1.4; }
+
+    /* Bottom Section: Table (Left), Dialogue (Center), Quiz (Right) */
+    .bottom-panel-grid { display: grid; grid-template-columns: 460px 1fr 340px; gap: 16px; }
+
+    /* Vocabulary Table Card */
+    .table-card { background: var(--bg-card); border-radius: var(--radius-md); padding: 14px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); display: flex; flex-direction: column; }
+    .vocab-table-wrapper { overflow-x: auto; max-height: 280px; overflow-y: auto; }
+    .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    .vocab-table th { background: #f1f5f9; position: sticky; top: 0; padding: 8px 6px; border-bottom: 2px solid var(--border-color); text-align: left; font-weight: 700; color: var(--text-muted); font-size: 0.8rem; }
+    .vocab-table td { padding: 7px 6px; border-bottom: 1px solid #e2e8f0; cursor: pointer; }
+    .vocab-table tr:hover { background: #f8fafc; }
+    .vocab-table tr.selected { background: var(--primary-light); font-weight: 700; border-left: 3px solid var(--primary-teal); }
+    
+    .pagination-bar { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--border-color); font-size: 0.82rem; color: var(--text-muted); }
+    .page-btn-group { display: flex; gap: 4px; }
+    .page-btn { background: #f8fafc; border: 1px solid var(--border-color); padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; }
+    .page-btn.active { background: var(--primary-teal); color: #fff; border-color: var(--primary-teal); }
+
+    /* Dialogue Card */
+    .dialogue-card { background: var(--bg-card); border-radius: var(--radius-md); padding: 14px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between; }
+    .dialogue-scroll { display: flex; flex-direction: column; gap: 10px; max-height: 280px; overflow-y: auto; padding-right: 4px; }
+    .speech-bubble { background: #f8fafc; border-radius: var(--radius-sm); padding: 8px 12px; border: 1px solid var(--border-color); position: relative; }
+    .speech-bubble.role-jp { border-left: 4px solid var(--kana-color); }
+    .speech-bubble.role-tw { border-left: 4px solid var(--pinyin-color); }
+    .speaker-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px; }
+    .speaker-name { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); }
+    .speech-text-main { font-size: 0.88rem; font-weight: 600; color: var(--text-main); margin-bottom: 2px; }
+    .speech-text-sub { font-size: 0.8rem; color: var(--text-muted); }
+
+    .dialogue-actions { display: flex; gap: 8px; margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--border-color); }
+    .dialogue-btn { flex: 1; padding: 6px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: #f8fafc; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: 0.15s; }
+    .dialogue-btn:hover { background: #edf2f7; }
+    .dialogue-btn.record-btn { background: var(--primary-teal); color: #fff; border-color: var(--primary-teal); }
+    .dialogue-btn.record-btn:hover { background: var(--primary-dark); }
+
+    /* Quiz Card */
+    .quiz-card { background: var(--bg-card); border-radius: var(--radius-md); padding: 14px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between; }
+    .quiz-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-weight: 700; color: var(--primary-dark); font-size: 0.9rem; }
+    .quiz-progress { font-size: 0.8rem; color: var(--text-muted); background: #f1f5f9; padding: 2px 8px; border-radius: 12px; }
+    .quiz-question-text { font-size: 0.88rem; font-weight: 700; color: var(--text-main); margin-bottom: 10px; line-height: 1.4; }
+    
+    .quiz-options-list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
+    .quiz-opt-btn { background: #f8fafc; border: 1px solid var(--border-color); padding: 7px 10px; border-radius: var(--radius-sm); font-size: 0.82rem; text-align: left; cursor: pointer; display: flex; align-items: flex-start; gap: 8px; transition: 0.15s; }
+    .quiz-opt-btn:hover { background: #edf2f7; border-color: #cbd5e1; }
+    .quiz-opt-btn.correct { background: #d1fae5; border-color: var(--success-green); color: #065f46; font-weight: 700; }
+    .quiz-opt-btn.wrong { background: #fee2e2; border-color: var(--danger-red); color: #991b1b; }
+    
+    .quiz-submit-btn { width: 100%; padding: 8px; background: var(--primary-teal); color: #fff; border: none; border-radius: var(--radius-sm); font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: 0.15s; }
+    .quiz-submit-btn:hover { background: var(--primary-dark); }
+    .quiz-explain-box { display: none; margin-top: 8px; padding: 8px; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: var(--radius-sm); font-size: 0.78rem; color: #1e40af; line-height: 1.35; }
+
+    /* Modal for Recording / Practice */
+    .record-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; align-items: center; justify-content: center; }
+    .record-modal.active { display: flex; }
+    .record-modal-card { background: #fff; width: 440px; border-radius: var(--radius-md); padding: 20px; box-shadow: var(--shadow-md); text-align: center; }
+  </style>
+</head>
+<body>
+
+  <!-- Top Global Header -->
+  <header>
+    <div class="header-left">
+      <div class="tunnel-logo">🚇</div>
+      <div class="header-title" style="display:flex; align-items:center; gap:12px;">
+        <span>捷運土木工程 OJT 雙語實務：第一單元【開工準備・現地調查與測量篇】</span>
+        <a href="/#portfolio" style="color:#cbd5e1; text-decoration:none; font-size:0.8rem; font-weight:600; padding:4px 10px; border:1px solid #475569; border-radius:4px; transition:0.2s;">← 回作品集</a>
+      </div>
+    </div>
+    
+    <div class="nav-tabs">
+      <button class="nav-tab-item active" onclick="switchNav('terms')">📖 用語 (專門用語)</button>
+      <button class="nav-tab-item" onclick="switchNav('dialogue')">💬 現場会話 (實務會話)</button>
+      <button class="nav-tab-item" onclick="switchNav('quiz')">❓ クイズ (理解度測驗)</button>
+      <button class="nav-tab-item" onclick="switchNav('laws')">⚖️ 臺灣法規 (法定申報)</button>
+    </div>
+
+    <div class="header-right">
+      <div class="header-search">
+        <span style="color:#94a3b8; margin-right:6px;">🔍</span>
+        <input type="text" id="globalSearch" placeholder="搜尋詞彙 / 拼音 / 假名..." oninput="handleSearch(this.value)">
+      </div>
+      <div class="mode-switch-group">
+        <button class="mode-btn active" id="btnModeTW" onclick="setMode('TW_JP')">台 → 日</button>
+        <button class="mode-btn" id="btnModeJP" onclick="setMode('JP_TW')">日 → 台</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- App Layout -->
+  <div class="app-container">
+
+    <!-- Left Sidebar: Search & Category Topics -->
+    <aside class="sidebar">
+      <div class="sidebar-card">
+        <div class="sidebar-heading">搜尋 (検索)</div>
+        <div class="search-box-sidebar">
+          <input type="text" id="sidebarSearch" placeholder="輸入關鍵字或拼音..." oninput="handleSearch(this.value)">
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-heading">學習模式 (モード)</div>
+        <div class="mode-switch-group" style="width:100%; display:flex;">
+          <button class="mode-btn active" style="flex:1;" id="sideModeTW" onclick="setMode('TW_JP')">台 → 日 (學習日文)</button>
+          <button class="mode-btn" style="flex:1;" id="sideModeJP" onclick="setMode('JP_TW')">日 → 台 (學習中文)</button>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-heading">主題單元 (トピック)</div>
+        <div class="topic-list">
+          <button class="topic-btn active" onclick="filterTopic('all')">
+            <span class="topic-icon">📋</span> 全單元 (ALL)
+          </button>
+          <button class="topic-btn" onclick="filterTopic('boring')">
+            <span class="topic-icon">🚜</span> 地盤調查與鑽探
+          </button>
+          <button class="topic-btn" onclick="filterTopic('insitu')">
+            <span class="topic-icon">🏗️</span> 現地試驗 (SPT/載重)
+          </button>
+          <button class="topic-btn" onclick="filterTopic('survey')">
+            <span class="topic-icon">📐</span> 工程測量 (全站儀/水準)
+          </button>
+          <button class="topic-btn" onclick="filterTopic('utilities')">
+            <span class="topic-icon">🔍</span> 地下管線與透地雷達
+          </button>
+          <button class="topic-btn" onclick="filterTopic('regulations')">
+            <span class="topic-icon">🛡️</span> 臺灣法規與安衛申報
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Dynamic Content Workspace -->
+    <main class="main-workspace">
+
+      <!-- Top Row: Interactive SVG Diagram (Left) & Selected Term Details (Right) -->
+      <div class="top-panel-grid">
+        
+        <!-- Left: Interactive Diagram -->
+        <div class="diagram-card">
+          <div class="card-header-bar">
+            <span>開工準備・地盤調查與測量標準配置圖</span>
+            <span style="font-size:0.75rem; color:var(--text-muted);">第3章 準備工事</span>
+          </div>
+
+          <!-- SVG Visual Container with Interactive Badges -->
+          <div class="diagram-container" id="diagramBox">
+            <svg width="100%" height="100%" viewBox="0 0 460 260" xmlns="http://www.w3.org/2000/svg">
+              <!-- Sky & Background -->
+              <rect x="0" y="0" width="460" height="90" fill="#0f172a"/>
+              <!-- Ground Surface Line -->
+              <rect x="0" y="90" width="460" height="170" fill="#1e293b"/>
+              <line x1="0" y1="90" x2="460" y2="90" stroke="#f59e0b" stroke-width="2"/>
+
+              <!-- Subsurface Soil Layers -->
+              <rect x="0" y="92" width="460" height="45" fill="#334155" opacity="0.6"/>
+              <text x="10" y="115" fill="#94a3b8" font-size="10" font-family="sans-serif">砂質粘土層 (Sand/Clay)</text>
+              <rect x="0" y="137" width="460" height="55" fill="#1e293b" opacity="0.8"/>
+              <text x="10" y="165" fill="#64748b" font-size="10" font-family="sans-serif">礫石與承載層 (Gravel/Rock)</text>
+              <line x1="0" y1="137" x2="460" y2="137" stroke="#475569" stroke-dasharray="4,4"/>
+
+              <!-- 1. Derrick Rig (やぐら・ボーリング) -->
+              <polygon points="50,90 85,25 120,90" fill="none" stroke="#38bdf8" stroke-width="3"/>
+              <rect x="75" y="65" width="20" height="25" fill="#0284c7"/>
+              <line x1="85" y1="25" x2="85" y2="220" stroke="#38bdf8" stroke-width="3" stroke-dasharray="2,2"/>
+              
+              <!-- 2. SPT Sampler in Hole -->
+              <rect x="82" y="185" width="6" height="30" fill="#f43f5e"/>
+
+              <!-- 3. Plate Bearing Test (反力式平板載荷) -->
+              <line x1="160" y1="65" x2="230" y2="65" stroke="#94a3b8" stroke-width="6"/> <!-- 載重梁 -->
+              <line x1="170" y1="65" x2="170" y2="140" stroke="#f59e0b" stroke-width="2"/> <!-- アンカー鋼棒 -->
+              <line x1="220" y1="65" x2="220" y2="140" stroke="#f59e0b" stroke-width="2"/> <!-- アンカー鋼棒 -->
+              <rect x="188" y="70" width="14" height="16" fill="#10b981"/> <!-- 千斤頂 & 荷重計 -->
+              <rect x="180" y="86" width="30" height="4" fill="#64748b"/> <!-- 載重板 30cm -->
+
+              <!-- 4. Underground Pipes & GPR (地下管線與透地雷達) -->
+              <circle cx="280" cy="130" r="14" fill="#0284c7" stroke="#38bdf8" stroke-width="2"/> <!-- 自來水管 -->
+              <text x="273" y="134" fill="#fff" font-size="9">水</text>
+              <circle cx="320" cy="145" r="12" fill="#eab308" stroke="#fef08a" stroke-width="2"/> <!-- 瓦斯管 -->
+              <text x="313" y="149" fill="#000" font-size="9">GAS</text>
+              
+              <!-- GPR Cart on Surface -->
+              <rect x="265" y="75" width="28" height="15" fill="#a855f7" rx="3"/>
+              <path d="M279,90 Q270,115 280,125" fill="none" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="2,2"/>
+
+              <!-- 5. Total Station / Leveling (全站儀測量) -->
+              <polygon points="380,90 395,45 410,90" fill="none" stroke="#10b981" stroke-width="2"/>
+              <rect x="390" y="35" width="10" height="12" fill="#059669" rx="2"/>
+              <!-- Prism on the other side -->
+              <line x1="435" y1="90" x2="435" y2="40" stroke="#ef4444" stroke-width="2"/>
+              <polygon points="430,45 440,45 435,35" fill="#f87171"/>
+              <line x1="395" y1="40" x2="435" y2="40" stroke="#34d399" stroke-width="1" stroke-dasharray="3,3"/>
+            </svg>
+
+            <!-- Interactive Pin Badges (Clickable) -->
+            <div class="pin-badge" style="left:72px; top:15px;" onclick="selectTermById(2)" title="鑽探架/井架 (やぐら)">1</div>
+            <div class="pin-badge" style="left:72px; top:190px;" onclick="selectTermById(6)" title="標準貫入試驗 (標準貫入試験)">2</div>
+            <div class="pin-badge" style="left:72px; top:65px;" onclick="selectTermById(3)" title="旋轉水龍頭 (スイベルヘッド)">3</div>
+            <div class="pin-badge" style="left:182px; top:50px;" onclick="selectTermById(8)" title="反力式平板載重 (反力式平板載荷)">4</div>
+            <div class="pin-badge" style="left:265px; top:60px;" onclick="selectTermById(12)" title="透地雷達探勘 (地中レーダー)">5</div>
+            <div class="pin-badge" style="left:382px; top:25px;" onclick="selectTermById(17)" title="全站儀測量 (トータルステーション)">6</div>
+            <div class="pin-badge" style="left:422px; top:25px;" onclick="selectTermById(15)" title="水準儀與標尺 (水準測量)">7</div>
+            <div class="pin-badge" style="left:330px; top:190px;" onclick="selectTermById(20)" title="丁類危評與法規申報">8</div>
+          </div>
+
+          <!-- Numbered Legend -->
+          <div class="diagram-legend" id="diagramLegendGrid">
+            <!-- Dynamically Rendered -->
+          </div>
+          <div class="diagram-footer-note">※ 點擊圖中編號標籤或下方項目，即可同步切換右側用語詳情與現場對話</div>
+        </div>
+
+        <!-- Right: Selected Term Detailed View -->
+        <div class="term-detail-card" id="termDetailPanel">
+          <div>
+            <div class="detail-top-title">
+              <span class="detail-badge" id="detailIdBadge">#3</span>
+              <span class="detail-term-name" id="detailTitleMain">旋轉水龍頭 (スイベルヘッド)</span>
+              <span class="detail-sub-name" id="detailCategory">[地盤調查]</span>
+            </div>
+
+            <table class="meta-table">
+              <tr>
+                <th>日文讀音 (読み方)</th>
+                <td><span class="kana-val" id="detailKana">すいべるへっど</span></td>
+              </tr>
+              <tr>
+                <th>日文定義 (日本語意味)</th>
+                <td id="detailJpMeaning">ボーリングロッド頭部に取り付け、泥水循環を行いながらロッドの回転を許容する吊掛式水冷接頭。</td>
+              </tr>
+              <tr>
+                <th>臺灣用語 (繁體中文)</th>
+                <td style="font-weight:700; color:var(--primary-dark);" id="detailTwTerm">旋轉水龍頭（吊掛式旋轉接頭）</td>
+              </tr>
+              <tr>
+                <th>漢語拼音 (Pinyin)</th>
+                <td><span class="pinyin-val" id="detailPinyin">xuánzhuǎn shuǐlóngtóu</span></td>
+              </tr>
+              <tr>
+                <th>臺灣工程定義</th>
+                <td id="detailTwDef">裝設於鑽探桿頂端，導入循環泥漿水並容許鑽桿旋轉切削之旋轉承接管件。</td>
+              </tr>
+              <tr>
+                <th>臺灣法規／安全規範</th>
+                <td id="detailRegulation" style="color:#0369a1; font-weight:600;">《職業安全衛生設施標準》第128條：鑽探機旋轉傳動部位應設護罩與高壓水管防脫落固定鎖。</td>
+              </tr>
+            </table>
+          </div>
+
+          <!-- Bilingual Sentences with Audio Trigger -->
+          <div class="examples-grid">
+            <div class="example-box">
+              <div class="example-title">
+                <span>日本語の例文</span>
+                <button class="speech-icon-btn" onclick="speakText(currentTerm.jpSentence, 'ja-JP')" title="播放日語發音">🔊</button>
+              </div>
+              <div class="example-line" id="detailJpSentence">ボーリング作業開始前に、スイベルヘッドのシールパッキン摩耗と泥水漏れがないか点検する。</div>
+            </div>
+            <div class="example-box tw-box">
+              <div class="example-title">
+                <span>臺灣語(繁體中文)的例句</span>
+                <button class="speech-icon-btn" onclick="speakText(currentTerm.twSentence, 'zh-TW')" title="播放中文發音">🔊</button>
+              </div>
+              <div class="example-line" id="detailTwSentence">鑽探作業開始前，應確實檢視旋轉水龍頭之密封墊圈磨耗及泥漿洩漏情形。</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Row: Table (Left), Dialogue (Center), Quiz (Right) -->
+      <div class="bottom-panel-grid">
+        
+        <!-- Left: Vocabulary Table -->
+        <div class="table-card">
+          <div class="card-header-bar">
+            <span>用語一覽 (用語一覧)</span>
+            <span style="font-size:0.75rem; color:var(--text-muted);" id="vocabCountBadge">共 24 詞</span>
+          </div>
+          <div class="vocab-table-wrapper">
+            <table class="vocab-table">
+              <thead>
+                <tr>
+                  <th style="width:28px;">#</th>
+                  <th>日本語</th>
+                  <th>読み方</th>
+                  <th>台灣 (繁體)</th>
+                  <th>拼音 (Pinyin)</th>
+                </tr>
+              </thead>
+              <tbody id="vocabTableBody">
+                <!-- Dynamically Rendered -->
+              </tbody>
+            </table>
+          </div>
+          <div class="pagination-bar">
+            <span id="pageInfo">顯示 1-8 / 24 詞</span>
+            <div class="page-btn-group">
+              <button class="page-btn active" onclick="setPage(1)">1</button>
+              <button class="page-btn" onclick="setPage(2)">2</button>
+              <button class="page-btn" onclick="setPage(3)">3</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Center: Field Dialogue Simulation (現場会話) -->
+        <div class="dialogue-card">
+          <div class="card-header-bar">
+            <span>現場會話模擬 (現場会話ロールプレイ)</span>
+            <span style="font-size:0.75rem; color:var(--text-muted);">捷運開工與鑽探會勘</span>
+          </div>
+          <div class="dialogue-scroll" id="dialogueBox">
+            
+            <div class="speech-bubble role-tw">
+              <div class="speaker-row">
+                <span class="speaker-name">監造工程師 (台湾側・監理員)</span>
+                <button class="speech-icon-btn" onclick="speakText('報告所長，捷運深開挖所需的丁類危評計畫書，已在開工前30日提送勞動檢查處審查；交維計畫也取得交通局核定函了。', 'zh-TW')">🔊</button>
+              </div>
+              <div class="speech-text-main">報告所長，捷運深開挖所需的丁類危評計畫書，已在開工前30日提送勞動檢查處審查；交維計畫也取得交通局核定函了。</div>
+              <div class="speech-text-sub">Bàogào suǒzhǎng, jiéyùn shēnkāiwā suǒxū de Dīnglèi wēipíng jìhuàshū, yǐ zài kāigōng qián sānshí rì tísòng Láodòng Jiǎncháchù shěnchá.</div>
+            </div>
+
+            <div class="speech-bubble role-jp">
+              <div class="speaker-row">
+                <span class="speaker-name">日籍所長 (日本側・所長)</span>
+                <button class="speech-icon-btn" onclick="speakText('了解しました。前面道路の試掘作業における水道管やガス管の立会い協議はどうなっていますか。', 'ja-JP')">🔊</button>
+              </div>
+              <div class="speech-text-main">了解（りょうかい）しました。前面道路（ぜんめんどうろ）の試掘作業（しくつさぎょう）における水道管（すいどうかん）やガス管（かん）の立会（たちあ）い協議（きょうぎ）はどうなっていますか。</div>
+              <div class="speech-text-sub">好的。工區前面道路在試挖作業時，自來水管與瓦斯管線單位的會勘協議進度如何？</div>
+            </div>
+
+            <div class="speech-bubble role-tw">
+              <div class="speaker-row">
+                <span class="speaker-name">協力廠商主任 (協力会社主任)</span>
+                <button class="speech-icon-btn" onclick="speakText('今天下午已會同管線事業單位進行人工試挖，並配合透地雷達完成管位深度標定，絕不會損壞地下設施。', 'zh-TW')">🔊</button>
+              </div>
+              <div class="speech-text-main">今天下午已會同管線事業單位進行人工試挖，並配合透地雷達完成管位深度標定，絕不會損壞地下設施。</div>
+              <div class="speech-text-sub">Jīntiān xiàwǔ yǐ huìtóng guǎnxiàn shìyè dānwèi jìnxíng réngōng shìwā, bìng pèihé tòudì léidá wánchéng guǎnwèi shēndù biāodìng.</div>
+            </div>
+
+          </div>
+
+          <div class="dialogue-actions">
+            <button class="dialogue-btn" onclick="resetDialogue()">🔄 會話重置 (リセット)</button>
+            <button class="dialogue-btn record-btn" onclick="openRecordModal()">🎙️ 錄音朗讀練習 (発音練習)</button>
+          </div>
+        </div>
+
+        <!-- Right: Interactive Quiz Box (クイズ) -->
+        <div class="quiz-card">
+          <div>
+            <div class="quiz-header">
+              <span>理解度測驗 (クイズ)</span>
+              <span class="quiz-progress" id="quizIndexBadge">1 / 5</span>
+            </div>
+            <div class="quiz-question-text" id="quizQuestion">
+              Q1. 臺灣捷運深開挖（深度達15m以上）工程開工前，依《職業安全衛生法》應辦理下列何種法定程序？
+            </div>
+
+            <div class="quiz-options-list" id="quizOptionsContainer">
+              <!-- Dynamically Rendered -->
+            </div>
+          </div>
+
+          <div>
+            <div class="quiz-explain-box" id="quizExplanation">
+              <strong>【解析】</strong> 依臺灣《職業安全衛生法》第15條及《危險性工作場所審查及檢查辦法》，開挖深度達15公尺以上之營造工程屬「丁類危險性工作場所」，雇主應於使勞工進場作業30日前向勞檢處申請審查。
+            </div>
+            <button class="quiz-submit-btn" id="quizSubmitBtn" onclick="handleQuizSubmit()">確認解答 (解答する)</button>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Audio Practice Modal -->
+  <div class="record-modal" id="recordModal" onclick="if(event.target === this) closeRecordModal()">
+    <div class="record-modal-card">
+      <h3 style="color:var(--primary-dark); margin-bottom:12px;">🎙️ 現場會話發音與錄音練習</h3>
+      <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:16px;">請選取欲練習的語句並點擊播放聆聽，或使用麥克風進行即時朗讀。</p>
+      <div style="background:#f8fafc; padding:12px; border-radius:8px; border:1px solid #cbd5e1; margin-bottom:16px; text-align:left;">
+        <div style="font-weight:700; color:var(--primary-teal); font-size:0.9rem;" id="modalPracticeText">
+          ボーリング作業開始前に、スイベルヘッドの点検を行ってください。
+        </div>
+        <div style="font-size:0.8rem; color:var(--pinyin-color); margin-top:4px;" id="modalPracticeSub">
+          Zuāntàn zuòyè kāishǐ qián, qǐng jìnkěn xuánzhuǎn shuǐlóngtóu zhī diǎnjiǎn.
+        </div>
+      </div>
+      <div style="display:flex; gap:10px; justify-content:center;">
+        <button class="dialogue-btn" onclick="speakText(document.getElementById('modalPracticeText').textContent, 'ja-JP')">🔊 示範朗讀</button>
+        <button class="dialogue-btn record-btn" onclick="alert('錄音模組啟動中... 請對著麥克風朗讀。')">🔴 開始錄音</button>
+        <button class="dialogue-btn" onclick="closeRecordModal()">關閉</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comprehensive Data & Interactive Logic -->
+  <script>
+    const termDatabase = [
+      {
+        id: 1,
+        topic: 'boring',
+        badgeNum: null,
+        jp: 'ボーリング',
+        kana: 'ぼーりんぐ',
+        tw: '地質鑽探',
+        pinyin: 'dìzhì zuāntàn',
+        jpDef: '掘削機械により地盤を削孔し、各深度のコア試料を採取して地層構成や物理・力学性状を判定する調査。',
+        twDef: '利用鑽探機械鑽掘地層，採集岩心與各深度土樣，以判定地層構造、土壤力學性質及地下水位。',
+        regulation: '《建築技術規則》建築構造編第64條：建築物基礎設計應依地基調查資料為之。',
+        jpSentence: '本線トンネルの線形に沿って、30m間隔でボーリング調査を実施する。',
+        twSentence: '沿著捷運主線隧道中心線，每隔三十公尺進行一次地質鑽探調查。'
+      },
+      {
+        id: 2,
+        topic: 'boring',
+        badgeNum: 1,
+        jp: 'やぐら',
+        kana: 'やぐら',
+        tw: '鑽探架／井架',
+        pinyin: 'zuāntànjià / jǐngjià',
+        jpDef: 'ボーリングロッドの昇降や打撃ハンマーの落下操作を行うために、削孔地点上に組む鋼管製三脚または四脚櫓。',
+        twDef: '架設於鑽孔孔位上方之三角或四角鋼管吊架，用於吊掛滑車、起降鑽桿及導引落鎚作業。',
+        regulation: '《營造安全衛生設施標準》第105條：鑽孔井架應裝設防傾倒支纜與工作平台防墜網。',
+        jpSentence: '強風時にはボーリングやぐらの転倒防止ワイヤーの張りを再点検する。',
+        twSentence: '強風或颱風來臨前，必須重新檢視鑽探井架之防傾倒鋼索張力。'
+      },
+      {
+        id: 3,
+        topic: 'boring',
+        badgeNum: 3,
+        jp: 'スイベルヘッド',
+        kana: 'すいべるへっど',
+        tw: '旋轉水龍頭（吊掛旋轉接頭）',
+        pinyin: 'xuánzhuǎn shuǐlóngtóu',
+        jpDef: 'ボーリングロッド頭部に取り付け、泥水循環を行いながらロッドの回転を許容する吊掛式水冷接頭。',
+        twDef: '裝設於鑽探桿頂端，導入循環泥漿水並容許鑽桿旋轉切削之旋轉承接管件。',
+        regulation: '《職業安全衛生設施標準》第128條：旋轉傳動部位應設護罩與水管防脫落鎖。',
+        jpSentence: 'ボーリング作業開始前に、スイベルヘッドのシールパッキン摩耗と泥水漏れがないか点検する。',
+        twSentence: '鑽探作業開始前，應確實檢視旋轉水龍頭之密封墊圈磨耗及泥漿洩漏情形。'
+      },
+      {
+        id: 4,
+        topic: 'boring',
+        badgeNum: null,
+        jp: '土質柱状図',
+        kana: 'どしつちゅうじょうず',
+        tw: '土質柱狀圖',
+        pinyin: 'tǔzhì zhùzhuàngtú',
+        jpDef: 'ボーリングで得られた地層構成、N値、地下水位、土質記号、コア採取率などを深さ方向に記録した図面。',
+        twDef: '將鑽探獲得之地層深度、土壤分類記號、SPT N值、地下水位及岩心採樣率繪製成柱狀之成果圖。',
+        regulation: '臺北市捷運局設計規範：土質柱狀圖須經土木大地技師簽證並納入細部設計施工圖說。',
+        jpSentence: '土質柱状図から、地下20m付近に厚い粘性土層が存在することが確認された。',
+        twSentence: '從土質柱狀圖可知，地下二十公尺附近存在一層厚實的黏土層。'
+      },
+      {
+        id: 5,
+        topic: 'boring',
+        badgeNum: null,
+        jp: 'メタルクラウン',
+        kana: 'めたるくらうん',
+        tw: '金屬鑽頭（鎢鋼鑽冠）',
+        pinyin: 'jīnshǔ zuāntóu',
+        jpDef: 'コアチューブの先端に取り付け、超硬合金チップによって地盤を切削するボーリング用ビット。',
+        twDef: '裝設於取心管前端，鑲嵌超硬鎢鋼合金刃齒，用以旋轉切削地層之鑽頭。',
+        regulation: '公共工程施工標準規範：岩心採樣應選用適當規格鑽頭以維持岩心完整率（RQD）。',
+        jpSentence: '硬質地盤の掘削にあたり、メタルクラウンのビット摩耗状況を定期的に確認する。',
+        twSentence: '切削硬質地層時，應定期查驗金屬鑽頭之刃齒磨耗程度。'
+      },
+      {
+        id: 6,
+        topic: 'insitu',
+        badgeNum: 2,
+        jp: '標準貫入試験 (SPT)',
+        kana: 'ひょうじゅんかんにゅうしけん',
+        tw: '標準貫入試驗 (SPT)',
+        pinyin: 'biāozhǔn guànrù shìyàn',
+        jpDef: '63.5kgのハンマーを76cm自由落下させ、サンプラーを30cm貫入させるのに要する打撃回数（N値）を求める原位置試験。',
+        twDef: '以63.5公斤落鎚自76公分高自由落下，將標準採樣管貫入地層30公分所需之擊數（即N值）。',
+        regulation: 'CNS 3889 土壤標準貫入試驗法：預打15cm、本打30cm，每貫入10cm記錄擊數。',
+        jpSentence: 'N値が50を超える硬質砂礫層に到達した時点で、標準貫入試験の打撃を終了する。',
+        twSentence: '當貫入達到N值大於五十的硬質砂礫層時，即完成該回標準貫入試驗。'
+      },
+      {
+        id: 7,
+        topic: 'insitu',
+        badgeNum: null,
+        jp: '平板載荷試験',
+        kana: 'へいばんさいかしけん',
+        tw: '平板載重試驗',
+        pinyin: 'píngbǎn zàizhòng shìyàn',
+        jpDef: '基礎地盤上に直接載荷板を置き、荷重と沈下量の関係から地盤の極限支持力や変形係数を求める試験。',
+        twDef: '於基礎底面直接置放載重板施加載重，依據荷重與沉陷量關係求得地盤極限承載力與變形模數。',
+        regulation: 'CNS 12382 地盤平板載重試驗規範：載重板直徑採用30cm，記錄各級荷重沉陷量。',
+        jpSentence: '直接基礎の施工前に、平板載荷試験を行って地盤の許容支持力を確認する。',
+        twSentence: '在淺基礎施作前，必須進行平板載重試驗以確認地盤之容許承載力。'
+      },
+      {
+        id: 8,
+        topic: 'insitu',
+        badgeNum: 4,
+        jp: '反力式平板載荷試験',
+        kana: 'はんりきしきへいばんさいかしけん',
+        tw: '反力式平板載重試驗',
+        pinyin: 'fǎnlìshì píngbǎn zàizhòng shìyàn',
+        jpDef: '地中アンカーや載荷梁を反力装置として利用し、油圧ジャッキで載荷板を加圧する試験。',
+        twDef: '利用地錨鋼棒（反力樁）及載重梁作為反力支承，以油壓千斤頂對載重板加壓之試驗。',
+        regulation: '捷運結構工程施工規範：反力錨樁深度應確保在加壓過程中無顯著拔出位移。',
+        jpSentence: '反力式載荷試験では、アンカー鋼棒の定着力とダイヤルゲージの精度が極めて重要である。',
+        twSentence: '進行反力式載重試驗時，地錨鋼棒之定著力與千分錶（位移計）的精確度極為關鍵。'
+      },
+      {
+        id: 9,
+        topic: 'insitu',
+        badgeNum: null,
+        jp: 'ベーンせん断試験',
+        kana: 'べーんせんだんしけん',
+        tw: '十字剪力試驗 (Vane Shear)',
+        pinyin: 'shízì jiǎnlì shìyàn',
+        jpDef: '十字型のベーン羽根を軟弱粘性土層に挿入して回転させ、土の非排水せん断強さを直接測定する原位置試験。',
+        twDef: '將十字型葉片壓入軟弱黏土層中旋轉，直接測定原位未受擾動土壤之不排水剪力強度。',
+        regulation: 'CNS 14734 土壤原位十字葉片剪力試驗標準方法。',
+        jpSentence: '沖積粘土層の安定性を評価するため、ボーリング孔を利用してベーン試験を実施した。',
+        twSentence: '為評估沖積黏土層之開挖邊坡穩定性，利用鑽孔進行原位十字剪力試驗。'
+      },
+      {
+        id: 10,
+        topic: 'insitu',
+        badgeNum: null,
+        jp: 'サウンディング試験',
+        kana: 'さうんでぃんぐしけん',
+        tw: '探測試驗 (Sounding)',
+        pinyin: 'tàncè shìyàn',
+        jpDef: '抵抗体（ロッド、コーン）を地中に挿入・貫入・回転させ、その抵抗値から地盤の硬軟を連続的に調査する手法。',
+        twDef: '以錐體或螺旋桿件貫入地層，藉由貫入阻力或迴轉阻力連續測定地層軟硬與分層之試驗總稱。',
+        regulation: '包含瑞典式貫入試驗（SWS）與荷蘭式雙重錐貫入試驗（CPT）。',
+        jpSentence: 'オランダ式二重コーン貫入試験により、先端抵抗と周面摩擦力を分離して測定する。',
+        twSentence: '透過荷蘭式雙重錐貫入試驗，可將錐尖阻力與桿身周面摩擦力分開測定。'
+      },
+      {
+        id: 11,
+        topic: 'utilities',
+        badgeNum: null,
+        jp: '試掘確認 (しくつ)',
+        kana: 'しくつかくにん',
+        tw: '管線試挖會勘',
+        pinyin: 'guǎnxiàn shìwā huìkān',
+        jpDef: '機械掘削前に人力で地中を掘り下げ、図面上の埋設物（ガス、水道、電力等）の実際の位置と深度を直接確認する作業。',
+        twDef: '主體開挖前，會同各管線單位以人工開挖試坑（試掘），確認地下埋設物實際位置、管徑與深度。',
+        regulation: '各直轄市道路挖掘管理條例：開挖前應先辦理現地試挖並作成試挖紀錄表備查。',
+        jpSentence: '連続地中壁の施工前に、関係機関立会いのもとで試掘を行い、支障物がないことを確認した。',
+        twSentence: '連續壁施作前，在管線事業單位會同下進行試挖，確認開挖導溝下方無既有管線障礙物。'
+      },
+      {
+        id: 12,
+        topic: 'utilities',
+        badgeNum: 5,
+        jp: '地中レーダー探査 (GPR)',
+        kana: 'ちちゅうれーだーたんさ',
+        tw: '透地雷達探勘 (GPR)',
+        pinyin: 'tòudì léidá tànkān',
+        jpDef: '電磁波を地中に放射し、埋設管や空洞境界からの反射波を受信して地下構造を非破壊で可視化する探査技術。',
+        twDef: '發射高頻電磁波入地，藉由介電常數差異反射波，非破壞性探測地下管線、盲坑及路基空洞之技術。',
+        regulation: '捷運工區道路安全維護規範：潛盾通過路段於掘進前後應實施透地雷達空洞掃描。',
+        jpSentence: '道路下の不明埋設管と空洞の有無を把握するため、地中レーダー探査を実施した。',
+        twSentence: '為掌握路面下方之不明管線與地盤空洞，於工區周邊進行透地雷達掃描探勘。'
+      },
+      {
+        id: 13,
+        topic: 'utilities',
+        badgeNum: null,
+        jp: '共同溝 (きょうどうこう)',
+        kana: 'きょうどうこう',
+        tw: '共同管道',
+        pinyin: 'gòngtóng guǎndào',
+        jpDef: '電気、通信、ガス、上下水道などのライフラインをまとめて収容する地下構造物。',
+        twDef: '收納電力、電信、自來水、瓦斯及下水道等二種以上公共管線之地下大型箱涵構造物。',
+        regulation: '《共同管道法》第14條：共同管道建設完成路段，禁止再行挖掘道路敷設管線。',
+        jpSentence: 'シールドトンネルの掘進ルートが既設共同溝と近接するため、防護工法を検討する。',
+        twSentence: '潛盾隧道掘進路線與既有共同管道極為接近，須研擬相鄰防護與自動化監測對策。'
+      },
+      {
+        id: 14,
+        topic: 'utilities',
+        badgeNum: null,
+        jp: '空洞探査',
+        kana: 'くうどうたんさ',
+        tw: '地盤空洞探勘',
+        pinyin: 'dìpán kōngdòng tànkān',
+        jpDef: '地下水位低下や土砂流出によって地中に生じた空洞を、電磁探査や弾性波探査等で特定する調査。',
+        twDef: '利用微震測、電磁探勘或內視鏡探測因地下水淘刷或開挖漏砂造成之路基地下空洞。',
+        regulation: '公共工程品質管理要點：開挖周邊沉陷超過警戒值時，應立即啟動地盤空洞探勘。',
+        jpSentence: '下水管の老朽化による土砂流出が疑われたため、ファイバースコープで空洞探査を行った。',
+        twSentence: '因懷疑老舊下水道周邊發生漏砂，使用工業內視鏡進入管體進行周邊空洞探查。'
+      },
+      {
+        id: 15,
+        topic: 'survey',
+        badgeNum: 7,
+        jp: '水準測量 (レベル測量)',
+        kana: 'すいじゅんそくりょう',
+        tw: '水準測量（高程測量）',
+        pinyin: 'shuǐzhǔn cèliáng',
+        jpDef: '水準儀（レベル）と標尺（スタッフ）を用いて、測点間の高低差や地盤高を精密に測定する測量。',
+        twDef: '使用水準儀觀測直立於測點上之水準標尺（箱尺）讀數，以推求測點間之高程差。',
+        regulation: '捷運高程控制基準：一等水準測量閉合差不得大於 2mm * sqrt(K)。',
+        jpSentence: '地盤沈下の推移を監視するため、毎日定時に水準測量を実施して地表面変位を記録する。',
+        twSentence: '為監控地盤沉陷趨勢，每日固定時間實施精密水準測量以記錄地表變位。'
+      },
+      {
+        id: 16,
+        topic: 'survey',
+        badgeNum: null,
+        jp: 'トランシット測量',
+        kana: 'とらんしっとそくりょう',
+        tw: '經緯儀測量',
+        pinyin: 'jīngwěiyí cèliáng',
+        jpDef: '三脚上の望遠鏡で測点を視準し、測点間の水平角と高度角（鉛直角）を測定する測量。',
+        twDef: '架設經緯儀視準目標點，精密測定測線間之水平夾角與垂直角（高度角）之測量作業。',
+        regulation: '土木測量規範：導線測量水平角觀測應採正倒鏡觀測消除儀器誤差。',
+        jpSentence: '基準墨出しおよび構造物の建方精度を確認するため、電子セオドライトによる測量を行う。',
+        twSentence: '為確認基準放樣線與結構物組裝垂直度，使用電子經緯儀進行角度量測。'
+      },
+      {
+        id: 17,
+        topic: 'survey',
+        badgeNum: 6,
+        jp: 'トータルステーション (TS)',
+        kana: 'とーたるすてーしょん',
+        tw: '全站儀測量 (Total Station)',
+        pinyin: 'quánzhànyí cèliáng',
+        jpDef: '光波測距儀と電子セオドライトが一体となり、角度と距離を同時に測定して自動計算・座標記録を行う機器。',
+        twDef: '結合光波測距儀與電子經緯儀於一體，可同時測量距離與角度，並自動換算三維座標之高精度測量儀。',
+        regulation: '捷運隧道線形控制規範：潛盾機發進井與坑內導線點聯測須使用1秒級全站儀。',
+        jpSentence: 'プリズムを視準点に設置し、トータルステーションでシールド発進立坑の三次元座標を取得する。',
+        twSentence: '將反射稜鏡架設於視準點上，以全站儀精準量測潛盾發進井之三維控制座標。'
+      },
+      {
+        id: 18,
+        topic: 'survey',
+        badgeNum: null,
+        jp: '導線測量 (トラバース測量)',
+        kana: 'どうせんそくりょう',
+        tw: '導線測量（進測法）',
+        pinyin: 'dǎoxiàn cèliáng',
+        jpDef: '隣り合う測点を順次結んで多角形を形成し、各辺の長さと交角を測定して各点の平面位置を決定する測量。',
+        twDef: '順次測定各相鄰控制點間之折角與距離，串連成導線網以計算各點平面座標之測量方法。',
+        regulation: '捷運平面控制測量：閉合導線或附合導線之閉合比率須優於 1/20,000。',
+        jpSentence: '工区周囲の見通しが利かないため、閉合トラバース測量を実施して基準点を設置した。',
+        twSentence: '由於工區周遭視線受遮蔽，採用閉合導線測量法引測並布設施工基準控制點。'
+      },
+      {
+        id: 19,
+        topic: 'survey',
+        badgeNum: null,
+        jp: '交会法 (こうかいほう)',
+        kana: 'こうかいほう',
+        tw: '前方交會法',
+        pinyin: 'qiánfāng jiāohuìfǎ',
+        jpDef: '障害物等により直接距離が測れない場合に、既知の2点から目標点を視準した交角から座標を算出する手法。',
+        twDef: '當目標點無法直接抵達量距時，由已知之二基準點視準目標點，藉角度交會計算該點座標之方法。',
+        regulation: '工程測量作業手冊：交會角宜介於30度至150度之間，以確保交會精度。',
+        jpSentence: '河川対岸の障害物位置を特定するため、既知点A・Bから交会法を用いて求点Pを測定した。',
+        twSentence: '為確定河川對岸障礙物之精確位置，由已知點A與B採用前方交會法測定目標點P。'
+      },
+      {
+        id: 20,
+        topic: 'regulations',
+        badgeNum: 8,
+        jp: '丁類危険性工作場所審査',
+        kana: 'ているいきけんせいこうさくばしょしんさ',
+        tw: '丁類危險性工作場所審查',
+        pinyin: 'dīnglèi wēixiǎnxìng gōngzuò chǎngsuǒ shěnchá',
+        jpDef: '台湾の労働安全衛生法に基づき、深度15m以上の掘削やトンネル工事において、着工30日前に労働検査処へ提出する法定審査。',
+        twDef: '依臺灣《職業安全衛生法》第15條規定，開挖深度達15m以上或隧道工程，雇主須於開工30日前送勞檢處審查合格。',
+        regulation: '《職業安全衛生法》第15條、《危險性工作場所審查及檢查辦法》第2條。',
+        jpSentence: 'シールド本坑の掘削開始30日前までに、労働検査処への丁類危評審査申請を完了させる。',
+        twSentence: '必須於潛盾主隧道掘進開工三十日之前，完成向勞檢處申報丁類危評並取得審查合格函。'
+      },
+      {
+        id: 21,
+        topic: 'regulations',
+        badgeNum: null,
+        jp: '交通維持計画 (交維プラン)',
+        kana: 'こうつういじけいかく',
+        tw: '交通維持計畫（交維計畫）',
+        pinyin: 'jiāotōng wéichí jìhuà',
+        jpDef: '道路占用を伴う工事において、車線規制、迂回案内、誘導員配置等を定め、交通局の事前審査・承認を受ける計画。',
+        twDef: '捷運工區佔用市區道路前，擬定施工改道、標線標誌及交通疏導配置，提送交通局交通審查委員會核定之計畫。',
+        regulation: '《道路交通安全規則》第141條、各直轄市交通維持計畫審查作業要點。',
+        jpSentence: '交通維持計画が交通局に承認された後、警察分局へ道路使用許可を正式申請する。',
+        twSentence: '待交通維持計畫取得交通局正式核定函後，始得向轄區警察分局申請道路使用許可證。'
+      },
+      {
+        id: 22,
+        topic: 'regulations',
+        badgeNum: null,
+        jp: '道路掘削許可証',
+        kana: 'どうろくっさくきょかしょう',
+        tw: '市區道路挖掘許可證',
+        pinyin: 'shìqū dàolù wājué xǔkězhèng',
+        jpDef: '前面道路下の配管移設や試掘を行うため、道路管理者（工務局・道管センター）から取得する掘削・占用許可証。',
+        twDef: '因捷運施工需開挖市區道路進行管遷或試挖時，向道路主管機關（如道管中心）申請核發之許可文件。',
+        regulation: '《市區道路條例》第27條、直轄市道路挖掘管理自治條例。',
+        jpSentence: '道路掘削許可証の有効期間内に、連続壁ガイドウォール箇所の埋設物試掘を完了させる。',
+        twSentence: '必須於市區道路挖掘許可證核准之有效工期內，完成連續壁導溝位置之管線試挖工作。'
+      },
+      {
+        id: 23,
+        topic: 'regulations',
+        badgeNum: null,
+        jp: '危険性機械等使用検査',
+        kana: 'きけんせいきかいとうしようけんさ',
+        tw: '危險性機械及設備使用檢查',
+        pinyin: 'wēixiǎnxìng jīxiè shèbèi shǐyòng jiǎnchá',
+        jpDef: '吊上げ荷重3トン以上のクレーンやエレベーターを設置・使用する際、指定代検機関の落成検査を受けて合格証を取得する制度。',
+        twDef: '吊升荷重達3公噸以上之起重機（固定式/移動式）安裝後，經代檢機構檢查合格取得合格證始得作業。',
+        regulation: '《職業安全衛生法》第16條、《危險性機械及設備安全檢查規則》。',
+        jpSentence: '発進立坑に設置した50tクレーンは、代検機関の落成検査に合格し使用合格証を取得済みである。',
+        twSentence: '發進井架設之五十噸固定式起重機，已通過代檢機構竣工檢查並取得有效使用合格證。'
+      },
+      {
+        id: 24,
+        topic: 'regulations',
+        badgeNum: null,
+        jp: '安全衛生協議組織',
+        kana: 'あんぜんえいせいきょうぎそしき',
+        tw: '職業安全衛生協議組織',
+        pinyin: 'zhíyè ānquán wèishēng xiéyì zǔzhī',
+        jpDef: '元請業者（主包）と関係請負人（下包）で構成され、作業間の連絡調整、混在作業防止、KY活動を推進する法定会議体。',
+        twDef: '原事業單位與承攬人成立之安全衛生統合管理組織，定期召開協議會、危害預知活動及實施連繫巡視。',
+        regulation: '《職業安全衛生法》第27條：原事業單位應設置協議組織並定期召開會議。',
+        jpSentence: '毎朝の協議組織ミーティングにおいて、坑内立入人数と重機作業エリアの干渉を調整する。',
+        twSentence: '每日晨間召開安全衛生協議組織會議，協調進入坑內作業人數與大型重機動線干涉。'
+      }
+    ];
+
+    const quizQuestions = [
+      {
+        q: 'Q1. 臺灣捷運深開挖（深度達15m以上）工程開工前，依《職業安全衛生法》應向勞動檢查機構辦理下列何種法定審查？',
+        options: [
+          'A. 丁類危險性工作場所審查（開工前30日提報）',
+          'B. 乙類營造工程一般報備',
+          'C. 道路交通安全講習審查',
+          'D. 事業廢棄物臨時處置許可'
+        ],
+        correct: 0,
+        explain: '【解析】依臺灣《職業安全衛生法》第15條及《危險性工作場所審查及檢查辦法》，開挖深度達15公尺以上之營造工程屬「丁類危險性工作場所」，雇主應於使勞工進場作業30日前向主管勞檢處申請審查合格。'
+      },
+      {
+        q: 'Q2. 標準貫入試驗 (SPT) 的標準落鎚重量與自由落距分別為多少？',
+        options: [
+          'A. 50 kg 落鎚、落距 50 cm',
+          'B. 63.5 kg 落鎚、落距 76 cm',
+          'C. 70 kg 落鎚、落距 60 cm',
+          'D. 100 kg 落鎚、落距 100 cm'
+        ],
+        correct: 1,
+        explain: '【解析】依標準貫入試驗規範（CNS 3889 / JIS A 1219），SPT試驗採用 63.5kg（±0.5kg）之落鎚自 76cm（±1cm）高度自由落下，擊入30cm之擊數即為N值。'
+      },
+      {
+        q: 'Q3. 捷運開工前佔用市區道路進行改道圍籬前，必須向何機關提送審查核定「交通維持計畫」？',
+        options: [
+          'A. 地方政府交通局（交通審查委員會）',
+          'B. 勞動部職業安全衛生署',
+          'C. 環境保護局水保科',
+          'D. 內政部國土管理署'
+        ],
+        correct: 0,
+        explain: '【解析】施工佔用道路前，必須依直轄市交通維持計畫審議要點，提送交通局交通審查委員會審議通過取得核定函後，始得向轄區警察分局申請道路使用許可證。'
+      },
+      {
+        q: 'Q4. 關於平板載重試驗（反力式），下列何項器具是用於直接測量載重板之微小沉陷變位？',
+        options: [
+          'A. 旋轉水龍頭 (スイベルヘッド)',
+          'B. 千分錶／位移計 (ダイヤルゲージ)',
+          'C. 鎢鋼鑽頭 (メタルクラウン)',
+          'D. 磁針箱 (コンパス)'
+        ],
+        correct: 1,
+        explain: '【解析】反力式平板載重試驗中，使用油壓千斤頂與荷重計施加壓力，並利用架設於獨立參考架上的千分錶（ダイヤルゲージ / Dial Gauge）精密量測載重板的微小沉陷量。'
+      },
+      {
+        q: 'Q5. 捷運工區為防止連續壁導溝挖掘時破壞既有地下自來水、瓦斯或電力幹管，於機械開挖前應優先執行何種作業？',
+        options: [
+          'A. 人力試挖會勘 (試掘確認) 與透地雷達掃描',
+          'B. 直接以大推力挖土機盲挖探測',
+          'C. 僅需核對三十年前之舊圖說免試挖',
+          'D. 實施反力式平板載重試驗'
+        ],
+        correct: 0,
+        explain: '【解析】開挖前必須會同管線事業單位進行現地人力試挖（試掘）確認實際管位，並搭配透地雷達（GPR）掃描，嚴防誤挖地下高壓電纜或瓦斯管。'
+      }
+    ];
+
+    let currentTerm = termDatabase[2]; // Default: #3 Swivel Head
+    let currentTopic = 'all';
+    let currentSearch = '';
+    let currentPage = 1;
+    const pageSize = 8;
+    let currentQuizIdx = 0;
+    let selectedQuizOpt = null;
+
+    function renderLegend() {
+      const grid = document.getElementById('diagramLegendGrid');
+      const badgeTerms = termDatabase.filter(t => t.badgeNum !== null).sort((a,b) => a.badgeNum - b.badgeNum);
+      grid.innerHTML = badgeTerms.map(t => `
+        <div class="legend-item ${currentTerm.id === t.id ? 'active' : ''}" onclick="selectTermById(${t.id})">
+          <span class="legend-num">${t.badgeNum}</span>
+          <span style="font-weight:600;">${t.tw}</span>
+          <span style="font-size:0.75rem; color:var(--text-muted);">(${t.jp})</span>
+        </div>
+      `).join('');
+    }
+
+    function renderTermDetail(term) {
+      currentTerm = term;
+      document.getElementById('detailIdBadge').textContent = '#' + term.id;
+      document.getElementById('detailTitleMain').textContent = `${term.tw} (${term.jp})`;
+      document.getElementById('detailCategory').textContent = `[${getTopicName(term.topic)}]`;
+      document.getElementById('detailKana').textContent = term.kana;
+      document.getElementById('detailJpMeaning').textContent = term.jpDef;
+      document.getElementById('detailTwTerm').textContent = term.tw;
+      document.getElementById('detailPinyin').textContent = term.pinyin;
+      document.getElementById('detailTwDef').textContent = term.twDef;
+      document.getElementById('detailRegulation').textContent = term.regulation;
+      document.getElementById('detailJpSentence').textContent = term.jpSentence;
+      document.getElementById('detailTwSentence').textContent = term.twSentence;
+
+      // Update active pin badges
+      document.querySelectorAll('.pin-badge').forEach(b => {
+        b.classList.toggle('active', term.badgeNum && parseInt(b.textContent) === term.badgeNum);
+      });
+
+      renderLegend();
+      renderTable();
+    }
+
+    function getTopicName(topicKey) {
+      switch(topicKey) {
+        case 'boring': return '地盤調查與鑽探';
+        case 'insitu': return '現地試驗 (SPT/載重)';
+        case 'survey': return '工程測量 (全站儀)';
+        case 'utilities': return '地下管線探查';
+        case 'regulations': return '臺灣法規與安衛申報';
+        default: return '綜合工程';
+      }
+    }
+
+    function filterTopic(topic) {
+      currentTopic = topic;
+      currentPage = 1;
+      document.querySelectorAll('.topic-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('onclick').includes(`'${topic}'`));
+      });
+      renderTable();
+    }
+
+    function handleSearch(val) {
+      currentSearch = val.toLowerCase().trim();
+      currentPage = 1;
+      renderTable();
+    }
+
+    function getFilteredTerms() {
+      return termDatabase.filter(t => {
+        const matchesTopic = (currentTopic === 'all' || t.topic === currentTopic);
+        const matchesSearch = !currentSearch || 
+          t.tw.toLowerCase().includes(currentSearch) ||
+          t.jp.toLowerCase().includes(currentSearch) ||
+          t.kana.toLowerCase().includes(currentSearch) ||
+          t.pinyin.toLowerCase().includes(currentSearch) ||
+          t.twDef.toLowerCase().includes(currentSearch);
+        return matchesTopic && matchesSearch;
+      });
+    }
+
+    function renderTable() {
+      const filtered = getFilteredTerms();
+      const tbody = document.getElementById('vocabTableBody');
+      const start = (currentPage - 1) * pageSize;
+      const paginated = filtered.slice(start, start + pageSize);
+
+      document.getElementById('vocabCountBadge').textContent = `共 ${filtered.length} 詞`;
+      document.getElementById('pageInfo').textContent = `顯示 ${filtered.length > 0 ? start + 1 : 0}-${Math.min(start + pageSize, filtered.length)} / 共 ${filtered.length} 詞`;
+
+      if (paginated.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:20px; color:var(--text-muted);">查無符合之專業用語</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = paginated.map(t => `
+        <tr class="${currentTerm.id === t.id ? 'selected' : ''}" onclick="selectTermById(${t.id})">
+          <td style="font-weight:700; color:var(--text-muted);">${t.id}</td>
+          <td style="font-weight:600; color:var(--primary-teal);">${t.jp}</td>
+          <td style="color:var(--kana-color); font-size:0.8rem;">${t.kana}</td>
+          <td style="font-weight:700; color:var(--text-main);">${t.tw}</td>
+          <td style="color:var(--pinyin-color); font-size:0.8rem; font-family:monospace;">${t.pinyin}</td>
+        </tr>
+      `).join('');
+    }
+
+    function selectTermById(id) {
+      const found = termDatabase.find(t => t.id === id);
+      if (found) {
+        renderTermDetail(found);
+      }
+    }
+
+    function setPage(p) {
+      currentPage = p;
+      document.querySelectorAll('.page-btn').forEach(btn => {
+        btn.classList.toggle('active', parseInt(btn.textContent) === p);
+      });
+      renderTable();
+    }
+
+    function setMode(mode) {
+      const isTW = (mode === 'TW_JP');
+      document.getElementById('btnModeTW').classList.toggle('active', isTW);
+      document.getElementById('btnModeJP').classList.toggle('active', !isTW);
+      document.getElementById('sideModeTW').classList.toggle('active', isTW);
+      document.getElementById('sideModeJP').classList.toggle('active', !isTW);
+    }
+
+    function switchNav(tabKey) {
+      document.querySelectorAll('.nav-tab-item').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+      if (tabKey === 'laws') {
+        filterTopic('regulations');
+      } else if (tabKey === 'terms') {
+        filterTopic('all');
+      }
+    }
+
+    function renderQuiz() {
+      const qData = quizQuestions[currentQuizIdx];
+      document.getElementById('quizIndexBadge').textContent = `${currentQuizIdx + 1} / ${quizQuestions.length}`;
+      document.getElementById('quizQuestion').textContent = qData.q;
+      const optBox = document.getElementById('quizOptionsContainer');
+      selectedQuizOpt = null;
+      document.getElementById('quizExplanation').style.display = 'none';
+      document.getElementById('quizSubmitBtn').textContent = '確認解答 (解答する)';
+
+      optBox.innerHTML = qData.options.map((opt, idx) => `
+        <button class="quiz-opt-btn" onclick="selectQuizOpt(${idx}, this)">
+          <span>🔘</span> <span>${opt}</span>
+        </button>
+      `).join('');
+    }
+
+    function selectQuizOpt(idx, btn) {
+      selectedQuizOpt = idx;
+      document.querySelectorAll('.quiz-opt-btn').forEach(b => b.style.borderColor = 'var(--border-color)');
+      btn.style.borderColor = 'var(--primary-teal)';
+    }
+
+    function handleQuizSubmit() {
+      if (selectedQuizOpt === null) {
+        alert('請先選取一個選項！');
+        return;
+      }
+      const qData = quizQuestions[currentQuizIdx];
+      const buttons = document.querySelectorAll('.quiz-opt-btn');
+      buttons.forEach((b, idx) => {
+        b.disabled = true;
+        if (idx === qData.correct) {
+          b.classList.add('correct');
+        } else if (idx === selectedQuizOpt) {
+          b.classList.add('wrong');
+        }
+      });
+      document.getElementById('quizExplanation').innerHTML = `<strong>${selectedQuizOpt === qData.correct ? '✅ 正確！' : '❌ 答錯了！'}</strong><br>${qData.explain}`;
+      document.getElementById('quizExplanation').style.display = 'block';
+
+      const btn = document.getElementById('quizSubmitBtn');
+      btn.textContent = (currentQuizIdx < quizQuestions.length - 1) ? '下一題 (次の問題へ)' : '重新測驗 (もう一度挑戦)';
+      btn.onclick = () => {
+        currentQuizIdx = (currentQuizIdx < quizQuestions.length - 1) ? currentQuizIdx + 1 : 0;
+        btn.onclick = handleQuizSubmit;
+        renderQuiz();
+      };
+    }
+
+    function speakText(text, lang) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang;
+        utterance.rate = 0.95;
+        window.speechSynthesis.speak(utterance);
+      } else {
+        alert('您的瀏覽器不支援語音播放。');
+      }
+    }
+
+    function resetDialogue() {
+      const box = document.getElementById('dialogueBox');
+      box.scrollTop = 0;
+    }
+
+    function openRecordModal() {
+      document.getElementById('modalPracticeText').textContent = currentTerm.jpSentence;
+      document.getElementById('modalPracticeSub').textContent = currentTerm.twSentence;
+      document.getElementById('recordModal').classList.add('active');
+    }
+
+    function closeRecordModal() {
+      document.getElementById('recordModal').classList.remove('active');
+    }
+
+    // Initialize on Load
+    document.addEventListener('DOMContentLoaded', () => {
+      renderTermDetail(termDatabase[2]);
+      renderQuiz();
+    });
+  </script>
+</body>
+</html>

@@ -1,6 +1,16 @@
 {
   "items": [
     {
+      "title": "潛盾工程 OJT：泥水處理設備機制・施工計畫與日常點檢",
+      "category": "engineering",
+      "label": "泥水加壓潛盾 · OJT 雙語教材",
+      "mark": "現場",
+      "badge": "Slurry Plant OJT",
+      "summary": "彙整泥水處理廠四階段固液分離機制、24組四層級專業單字、8大工程文書與口譯語法、《泥水處理設備施工計畫書》與《日常自主點檢表》中日對譯及異常因果鏈會話測驗。",
+      "link": "/works/slurry-plant-ojt.html",
+      "cover": ""
+    },
+    {
       "title": "潛盾圖解・中日雙向學習",
       "category": "engineering",
       "label": "現場教材 · 圖解 × 完整長片",
@@ -9,6 +19,26 @@
       "summary": "從 10 歲也能懂的圖示開始，分類學習 24 個術語、施工流程與中日會話。內含約 73 分鐘完整長片、章節跳轉、互動實驗及測驗。",
       "link": "/works/field/shield-bilingual-ojt/",
       "cover": ""
+    },
+    {
+      "title": "捷運土木工程 OJT：開工準備與現地調查",
+      "category": "engineering",
+      "label": "捷運準備工程 · OJT 雙語教材",
+      "mark": "現場",
+      "badge": "Metro SitePrep OJT",
+      "summary": "涵蓋地盤鑽探、原位試驗(SPT/平板載重)、管線透地雷達、工程測量及臺灣職安與法定申報(丁類危評/交維)之雙語雙向實務互動教材。",
+      "link": "/works/metro-siteprep-ojt.html",
+      "cover": ""
+    },
+    {
+      "title": "トンネル工事用語 OJT",
+      "category": "engineering",
+      "label": "隧道工程 · OJT 現場教材",
+      "mark": "現場",
+      "badge": "Tunnel Engineering OJT",
+      "summary": "以隧道工程現場常用術語為核心，整合台日對譯、單字卡、隨堂測驗、發音、學習進度與成績管理。",
+      "link": "/works/tunnel-ojt.html",
+      "cover": "/assets/tunnel-ojt.jpg"
     },
     {
       "title": "中日翻譯練習室",
@@ -29,16 +59,6 @@
       "summary": "集中收錄工程日語、日語精讀、職場與投資主題、情境會話及台日文化翻譯等互動教材。",
       "link": "https://fobee-teaching-portfolio.fobee2.chatgpt.site",
       "cover": ""
-    },
-    {
-      "title": "トンネル工事用語 OJT",
-      "category": "engineering",
-      "label": "隧道工程 · OJT 現場教材",
-      "mark": "現場",
-      "badge": "Tunnel Engineering OJT",
-      "summary": "以隧道工程現場常用術語為核心，整合台日對譯、單字卡、隨堂測驗、發音、學習進度與成績管理。",
-      "link": "/works/tunnel-ojt.html",
-      "cover": "/assets/tunnel-ojt.jpg"
     },
     {
       "title": "中日雙語情境學習",

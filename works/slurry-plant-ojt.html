@@ -1,0 +1,2210 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>潛盾工程 OJT 雙語實務：泥水處理設備機制・施工計畫與日常點檢篇 | シールド工事 OJT 実務教材：泥水処理プラント編</title>
+  <style>
+    :root {
+      --primary-dark: #004d61;
+      --primary-teal: #00687f;
+      --primary-light: #e6f4f8;
+      --accent-yellow: #f59e0b;
+      --accent-gold: #fbbf24;
+      --bg-page: #f1f5f9;
+      --bg-card: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --jp-blue: #0044cc;
+      --border-color: #cbd5e1;
+      --pinyin-color: #7c3aed;
+      --kana-color: #c2410c;
+      --success-green: #10b981;
+      --warning-amber: #d97706;
+      --danger-red: #ef4444;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.06);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      background: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.55;
+      font-size: 14px;
+    }
+
+    /* Top Header Bar */
+    header {
+      background: #0b192c;
+      color: #fff;
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-md);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .header-left { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .tunnel-logo {
+      width: 36px; height: 36px;
+      background: var(--accent-yellow);
+      color: #0f172a;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; font-weight: 800; flex-shrink: 0;
+    }
+    .header-title { font-size: 1.02rem; font-weight: 700; letter-spacing: 0.2px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .back-link {
+      color: #e2e8f0; text-decoration: none; font-size: 0.78rem; font-weight: 600;
+      padding: 4px 10px; border: 1px solid #475569; border-radius: 4px; transition: 0.2s;
+      background: rgba(255,255,255,0.06); cursor: pointer; white-space: nowrap;
+    }
+    .back-link:hover { background: var(--accent-yellow); color: #0f172a; border-color: var(--accent-yellow); }
+
+    .nav-tabs { display: flex; gap: 4px; flex-wrap: wrap; }
+    .nav-tab-item {
+      background: transparent; border: none; color: #cbd5e1;
+      padding: 7px 11px; border-radius: var(--radius-sm);
+      font-size: 0.85rem; font-weight: 600; cursor: pointer;
+      display: flex; align-items: center; gap: 4px; transition: 0.2s; white-space: nowrap;
+    }
+    .nav-tab-item.active, .nav-tab-item:hover { color: #fff; background: rgba(255,255,255,0.14); }
+    .nav-tab-item.active { border-bottom: 3px solid var(--accent-yellow); border-radius: var(--radius-sm) var(--radius-sm) 0 0; color: var(--accent-gold); }
+
+    .header-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .header-search {
+      display: flex; align-items: center; background: #1e293b;
+      border-radius: 20px; padding: 4px 12px; width: 185px; border: 1px solid #334155;
+    }
+    .header-search input { background: transparent; border: none; color: #fff; outline: none; width: 100%; font-size: 0.82rem; }
+    .mode-switch-group { display: flex; background: #1e293b; border-radius: var(--radius-sm); padding: 2px; border: 1px solid #334155; }
+    .mode-btn {
+      background: transparent; border: none; color: #94a3b8;
+      padding: 4px 9px; font-size: 0.78rem; font-weight: 600;
+      cursor: pointer; border-radius: 4px; transition: 0.2s; white-space: nowrap;
+    }
+    .mode-btn.active { background: var(--primary-teal); color: #fff; }
+
+    /* App Container Layout */
+    .app-container {
+      display: grid;
+      grid-template-columns: 240px minmax(0, 1fr);
+      gap: 16px;
+      max-width: 1540px;
+      margin: 16px auto;
+      padding: 0 16px 32px;
+    }
+
+    /* Left Sidebar */
+    .sidebar { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+    .sidebar-card {
+      background: var(--bg-card); border-radius: var(--radius-md);
+      padding: 14px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color);
+    }
+    .sidebar-heading {
+      font-size: 0.8rem; font-weight: 700; color: var(--text-muted);
+      margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .search-box-sidebar input {
+      width: 100%; padding: 8px 10px; border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm); font-size: 0.86rem; outline: none; transition: 0.2s;
+    }
+    .search-box-sidebar input:focus { border-color: var(--primary-teal); box-shadow: 0 0 0 2px rgba(0,104,127,0.15); }
+
+    .topic-list { display: flex; flex-direction: column; gap: 5px; margin-top: 4px; }
+    .topic-btn {
+      display: flex; align-items: center; gap: 8px; padding: 8px 10px;
+      border: 1px solid transparent; background: transparent;
+      border-radius: var(--radius-sm); cursor: pointer; text-align: left;
+      font-size: 0.86rem; font-weight: 600; color: var(--text-main); transition: 0.2s;
+    }
+    .topic-btn:hover { background: #f1f5f9; }
+    .topic-btn.active { background: var(--primary-dark); color: #fff; }
+    .topic-icon { font-size: 1.05rem; flex-shrink: 0; }
+
+    /* Main Workspace */
+    .main-workspace { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+    .view-section { display: none; flex-direction: column; gap: 16px; min-width: 0; }
+    .view-section.active { display: flex; }
+
+    /* Top Section: Diagram (Left) & Term Details (Right) */
+    .top-panel-grid { display: grid; grid-template-columns: 520px minmax(0, 1fr); gap: 16px; }
+    .causal-bottom-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+
+    /* Interactive Diagram Card */
+    .diagram-card {
+      background: var(--bg-card); border-radius: var(--radius-md);
+      padding: 14px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color);
+      display: flex; flex-direction: column; min-width: 0;
+    }
+    .card-header-bar {
+      font-size: 0.98rem; font-weight: 800; color: var(--primary-dark);
+      margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .diagram-container {
+      position: relative; width: 100%; aspect-ratio: 560 / 340;
+      background: #0f172a; border-radius: var(--radius-sm);
+      overflow: hidden; border: 1px solid #1e293b;
+    }
+    .diagram-container svg {
+      display: block; width: 100%; height: 100%;
+    }
+    .pin-badge {
+      cursor: pointer;
+      transition: filter 0.2s, opacity 0.2s;
+    }
+    .pin-badge circle {
+      fill: #f59e0b;
+      stroke: #ffffff;
+      stroke-width: 2px;
+      transition: fill 0.2s, r 0.2s, stroke-width 0.2s;
+    }
+    .pin-badge text {
+      fill: #0f172a;
+      font-size: 11px;
+      font-weight: 900;
+      text-anchor: middle;
+      dominant-baseline: central;
+      pointer-events: none;
+      transition: fill 0.2s;
+    }
+    .pin-badge:hover circle, .pin-badge.active circle {
+      fill: #ef4444;
+      r: 12.5px;
+      stroke-width: 2.5px;
+    }
+    .pin-badge:hover text, .pin-badge.active text {
+      fill: #ffffff;
+    }
+    .equip-box {
+      cursor: pointer;
+      transition: filter 0.15s;
+    }
+    .equip-box:hover {
+      filter: brightness(1.12);
+    }
+
+    .diagram-legend { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin-top: 10px; font-size: 0.8rem; }
+    .legend-item {
+      display: flex; align-items: center; gap: 6px; padding: 5px 8px;
+      background: #f8fafc; border-radius: 4px; cursor: pointer;
+      border: 1px solid var(--border-color); transition: 0.15s;
+      min-width: 0; overflow: hidden;
+    }
+    .legend-item:hover, .legend-item.active {
+      background: var(--primary-light); border-color: var(--primary-teal);
+      color: var(--primary-dark); font-weight: 700;
+    }
+    .legend-num {
+      width: 18px; height: 18px; background: var(--primary-teal); color: #fff;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; flex-shrink: 0;
+    }
+    .legend-item.active .legend-num {
+      background: #ef4444;
+    }
+    .diagram-footer-note { font-size: 0.75rem; color: var(--text-muted); margin-top: 8px; text-align: center; }
+
+    /* Selected Term Detail Card */
+    .term-detail-card {
+      background: var(--bg-card); border-radius: var(--radius-md);
+      padding: 14px 18px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color);
+      display: flex; flex-direction: column; justify-content: space-between; min-width: 0;
+    }
+    .detail-top-title {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+      padding-bottom: 8px; border-bottom: 2px solid var(--primary-light); flex-wrap: wrap;
+    }
+    .detail-badge { background: var(--primary-dark); color: #fff; font-size: 0.78rem; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
+    .tier-badge { font-size: 0.75rem; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
+    .tier-1 { background: #e0e7ff; color: #3730a3; }
+    .tier-2 { background: #dbeafe; color: #1e40af; }
+    .tier-3 { background: #fef3c7; color: #92400e; }
+    .tier-4 { background: #fee2e2; color: #991b1b; }
+    .detail-term-name { font-size: 1.22rem; font-weight: 800; color: var(--primary-dark); }
+    .detail-sub-name { font-size: 0.92rem; color: var(--text-muted); font-weight: 600; }
+
+    .meta-table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
+    .meta-table th {
+      text-align: left; width: 130px; padding: 5px 8px; font-size: 0.82rem;
+      color: var(--text-muted); background: #f8fafc; border: 1px solid var(--border-color); font-weight: 600;
+    }
+    .meta-table td { padding: 5px 10px; font-size: 0.88rem; border: 1px solid var(--border-color); color: var(--text-main); }
+    .pinyin-val { color: var(--pinyin-color); font-weight: 600; font-size: 0.9rem; }
+    .kana-val { color: var(--kana-color); font-weight: 600; font-size: 0.9rem; }
+
+    .examples-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 4px; }
+    .example-box {
+      background: #f8fafc; border-radius: var(--radius-sm); padding: 9px 12px;
+      border: 1px solid var(--border-color); border-left: 4px solid var(--primary-teal); position: relative;
+    }
+    .example-box.tw-box { border-left-color: var(--pinyin-color); }
+    .example-title {
+      font-size: 0.78rem; font-weight: 700; color: var(--text-muted);
+      margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center;
+    }
+    .speech-icon-btn {
+      background: none; border: none; cursor: pointer; color: var(--primary-teal);
+      font-size: 1rem; padding: 2px 5px; border-radius: 4px;
+    }
+    .speech-icon-btn:hover { background: rgba(0,104,127,0.12); }
+    .example-line { font-size: 0.86rem; color: var(--text-main); line-height: 1.45; }
+
+    /* Bottom Section: Table (Left), Dialogue (Center), Quiz (Right) */
+    .bottom-panel-grid { display: grid; grid-template-columns: 520px minmax(0, 1fr) 340px; gap: 16px; }
+
+    .table-card, .dialogue-card, .quiz-card, .full-card {
+      background: var(--bg-card); border-radius: var(--radius-md);
+      padding: 16px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color);
+      display: flex; flex-direction: column; min-width: 0;
+    }
+    .vocab-table-wrapper { overflow-x: auto; max-height: 330px; overflow-y: auto; }
+    .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+    .vocab-table th {
+      background: #f1f5f9; position: sticky; top: 0; padding: 7px 6px;
+      border-bottom: 2px solid var(--border-color); text-align: left;
+      font-weight: 700; color: var(--text-muted); font-size: 0.78rem; z-index: 2;
+    }
+    .vocab-table td { padding: 7px 6px; border-bottom: 1px solid #e2e8f0; cursor: pointer; }
+    .vocab-table tr:hover { background: #f8fafc; }
+    .vocab-table tr.selected { background: var(--primary-light); font-weight: 700; border-left: 3px solid var(--primary-teal); }
+
+    .pagination-bar {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--border-color);
+      font-size: 0.8rem; color: var(--text-muted);
+    }
+    .page-btn-group { display: flex; gap: 4px; flex-wrap: wrap; }
+    .page-btn {
+      background: #f8fafc; border: 1px solid var(--border-color);
+      padding: 4px 10px; border-radius: 4px; font-size: 0.78rem; font-weight: 600;
+      cursor: pointer; white-space: nowrap; transition: 0.15s;
+    }
+    .page-btn:hover { background: #e2e8f0; }
+    .page-btn.active { background: var(--primary-teal); color: #fff; border-color: var(--primary-teal); }
+
+    /* Dialogue Card */
+    .dialogue-scroll { display: flex; flex-direction: column; gap: 10px; max-height: 330px; overflow-y: auto; padding-right: 4px; }
+    .speech-bubble {
+      background: #f8fafc; border-radius: var(--radius-sm); padding: 9px 12px;
+      border: 1px solid var(--border-color); position: relative;
+    }
+    .speech-bubble.role-jp { border-left: 4px solid var(--kana-color); }
+    .speech-bubble.role-tw { border-left: 4px solid var(--pinyin-color); }
+    .speech-bubble.role-interp { border-left: 4px solid var(--primary-teal); background: #f0f9ff; }
+    .speaker-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px; }
+    .speaker-name { font-size: 0.78rem; font-weight: 700; color: var(--text-muted); }
+    .speech-text-main { font-size: 0.88rem; font-weight: 700; color: var(--text-main); margin-bottom: 3px; }
+    .speech-text-sub { font-size: 0.82rem; color: var(--jp-blue); font-weight: 600; }
+    .speech-note { font-size: 0.76rem; color: var(--kana-color); margin-top: 4px; padding-top: 4px; border-top: 1px dashed #cbd5e1; }
+
+    .dialogue-actions { display: flex; gap: 8px; margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--border-color); flex-wrap: wrap; }
+    .dialogue-btn {
+      flex: 1; padding: 6px 10px; border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color); background: #f8fafc;
+      font-size: 0.8rem; font-weight: 600; cursor: pointer; white-space: nowrap;
+      display: flex; align-items: center; justify-content: center; gap: 5px; transition: 0.15s;
+    }
+    .dialogue-btn:hover { background: #e2e8f0; }
+    .dialogue-btn.record-btn { background: var(--primary-teal); color: #fff; border-color: var(--primary-teal); }
+    .dialogue-btn.record-btn:hover { background: var(--primary-dark); }
+
+    /* Quiz Card */
+    .quiz-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-weight: 700; color: var(--primary-dark); font-size: 0.9rem; }
+    .quiz-progress { font-size: 0.78rem; color: var(--text-muted); background: #f1f5f9; padding: 2px 8px; border-radius: 12px; }
+    .quiz-question-text { font-size: 0.88rem; font-weight: 700; color: var(--text-main); margin-bottom: 10px; line-height: 1.45; }
+    .quiz-options-list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
+    .quiz-opt-btn {
+      background: #f8fafc; border: 1px solid var(--border-color);
+      padding: 7px 10px; border-radius: var(--radius-sm); font-size: 0.82rem;
+      text-align: left; cursor: pointer; display: flex; align-items: flex-start; gap: 8px; transition: 0.15s;
+    }
+    .quiz-opt-btn:hover { background: #edf2f7; border-color: #94a3b8; }
+    .quiz-opt-btn.selected-opt { border-color: var(--primary-teal); background: var(--primary-light); font-weight: 700; }
+    .quiz-opt-btn.correct { background: #d1fae5; border-color: var(--success-green); color: #065f46; font-weight: 700; }
+    .quiz-opt-btn.wrong { background: #fee2e2; border-color: var(--danger-red); color: #991b1b; }
+    .quiz-submit-btn {
+      width: 100%; padding: 8px; background: var(--primary-teal); color: #fff;
+      border: none; border-radius: var(--radius-sm); font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: 0.15s; white-space: nowrap;
+    }
+    .quiz-submit-btn:hover { background: var(--primary-dark); }
+    .quiz-explain-box {
+      display: none; margin-top: 8px; padding: 8px 10px; background: #eff6ff;
+      border: 1px solid #bfdbfe; border-radius: var(--radius-sm); font-size: 0.8rem; color: #1e40af; line-height: 1.4;
+    }
+
+    /* Bilingual Interlinear Blocks (上中黑字・下日藍字 / 可切換) */
+    .bi-pair {
+      background: #f8fafc; border: 1px solid var(--border-color);
+      border-left: 4px solid var(--primary-teal); border-radius: var(--radius-sm);
+      padding: 12px 14px; margin-bottom: 10px; display: flex; flex-direction: column; gap: 4px;
+    }
+    body.order-jp-first .bi-pair { flex-direction: column-reverse; }
+    .zh-top { color: #0f172a; font-weight: 700; font-size: 0.94rem; line-height: 1.55; }
+    .jp-bottom { color: var(--jp-blue); font-weight: 600; font-size: 0.92rem; line-height: 1.55; padding-top: 4px; border-top: 1px dashed #cbd5e1; }
+    body.order-jp-first .jp-bottom { border-top: none; border-bottom: 1px dashed #cbd5e1; padding-top: 0; padding-bottom: 4px; }
+    .sub-phonetic { font-size: 0.78rem; color: var(--kana-color); font-weight: 500; }
+    .sub-pinyin { font-size: 0.78rem; color: var(--pinyin-color); font-weight: 500; }
+
+    body.hide-phonetic .sub-phonetic, body.hide-phonetic .kana-val, body.hide-phonetic .pinyin-val { display: none !important; }
+    body.mask-jp .jp-bottom, body.mask-jp .jp-cell { filter: blur(5px); cursor: pointer; transition: 0.2s; }
+    body.mask-jp .jp-bottom:hover, body.mask-jp .jp-cell:hover { filter: none; }
+    body.mask-zh .zh-top, body.mask-zh .zh-cell { filter: blur(5px); cursor: pointer; transition: 0.2s; }
+    body.mask-zh .zh-top:hover, body.mask-zh .zh-cell:hover { filter: none; }
+
+    /* Grammar Cards */
+    .grammar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 14px; }
+    .grammar-card {
+      background: #fff; border: 1px solid var(--border-color);
+      border-top: 4px solid var(--primary-teal); border-radius: var(--radius-md);
+      padding: 16px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; gap: 8px;
+    }
+    .grammar-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+    .grammar-pattern { font-size: 1.08rem; font-weight: 800; color: var(--primary-dark); }
+    .grammar-tag { font-size: 0.74rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; background: var(--primary-light); color: var(--primary-teal); white-space: nowrap; }
+    .grammar-meaning { font-size: 0.9rem; font-weight: 700; color: var(--jp-blue); }
+    .grammar-rule { font-size: 0.84rem; color: #334155; background: #f8fafc; padding: 8px 10px; border-radius: 6px; border: 1px solid #e2e8f0; }
+    .grammar-pitfall { font-size: 0.8rem; color: #991b1b; background: #fef2f2; padding: 7px 10px; border-radius: 6px; border-left: 3px solid var(--danger-red); }
+
+    /* Data & Checklist Tables */
+    .plan-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 8px; }
+    .plan-table th { background: var(--primary-dark); color: #fff; padding: 9px 10px; text-align: left; font-weight: 700; }
+    .plan-table td { padding: 9px 10px; border: 1px solid var(--border-color); vertical-align: top; }
+    .plan-table tr:nth-child(even) td { background: #f8fafc; }
+
+    .status-btn-group { display: flex; gap: 4px; flex-wrap: nowrap; }
+    .status-btn {
+      padding: 5px 8px; border: 1px solid var(--border-color); background: #fff;
+      border-radius: 4px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap;
+      transition: 0.15s;
+    }
+    .status-btn:hover { background: #f1f5f9; }
+    .status-btn.active-ok { background: #dcfce7; border-color: #16a34a; color: #166534; }
+    .status-btn.active-warn { background: #fef3c7; border-color: #d97706; color: #92400e; }
+    .status-btn.active-ng { background: #fee2e2; border-color: #dc2626; color: #991b1b; }
+
+    /* Causal Chain Cards */
+    .chain-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .chain-card { background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 15px; border-top: 4px solid var(--danger-red); }
+    .chain-step { background: #f8fafc; border: 1px solid #e2e8f0; padding: 8px 10px; border-radius: 6px; margin: 6px 0; font-size: 0.84rem; }
+    .chain-arrow { text-align: center; color: var(--danger-red); font-weight: 800; font-size: 0.9rem; }
+
+    /* Modal */
+    .record-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 200; align-items: center; justify-content: center; padding: 16px; }
+    .record-modal.active { display: flex; }
+    .record-modal-card { background: #fff; max-width: 480px; width: 100%; border-radius: var(--radius-md); padding: 20px; box-shadow: var(--shadow-md); text-align: center; }
+    .toast-msg {
+      margin-top: 10px; padding: 8px 12px; border-radius: 6px;
+      background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0;
+      font-size: 0.82rem; font-weight: 600; display: none;
+    }
+    .toast-msg.show { display: block; }
+
+    @media (max-width: 1280px) {
+      .bottom-panel-grid { grid-template-columns: 1fr 1fr; }
+      .bottom-panel-grid > :last-child { grid-column: 1 / -1; }
+    }
+    @media (max-width: 1180px) {
+      .app-container { grid-template-columns: 1fr; }
+      .top-panel-grid, .bottom-panel-grid, .causal-bottom-grid, .chain-grid { grid-template-columns: 1fr; }
+      .grammar-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .examples-grid, .diagram-legend { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Global Header -->
+  <header>
+    <div class="header-left">
+      <div class="tunnel-logo">🚇</div>
+      <div class="header-title">
+        <span>潛盾工程 OJT 雙語實務：泥水處理設備機制・施工計畫與日常點檢篇</span>
+        <button type="button" class="back-link" onclick="goBackToPortfolio()">← 回作品集 (現場篇)</button>
+        <button type="button" class="back-link" style="background:#f59e0b; color:#0f172a; border-color:#fbbf24; font-weight:800;" onclick="downloadSelfHtml()">⬇️ 下載 HTML 檔案</button>
+      </div>
+    </div>
+
+    <div class="nav-tabs" id="topNavTabs">
+      <button class="nav-tab-item active" onclick="switchNav('overview', this)">⚙️ 機制圖解＆單字</button>
+      <button class="nav-tab-item" onclick="switchNav('grammar', this)">📐 工程語法・文型</button>
+      <button class="nav-tab-item" onclick="switchNav('plan', this)">📄 施工計畫書對譯</button>
+      <button class="nav-tab-item" onclick="switchNav('checklist', this)">✅ 日常自主點檢表</button>
+      <button class="nav-tab-item" onclick="switchNav('causal', this)">💬 異常因果＆會話測驗</button>
+    </div>
+
+    <div class="header-right">
+      <div class="header-search">
+        <span style="color:#94a3b8; margin-right:6px;">🔍</span>
+        <input type="text" id="globalSearch" placeholder="搜尋單字 / 假名 / 拼音..." oninput="handleSearch(this.value)">
+      </div>
+      <div class="mode-switch-group">
+        <button class="mode-btn active" id="btnOrderZH" onclick="setOrderMode('ZH_FIRST')" title="上中黑字、下日藍字">上中下日</button>
+        <button class="mode-btn" id="btnOrderJP" onclick="setOrderMode('JP_FIRST')" title="上日下中">上日下中</button>
+      </div>
+      <button class="mode-btn active" id="btnPhonetic" style="background:#1e293b; border:1px solid #334155;" onclick="togglePhonetic()">あ/拼 讀音：開</button>
+    </div>
+  </header>
+
+  <!-- Main App Container -->
+  <div class="app-container">
+
+    <!-- Left Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-card">
+        <div class="sidebar-heading">快速檢索 (キーワード検索)</div>
+        <div class="search-box-sidebar">
+          <input type="text" id="sidebarSearch" placeholder="輸入サイクロン、生ケーキ、比重..." oninput="handleSearch(this.value)">
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-heading">口譯遮蔽練習 (通訳トレーニング)</div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <button class="dialogue-btn" id="btnMaskNone" style="background:var(--primary-teal); color:#fff;" onclick="setMaskMode('NONE')">👁️ 中日雙語同時顯示</button>
+          <button class="dialogue-btn" id="btnMaskJP" onclick="setMaskMode('MASK_JP')">🇯🇵 遮住日文（看中練日譯）</button>
+          <button class="dialogue-btn" id="btnMaskZH" onclick="setMaskMode('MASK_ZH')">🇹🇼 遮住中文（看日練中譯）</button>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-heading">設備系統單元 (設備トピック)</div>
+        <div class="topic-list" id="sidebarTopicList">
+          <button class="topic-btn active" onclick="filterTopic('all', this)">
+            <span class="topic-icon">📋</span> 全系統總覽 (ALL 24詞)
+          </button>
+          <button class="topic-btn" onclick="filterTopic('transport', this)">
+            <span class="topic-icon">🚇</span> 流體輸送與坑內粗碎
+          </button>
+          <button class="topic-btn" onclick="filterTopic('primary', this)">
+            <span class="topic-icon">🌀</span> 一次處理：篩網與旋流器
+          </button>
+          <button class="topic-btn" onclick="filterTopic('adjust', this)">
+            <span class="topic-icon">⚖️</span> 調漿槽與泥水品質管理
+          </button>
+          <button class="topic-btn" onclick="filterTopic('secondary', this)">
+            <span class="topic-icon">🧱</span> 二次壓濾與三次濁水中和
+          </button>
+          <button class="topic-btn" onclick="filterTopic('slang', this)">
+            <span class="topic-icon">⚠️</span> 異常因果與現場俗語黑話
+          </button>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-heading">學習進度統計 (学習ステータス)</div>
+        <div style="font-size:0.82rem; color:var(--text-main); display:flex; flex-direction:column; gap:6px;">
+          <div style="display:flex; justify-content:space-between;">
+            <span>已檢視專業詞彙：</span>
+            <strong id="statViewedTerms" style="color:var(--primary-teal);">1 / 24</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between;">
+            <span>日常點檢完成率：</span>
+            <strong id="statChecklistPct" style="color:var(--success-green);">0% (0/11)</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between;">
+            <span>隨堂測驗得分：</span>
+            <strong id="statQuizScore" style="color:var(--warning-amber);">尚未作答</strong>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Dynamic Workspace -->
+    <main class="main-workspace">
+
+      <!-- ==================== VIEW 1: OVERVIEW, DIAGRAM & VOCABULARY ==================== -->
+      <section class="view-section active" id="view-overview">
+        <div class="top-panel-grid">
+          <!-- Left: Interactive SVG Diagram -->
+          <div class="diagram-card">
+            <div class="card-header-bar">
+              <span>泥水加壓潛盾＆地面泥水處理廠 四階段循環配置圖</span>
+              <span style="font-size:0.75rem; color:var(--text-muted);">泥水処理プラント 4段階循環系統図</span>
+            </div>
+
+            <div class="diagram-container" id="diagramBox">
+              <svg viewBox="0 0 560 340" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <marker id="arrow-orange" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                    <path d="M 0 1 L 10 5 L 0 9 z" fill="#f97316"/>
+                  </marker>
+                  <marker id="arrow-green" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                    <path d="M 0 1 L 10 5 L 0 9 z" fill="#22c55e"/>
+                  </marker>
+                  <marker id="arrow-purple" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                    <path d="M 0 1 L 10 5 L 0 9 z" fill="#c084fc"/>
+                  </marker>
+                  <marker id="arrow-cyan" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                    <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
+                  </marker>
+                </defs>
+
+                <!-- Background: Ground Plant (0..212) & Underground Tunnel (212..340) -->
+                <rect x="0" y="0" width="560" height="212" fill="#0f172a"/>
+                <rect x="0" y="212" width="560" height="128" fill="#1e293b"/>
+                <line x1="0" y1="212" x2="560" y2="212" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6,4"/>
+
+                <!-- Zone Labels (Placed in dedicated clear header strips) -->
+                <rect x="12" y="5" width="234" height="18" rx="4" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+                <text x="20" y="17" fill="#fbbf24" font-size="9.5" font-weight="bold">▲ 地上泥水処理プラント (地面泥水處理廠)</text>
+
+                <rect x="12" y="218" width="248" height="18" rx="4" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+                <text x="20" y="230" fill="#38bdf8" font-size="9.5" font-weight="bold">▼ 地下シールド坑内・流体輸送 (地下潛盾坑內與流體輸送)</text>
+
+                <!-- Flow Legend in Top-Right Header Strip -->
+                <g transform="translate(262, 6)">
+                  <line x1="0" y1="8" x2="18" y2="8" stroke="#f97316" stroke-width="2.5" marker-end="url(#arrow-orange)"/>
+                  <text x="22" y="11" fill="#fdba74" font-size="8.5" font-weight="bold">排泥・余剰泥水</text>
+                  <line x1="100" y1="8" x2="118" y2="8" stroke="#22c55e" stroke-width="2.5" marker-end="url(#arrow-green)"/>
+                  <text x="122" y="11" fill="#86efac" font-size="8.5" font-weight="bold">送泥・一次処理泥水</text>
+                  <line x1="212" y1="8" x2="230" y2="8" stroke="#c084fc" stroke-width="2.5" marker-end="url(#arrow-purple)"/>
+                  <text x="234" y="11" fill="#e9d5ff" font-size="8.5" font-weight="bold">ろ液・再生水</text>
+                </g>
+
+                <!-- ==================== PIPES & FLOW ARROWS (Routed in dedicated channels) ==================== -->
+                <!-- P2 排泥管: Box 1 -> Box 2 (Bottom channel) -->
+                <path d="M190,305 L242,305" fill="none" stroke="#f97316" stroke-width="3" marker-end="url(#arrow-orange)"/>
+                <text x="200" y="317" fill="#fdba74" font-size="8" font-weight="bold">排泥 P2</text>
+
+                <!-- P1 送泥管: Box 2 -> Box 1 (Upper tunnel channel) -->
+                <path d="M248,272 L196,272" fill="none" stroke="#22c55e" stroke-width="3" marker-end="url(#arrow-green)"/>
+                <text x="200" y="266" fill="#86efac" font-size="8" font-weight="bold">送泥 P1</text>
+
+                <!-- P2 排泥圧送: Box 2 (right) -> Up right shaft -> No, up left riser channel (x=54) into Box 3 -->
+                <path d="M335,244 L335,198 L54,198 L54,102" fill="none" stroke="#f97316" stroke-width="3" marker-end="url(#arrow-orange)"/>
+                <rect x="16" y="138" width="76" height="20" rx="4" fill="#431407" stroke="#f97316" stroke-width="1"/>
+                <text x="54" y="151" fill="#fed7aa" font-size="8.5" font-weight="bold" text-anchor="middle">▲ 排泥管 (P2)</text>
+
+                <!-- P1 送泥圧送: Box 5 (Adjustment Tank) -> Straight down into Box 2 -->
+                <path d="M282,188 L282,238" fill="none" stroke="#22c55e" stroke-width="3" marker-end="url(#arrow-green)"/>
+                <rect x="242" y="201" width="78" height="17" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1"/>
+                <text x="281" y="212" fill="#bbf7d0" font-size="8" font-weight="bold" text-anchor="middle">▼ 送泥管 (P1)</text>
+
+                <!-- Box 3 (Screen) -> Box 4 (Cyclone) -->
+                <path d="M136,62 L148,62" fill="none" stroke="#f97316" stroke-width="2.5" marker-end="url(#arrow-orange)"/>
+
+                <!-- Box 4 (Cyclone) -> Box 5 (Adjustment Tank) -->
+                <path d="M216,96 L216,118" fill="none" stroke="#22c55e" stroke-width="2.5" marker-end="url(#arrow-green)"/>
+                <text x="223" y="111" fill="#86efac" font-size="8" font-weight="bold">除砂泥水</text>
+
+                <!-- Box 5 (Adjustment Tank) -> Box 6 (Secondary Coagulation) -->
+                <path d="M300,122 L300,108 L345,108 L345,100" fill="none" stroke="#f97316" stroke-width="2.5" marker-end="url(#arrow-orange)"/>
+                <text x="353" y="112" fill="#fdba74" font-size="8" font-weight="bold">余剰泥水</text>
+
+                <!-- Box 6 (Secondary) -> Box 7 (Filter Press) -->
+                <path d="M418,62 L428,62" fill="none" stroke="#f97316" stroke-width="2.5" marker-end="url(#arrow-orange)"/>
+
+                <!-- Box 7 (Filter Press) -> Box 8 (Tertiary Turbid Water) -->
+                <path d="M490,96 L490,118" fill="none" stroke="#c084fc" stroke-width="2.5" marker-end="url(#arrow-purple)"/>
+                <text x="497" y="111" fill="#e9d5ff" font-size="8" font-weight="bold">ろ液</text>
+
+                <!-- Box 8 (Tertiary) -> Box 5 (Adjustment Tank: Dilution Water Recycle) -->
+                <path d="M362,155 L322,155" fill="none" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4,2" marker-end="url(#arrow-cyan)"/>
+                <text x="325" y="148" fill="#7dd3fc" font-size="7.5" font-weight="bold">希釈水</text>
+
+                <!-- ==================== 8 EQUIPMENT BOXES & EMBEDDED SVG PINS ==================== -->
+                <!-- 1. TBM Chamber & Crusher (Bottom Left) -->
+                <g class="equip-box" onclick="selectTermById(1)">
+                  <rect x="22" y="244" width="168" height="82" rx="6" fill="#334155" stroke="#38bdf8" stroke-width="2"/>
+                  <path d="M22,244 L10,258 L10,312 L22,326 Z" fill="#f59e0b"/>
+                  <text x="54" y="264" fill="#fff" font-size="10" font-weight="bold">カッターチャンバー</text>
+                  <text x="30" y="282" fill="#bae6fd" font-size="9">泥水艙＋迴轉碎石機 (クラッシャ)</text>
+                  <text x="30" y="298" fill="#fde047" font-size="8.5">● 不透水泥膜形成 (切羽安定保持)</text>
+                  <text x="30" y="314" fill="#cbd5e1" font-size="8">● 巨礫破砕・噛み込み防止</text>
+                </g>
+                <g class="pin-badge active" id="pin-1" onclick="selectTermById(1)">
+                  <title>1. 泥水艙與迴轉碎石機</title>
+                  <circle cx="38" cy="260" r="10.5"/>
+                  <text x="38" y="260">1</text>
+                </g>
+
+                <!-- 2. P1/P2 Pumps & Bypass Valve (Bottom Right) -->
+                <g class="equip-box" onclick="selectTermById(4)">
+                  <rect x="248" y="244" width="296" height="82" rx="6" fill="#1e3a8a" stroke="#60a5fa" stroke-width="1.8"/>
+                  <text x="280" y="264" fill="#fff" font-size="10" font-weight="bold">送排泥ポンプ (P1/P2)・流体輸送配管</text>
+                  <text x="258" y="282" fill="#bfdbfe" font-size="9">● バイパスバルブ・スライドボール弁 (配管延尺・盛替)</text>
+                  <text x="258" y="298" fill="#fde047" font-size="8.5">● 電磁流量計・γ線密度計 (乾燥掘削土量・乾砂量演算)</text>
+                  <text x="258" y="314" fill="#93c5fd" font-size="8">● 管内流速管理・エアー抜き・排泥管閉塞防止</text>
+                </g>
+                <g class="pin-badge" id="pin-2" onclick="selectTermById(4)">
+                  <title>2. 送排泥泵與旁通滑球閥</title>
+                  <circle cx="264" cy="260" r="10.5"/>
+                  <text x="264" y="260">2</text>
+                </g>
+
+                <!-- 3. Primary Vibrating Screen (Top Left) -->
+                <g class="equip-box" onclick="selectTermById(8)">
+                  <rect x="14" y="28" width="122" height="68" rx="6" fill="#0369a1" stroke="#38bdf8" stroke-width="1.6"/>
+                  <text x="45" y="47" fill="#fff" font-size="9.5" font-weight="bold">一次：振動篩</text>
+                  <text x="22" y="65" fill="#e0f2fe" font-size="8.5">トロンメル・脱水篩</text>
+                  <text x="22" y="80" fill="#fde047" font-size="8">粗礫・粗砂分離 (&gt;2mm)</text>
+                  <text x="22" y="91" fill="#bae6fd" font-size="7.5">網の破れ・目詰まり点検</text>
+                </g>
+                <g class="pin-badge" id="pin-3" onclick="selectTermById(8)">
+                  <title>3. 一次振動脫水篩</title>
+                  <circle cx="30" cy="44" r="10.5"/>
+                  <text x="30" y="44">3</text>
+                </g>
+
+                <!-- 4. Hydrocyclone (Top Center-Left) -->
+                <g class="equip-box" onclick="selectTermById(9)">
+                  <rect x="152" y="28" width="128" height="68" rx="6" fill="#0284c7" stroke="#7dd3fc" stroke-width="1.6"/>
+                  <text x="183" y="47" fill="#fff" font-size="9.5" font-weight="bold">液体サイクロン</text>
+                  <text x="160" y="65" fill="#e0f2fe" font-size="8.5">遠心分級 (&ge;74&mu;m細砂)</text>
+                  <text x="160" y="80" fill="#fde047" font-size="8">下部ノズル傘状排土</text>
+                  <text x="160" y="91" fill="#bae6fd" font-size="7.5">200メッシュ分級・除砂</text>
+                </g>
+                <g class="pin-badge" id="pin-4" onclick="selectTermById(9)">
+                  <title>4. 水力旋流器 (74μm除砂)</title>
+                  <circle cx="168" cy="44" r="10.5"/>
+                  <text x="168" y="44">4</text>
+                </g>
+
+                <!-- 5. Adjustment Tank (Middle Center) -->
+                <g class="equip-box" onclick="selectTermById(13)">
+                  <rect x="104" y="122" width="214" height="66" rx="6" fill="#065f46" stroke="#34d399" stroke-width="1.6"/>
+                  <text x="136" y="141" fill="#fff" font-size="9.5" font-weight="bold">調整槽・自動比重調整装置</text>
+                  <text x="112" y="159" fill="#d1fae5" font-size="8.5">作泥水 (ベントナイト+CMC)＋希釈水添加</text>
+                  <text x="112" y="175" fill="#fde047" font-size="8">送泥比重 1.05〜1.20 / 粘度 22〜35秒 / 砂分 &le;2%</text>
+                </g>
+                <g class="pin-badge" id="pin-5" onclick="selectTermById(13)">
+                  <title>5. 調整槽與自動比重調整</title>
+                  <circle cx="120" cy="138" r="10.5"/>
+                  <text x="120" y="138">5</text>
+                </g>
+
+                <!-- 6. Excess Slurry, Coagulant & Thickener (Top Center-Right) -->
+                <g class="equip-box" onclick="selectTermById(16)">
+                  <rect x="296" y="28" width="122" height="68" rx="6" fill="#7c2d12" stroke="#fb923c" stroke-width="1.6"/>
+                  <text x="327" y="47" fill="#fff" font-size="9.5" font-weight="bold">二次：凝集濃縮</text>
+                  <text x="304" y="65" fill="#ffedd5" font-size="8.5">余剰泥水+PAC/高分子</text>
+                  <text x="304" y="80" fill="#fde047" font-size="8">フロック形成・シックナー</text>
+                  <text x="304" y="91" fill="#fed7aa" font-size="7.5">細粒分解膠・自歩造泥対策</text>
+                </g>
+                <g class="pin-badge" id="pin-6" onclick="selectTermById(16)">
+                  <title>6. 二次處理：餘剩泥水與凝聚劑</title>
+                  <circle cx="312" cy="44" r="10.5"/>
+                  <text x="312" y="44">6</text>
+                </g>
+
+                <!-- 7. Filter Press (Top Right) -->
+                <g class="equip-box" onclick="selectTermById(18)">
+                  <rect x="432" y="28" width="116" height="68" rx="6" fill="#9a3412" stroke="#fdba74" stroke-width="1.6"/>
+                  <text x="461" y="47" fill="#fff" font-size="9" font-weight="bold">フィルタープレス</text>
+                  <text x="440" y="65" fill="#ffedd5" font-size="8.5">高圧圧搾脱水・ろ布洗浄</text>
+                  <text x="440" y="80" fill="#fde047" font-size="8">脱水ケーキ搬出</text>
+                  <text x="440" y="91" fill="#fca5a5" font-size="7.5">生ケーキ・目詰まり防止</text>
+                </g>
+                <g class="pin-badge" id="pin-7" onclick="selectTermById(18)">
+                  <title>7. 高壓壓榨式壓濾機</title>
+                  <circle cx="446" cy="44" r="10.5"/>
+                  <text x="446" y="44">7</text>
+                </g>
+
+                <!-- 8. Tertiary Turbid Water & pH Neutralization (Middle Right) -->
+                <g class="equip-box" onclick="selectTermById(22)">
+                  <rect x="362" y="122" width="186" height="66" rx="6" fill="#3b0764" stroke="#c084fc" stroke-width="1.6"/>
+                  <text x="394" y="141" fill="#fff" font-size="9.5" font-weight="bold">三次処理：濁水・pH中和</text>
+                  <text x="370" y="159" fill="#f3e8ff" font-size="8.5">ろ液SS凝集沈殿・炭酸ガス中和</text>
+                  <text x="370" y="175" fill="#fde047" font-size="8">放流基準 pH 5.8〜8.6 (水質汚濁防止法)</text>
+                </g>
+                <g class="pin-badge" id="pin-8" onclick="selectTermById(22)">
+                  <title>8. 三次濁水與 pH 中和設備</title>
+                  <circle cx="378" cy="138" r="10.5"/>
+                  <text x="378" y="138">8</text>
+                </g>
+              </svg>
+            </div>
+
+            <div class="diagram-legend" id="diagramLegendGrid"></div>
+            <div class="diagram-footer-note">※ 點擊圖中編號 ①～⑧、設備方塊或下方詞彙列，即可切換右側「四層級術語・機制解析與雙語例句」</div>
+          </div>
+
+          <!-- Right: Selected Term Detailed View -->
+          <div class="term-detail-card" id="termDetailPanel">
+            <div>
+              <div class="detail-top-title">
+                <span class="detail-badge" id="detailIdBadge">#1</span>
+                <span class="tier-badge tier-1" id="detailTierBadge">① 官方標準規範</span>
+                <span class="detail-term-name" id="detailTitleMain">泥水艙與迴轉碎石機 (カッターチャンバー・ロータリークラッシャ)</span>
+                <span class="detail-sub-name" id="detailCategory">[流體輸送與坑內粗碎]</span>
+              </div>
+
+              <table class="meta-table">
+                <tr>
+                  <th>日本工程日文</th>
+                  <td><strong id="detailJpTerm" style="color:var(--jp-blue); font-size:0.98rem;">カッターチャンバー・ロータリークラッシャ</strong></td>
+                </tr>
+                <tr>
+                  <th>日文讀音 (振仮名)</th>
+                  <td><span class="kana-val" id="detailKana">かったーちゃんばー・ろーたりーくらっしゃ</span></td>
+                </tr>
+                <tr>
+                  <th>台灣繁體中文</th>
+                  <td><strong id="detailTwTerm" style="color:var(--primary-dark); font-size:0.98rem;">泥水艙與迴轉碎石機（切羽泥水室）</strong></td>
+                </tr>
+                <tr>
+                  <th>漢語拼音 (Pinyin)</th>
+                  <td><span class="pinyin-val" id="detailPinyin">níshuǐcāng yǔ huízhuǎn suìshíjī</span></td>
+                </tr>
+                <tr>
+                  <th>物理與化學機制<br>(メカニズム解説)</th>
+                  <td id="detailMechanism">潛盾機刀盤切削下的土砂進入隔板前方的泥水艙與加壓泥水混合，在開挖面形成「不透水泥膜（泥膜）」抵抗地下水壓；巨礫則先經由坑內迴轉碎石機破碎至可泵送粒徑，再由 P2 排泥泵抽送至地面。</td>
+                </tr>
+                <tr>
+                  <th>現場俗稱與法規基準<br>(現場俗称・管理基準)</th>
+                  <td id="detailRegulation" style="color:#0369a1; font-weight:600;">【四層對照】現場俗稱「土艙／碎石機（クラッシャ）」。依據北捷 DORTS 施工規範第02312章及日本土木學會示方書，切羽泥水壓需依靜止土水壓動態調控，嚴防巨礫咬死（噛み込み）塞管。</td>
+                </tr>
+              </table>
+            </div>
+
+            <div class="examples-grid">
+              <div class="example-box">
+                <div class="example-title">
+                  <span>🇯🇵 日本語の現場・計画書例文</span>
+                  <button class="speech-icon-btn" onclick="speakText(currentTerm.jpSentence, 'ja-JP')" title="播放日語發音">🔊 朗讀</button>
+                </div>
+                <div class="example-line jp-cell" id="detailJpSentence">巨礫層を掘進する際は、ロータリークラッシャの噛み込みおよび排泥管の閉塞に十分注意する。</div>
+              </div>
+              <div class="example-box tw-box">
+                <div class="example-title">
+                  <span>🇹🇼 台灣現場・施工計畫書例句</span>
+                  <button class="speech-icon-btn" onclick="speakText(currentTerm.twSentence, 'zh-TW')" title="播放中文發音">🔊 朗讀</button>
+                </div>
+                <div class="example-line zh-cell" id="detailTwSentence">於巨礫層掘進時，應特別注意迴轉碎石機卡死及排泥管閉塞之情形。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Row: Vocabulary Table, Quick Dialogue, Quick Quiz -->
+        <div class="bottom-panel-grid">
+          <!-- Left: 24-Term Table -->
+          <div class="table-card">
+            <div class="card-header-bar">
+              <span>泥水處理廠 4層級核心術語庫 (全 24 詞)</span>
+              <span style="font-size:0.75rem; color:var(--text-muted);" id="vocabCountBadge">共 24 詞</span>
+            </div>
+            <div class="vocab-table-wrapper">
+              <table class="vocab-table">
+                <thead>
+                  <tr>
+                    <th style="width:26px;">#</th>
+                    <th>台灣工程中文 (拼音)</th>
+                    <th>日本工程日文 (讀音)</th>
+                    <th>層級</th>
+                  </tr>
+                </thead>
+                <tbody id="vocabTableBody"></tbody>
+              </table>
+            </div>
+            <div class="pagination-bar">
+              <span id="pageInfo">顯示 1-8 / 24 詞</span>
+              <div class="page-btn-group" id="paginationBtns"></div>
+            </div>
+          </div>
+
+          <!-- Center: Field Interpretation Quick Preview -->
+          <div class="dialogue-card">
+            <div class="card-header-bar">
+              <span>現場中日口譯模擬 (現場通訳)</span>
+              <select id="QuickScenarioSelect" onchange="renderQuickDialogue(this.value)" style="font-size:0.78rem; padding:4px 8px; border-radius:4px; border:1px solid var(--border-color); max-width:100%;">
+                <option value="s1">情境1：黏土層自造泥＆水餅（生ケーキ）危機</option>
+                <option value="s2">情境2：旋流器磨耗＆送泥含砂率超標（3.5%）</option>
+                <option value="s3">情境3：管路接長（延尺・盛替）旁通閥切換</option>
+              </select>
+            </div>
+            <div class="dialogue-scroll" id="quickDialogueBox"></div>
+            <div class="dialogue-actions">
+              <button class="dialogue-btn" onclick="switchNav('causal', document.querySelectorAll('.nav-tab-item')[4])">🔗 查看完整異常因果鏈</button>
+              <button class="dialogue-btn record-btn" onclick="openRecordModal()">🎙️ 發音與跟讀練習</button>
+            </div>
+          </div>
+
+          <!-- Right: Quick Quiz Card -->
+          <div class="quiz-card">
+            <div>
+              <div class="quiz-header">
+                <span>OJT 隨堂測驗 (理解度クイズ)</span>
+                <span class="quiz-progress" id="quizIndexBadge">1 / 8</span>
+              </div>
+              <div class="quiz-question-text" id="quizQuestion"></div>
+              <div class="quiz-options-list" id="quizOptionsContainer"></div>
+            </div>
+            <div>
+              <div class="quiz-explain-box" id="quizExplanation"></div>
+              <div style="display:flex; gap:6px; margin-top:8px;">
+                <button class="quiz-submit-btn" id="quizSubmitBtn" onclick="handleQuizSubmit()">確認解答 (解答する)</button>
+                <button class="dialogue-btn" style="flex:0 0 auto;" onclick="nextQuizQuestion()">下一題 ➔</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== VIEW 2: TECHNICAL GRAMMAR & SENTENCE PATTERNS ==================== -->
+      <section class="view-section" id="view-grammar">
+        <div class="full-card">
+          <div class="card-header-bar">
+            <div>
+              <span style="font-size:1.15rem;">📐 工程文書與現場口譯 核心語法・文型解析（全 8 大必備句型）</span>
+              <p style="font-size:0.84rem; color:var(--text-muted); font-weight:500; margin-top:2px;">
+                整合《泥水處理設備施工計畫書》、《日常自主點檢表》與現場監督會議最常出現的日文規範文體與因果語法。
+              </p>
+            </div>
+            <div style="display:flex; gap:6px; flex-wrap:wrap;">
+              <button class="page-btn active" onclick="filterGrammar('all', this)">全部語法 (8)</button>
+              <button class="page-btn" onclick="filterGrammar('plan', this)">施工計畫書規範文體 (3)</button>
+              <button class="page-btn" onclick="filterGrammar('check', this)">點檢表簡潔文語體 (2)</button>
+              <button class="page-btn" onclick="filterGrammar('causal', this)">工程因果與風險預警 (3)</button>
+            </div>
+          </div>
+
+          <div class="grammar-grid" id="grammarGridContainer"></div>
+        </div>
+      </section>
+
+      <!-- ==================== VIEW 3: BILINGUAL CONSTRUCTION PLAN ==================== -->
+      <section class="view-section" id="view-plan">
+        <div class="full-card">
+          <div class="card-header-bar">
+            <div>
+              <span style="font-size:1.15rem;">📄 《泥水處理設備施工計畫書》標準條文雙語對譯範本</span>
+              <p style="font-size:0.84rem; color:var(--text-muted); font-weight:500; margin-top:2px;">
+                上行：台灣捷運局（DORTS）與公共工程繁體中文規範文體（黑字）｜下行：日本土木學會（JSCE）與日系 JV 標準『施工計画書』文體（藍字）
+              </p>
+            </div>
+            <div style="display:flex; gap:6px;">
+              <button class="dialogue-btn" onclick="window.print()">🖨️ 列印 / 儲存 PDF</button>
+            </div>
+          </div>
+
+          <!-- Section 1 -->
+          <h3 style="color:var(--primary-dark); margin:10px 0 8px; font-size:1rem;">第1節 工程概要與適用範圍（第1節 工事概要および適用範囲）</h3>
+          <div class="bi-pair">
+            <div class="zh-top">1.1 目的與適用範圍：本計畫書旨在規範泥水加壓式潛盾工法施工期間，為維持開挖面穩定及流體輸送出土所需之地面泥水處理設備之配置、運轉管理、泥水品質檢驗、餘剩泥水脫水處理及放流水環保管控作業。</div>
+            <div class="jp-bottom">1.1 目的および適用範囲：本計画書は、泥水式シールド工法の施工において、切羽（きりは）の安定保持および掘削土砂の流体輸送（りゅうたいゆそう）に必要となる地上泥水処理設備の配置、運転管理、泥水品質試験、余剰泥水（よじょうでいすい）の脱水処理、ならびに排水の環境管理業務について定めるものである。 <button class="speech-icon-btn" onclick="speakText('本計画書は、泥水式シールド工法の施工において、切羽の安定保持および掘削土砂の流体輸送に必要となる地上泥水処理設備の配置、運転管理について定めるものである。', 'ja-JP')">🔊</button></div>
+          </div>
+          <div class="bi-pair">
+            <div class="zh-top">1.2 基本管理原則：施工期間應確保送排泥循環系統之流量與壓力平衡，使開挖面形成緻密之不透水泥膜；同時應依據掘進地層之粒徑分布（礫石、砂、粉土、黏土），動態調整一次分級與二次加壓脫水設備之運轉參數，防止管路閉塞及環境污染。</div>
+            <div class="jp-bottom">1.2 基本管理原則：施工中は送排泥（そうはいでい）循環システムの流量および圧力バランスを適正に保ち、切羽に緻密な不透水泥膜（ふとうすいでいまく）を形成させるものとする。また、掘削地山の粒度分布（礫、砂、シルト、粘土）に応じて一次分級（ぶんきゅう）および二次加圧脱水（かあつだっすい）設備の運転パラメータを機動的に調整し、配管閉塞（へいそく）および環境汚染を防止する。</div>
+          </div>
+
+          <!-- Section 2 -->
+          <h3 style="color:var(--primary-dark); margin:16px 0 8px; font-size:1rem;">第2節 設備系統構成與處理流程（第2節 設備システム構成および処理フロー）</h3>
+          <div class="bi-pair">
+            <div class="zh-top">2.1 流體輸送與坑內破碎系統：由潛盾機泥水艙排出之含碴排泥水，經坑內迴轉碎石機將巨礫破碎至可泵送粒徑後，由排泥泵（P2）經排泥管抽送至地面一次處理設備。管路延伸作業時，應透過中央監視操作系統連動控制旁通閥組與滑球閥，確保切羽水壓穩定並防止泥水外洩。</div>
+            <div class="jp-bottom">2.1 流体輸送および坑内破砕システム：シールド機のカッターチャンバーより排出された掘削土砂を含む排泥水は、坑内のロータリークラッシャにて巨礫（きょれき）を流体輸送可能な粒径に破砕した後、排泥ポンプ（P2）により排泥管を通じて地上の一次処理設備へ圧送する。配管延尺（えんしゃく）・盛替（もりかえ）作業時は、中央監視操作システムによりバイパスバルブセットおよびスライドボールバルブを連動制御し、切羽水圧の変動および泥水の漏出を防止する。</div>
+          </div>
+          <div class="bi-pair">
+            <div class="zh-top">2.2 一次處理系統（物理分級與除砂）：排泥水進入地面廠後，先經一次振動脫水篩分離粗礫，再泵送至旋流器搭振動篩（サイクロンスクリーン），利用離心力將粒徑 74 μm 以上之細砂分級濃縮並脫水排出，降低循環泥水之含砂率。</div>
+            <div class="jp-bottom">2.2 一次処理システム（物理的分級および除砂）：地上プラントへ到達した排泥水は、まず一次土砂脱水篩（どしゃだっすいふるい）にて粗礫を分離し、続いてサイクロン付振動ふるい（サイクロンスクリーン）へ圧送する。遠心力を利用して粒径 74 μm 以上の細砂を分級・濃縮して脱水排土し、循環泥水の砂分率（すなぶんりつ）を低減させる。</div>
+          </div>
+          <div class="bi-pair">
+            <div class="zh-top">2.3 調漿與比重調整系統：一次處理後之泥水流入調整槽，由自動比重調整裝置依據設定比重，自動添加新拌泥水（以皂土母材與高分子增黏劑 CMC 調配）或稀釋清水，經攪拌均勻後由送泥泵（P1）送回潛盾機泥水艙。</div>
+            <div class="jp-bottom">2.3 作泥（さくでい）および比重調整システム：一次処理後の泥水は調整槽（ちょうせいそう）へ流入させ、自動比重調整装置により設定比重に基づき新泥水（ベントナイトおよび CMC 等で調合）または希釈水（きしゃくすい）を自動添加する。撹拌（かくはん）均一化の後、送泥ポンプ（P1）にてシールド機のカッターチャンバーへ再循環させる。</div>
+          </div>
+          <div class="bi-pair">
+            <div class="zh-top">2.4 二次處理系統（凝聚與加壓脫水）：因掘進黏性土層細粒分解膠導致比重上升所產生之餘剩泥水，應抽送至餘剩泥水槽，依序添加無機凝聚劑（PAC）及高分子凝集劑形成膠羽，經濃縮槽（シックナー）沉降濃縮後，以進料泵打入高壓壓榨式壓濾機進行固液分離。產出之脫水泥餅視需要送入連續式雙軸拌合機添加固化材改良後合法清運。</div>
+            <div class="jp-bottom">2.4 二次処理システム（凝集および加圧脱水）：粘性土層の掘進に伴う細粒分の解膠（かいこう）によって比重が増大し発生した余剰泥水は、余剰槽へ引き抜き、無機凝集剤（PAC）および高分子凝集剤を順次添加してフロックを形成させる。シックナーにて沈降濃縮した後、フィードポンプで圧搾式（あっさくしき）フィルタープレスへ圧送し固液分離を行う。排出された脱水ケーキは、必要に応じて連続式二軸ミキサーにて固化材を混合・改良した上で適正に場外搬出する。</div>
+          </div>
+          <div class="bi-pair">
+            <div class="zh-top">2.5 三次濁水處理與放流系統：壓濾機排出之濾液及廠內清洗廢水，應導入濁水處理設備進行懸浮固體（SS）凝聚沉降與 pH 中和處理，確認水質符合放流標準（日本《水質汚濁防止法》一般基準為 pH 5.8～8.6，台灣則依工地核定之放流水標準）後方可排放或回收再利用。</div>
+            <div class="jp-bottom">2.5 三次濁水処理（だくすいしょり）および放流システム：フィルタープレスからのろ液およびプラント洗浄排水は、濁水処理設備へ導水し、SS（浮遊物質）の凝集沈殿および pH 中和処理を実施する。排水基準（日本の水質汚濁防止法では pH 5.8〜8.6、台湾では現地水汚染防治法の基準値）に適合していることを確認した上で放流、またはプラント内希釈水として再利用する。</div>
+          </div>
+
+          <!-- Section 3 Table -->
+          <h3 style="color:var(--primary-dark); margin:16px 0 8px; font-size:1rem;">第3節 泥水品質管理基準與試驗頻率表（第3節 泥水品質管理基準および試験頻度表）</h3>
+          <div style="overflow-x:auto;">
+            <table class="plan-table">
+              <thead>
+                <tr>
+                  <th>檢驗項目 (試験項目)</th>
+                  <th>試驗儀器與方法 (試験機器・方法)</th>
+                  <th>管理基準值範例 (管理基準値目安)</th>
+                  <th>試驗頻率 (試験頻度)</th>
+                  <th>品質管控目的與物理意義 (管理目的・メカニズム)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><div class="zh-cell" style="font-weight:700;">比重</div><div class="jp-cell" style="color:var(--jp-blue); font-weight:600;">比重（ひじゅう）</div></td>
+                  <td><div class="zh-cell">泥水比重計 / 線上 γ 射線密度計</div><div class="jp-cell" style="color:var(--jp-blue);">マッドバランス / γ線密度計</div></td>
+                  <td><div class="zh-cell"><strong>送泥水：1.05 ～ 1.20</strong></div><div class="jp-cell" style="color:var(--jp-blue);">（依土質與水壓設定）</div></td>
+                  <td><div class="zh-cell">線上連續監測；人工每班 2 次以上</div><div class="jp-cell" style="color:var(--jp-blue);">連続計測・手動1日2回以上</div></td>
+                  <td><div class="zh-cell">維持切羽泥水壓與土水壓平衡；比重過高會增加泵浦負荷並降低掘進效率。</div><div class="jp-cell" style="color:var(--jp-blue);">切羽圧バランスの保持。過大時はポンプ負荷増大・掘削効率低下を招く。</div></td>
+                </tr>
+                <tr>
+                  <td><div class="zh-cell" style="font-weight:700;">漏斗黏度</div><div class="jp-cell" style="color:var(--jp-blue); font-weight:600;">ファンネル粘度（ねんど）</div></td>
+                  <td><div class="zh-cell">馬氏漏斗黏度計 (500cc/500cc)</div><div class="jp-cell" style="color:var(--jp-blue);">ファンネル粘度計 (500cc/500cc)</div></td>
+                  <td><div class="zh-cell"><strong>送泥水：22 ～ 35 秒</strong></div><div class="jp-cell" style="color:var(--jp-blue);">（礫石層需調高黏度）</div></td>
+                  <td><div class="zh-cell">每班 2 次以上（地層變化時加密）</div><div class="jp-cell" style="color:var(--jp-blue);">1日2回以上（土質変化時は随時）</div></td>
+                  <td><div class="zh-cell">確保開挖土砂在管路內懸浮不沉降，並防止泥水向高透水地層逸散（逸泥）。</div><div class="jp-cell" style="color:var(--jp-blue);">管内での土砂沈降防止および高透水層への泥水逸散（逸泥）防止。</div></td>
+                </tr>
+                <tr>
+                  <td><div class="zh-cell" style="font-weight:700;">含砂率</div><div class="jp-cell" style="color:var(--jp-blue); font-weight:600;">砂分率（すなぶんりつ）</div></td>
+                  <td><div class="zh-cell">含砂率測定管 (200 Mesh 篩網)</div><div class="jp-cell" style="color:var(--jp-blue);">砂分計（200メッシュふるい）</div></td>
+                  <td><div class="zh-cell"><strong>送泥水：≦ 1.0% ～ 2.0%</strong></div><div class="jp-cell" style="color:var(--jp-blue);">（視地層調整）</div></td>
+                  <td><div class="zh-cell">每班 2 次以上</div><div class="jp-cell" style="color:var(--jp-blue);">1日2回以上</div></td>
+                  <td><div class="zh-cell">檢核一次處理（旋流器、振動篩）除砂效率，防止泵浦磨耗與排泥管沉砂閉塞。</div><div class="jp-cell" style="color:var(--jp-blue);">一次処理の除砂効率確認、ポンプ摩耗および排泥管閉塞の防止。</div></td>
+                </tr>
+                <tr>
+                  <td><div class="zh-cell" style="font-weight:700;">造壁性（濾水量）</div><div class="jp-cell" style="color:var(--jp-blue); font-weight:600;">造壁性・ろ水量（ろすいりょう）</div></td>
+                  <td><div class="zh-cell">API 規格加壓濾水試驗器 (30分)</div><div class="jp-cell" style="color:var(--jp-blue);">API規格ろ過試験器（30分値）</div></td>
+                  <td><div class="zh-cell"><strong>濾水量：≦ 15 ～ 20 mL</strong></div><div class="jp-cell" style="color:var(--jp-blue);">泥膜厚度：≦ 2 ～ 3 mm</div></td>
+                  <td><div class="zh-cell">每日 1 次以上</div><div class="jp-cell" style="color:var(--jp-blue);">1日1回以上</div></td>
+                  <td><div class="zh-cell">評估泥水在開挖面形成不透水泥膜之能力；濾水量過大代表泥膜鬆散易坍方。</div><div class="jp-cell" style="color:var(--jp-blue);">切羽での不透水泥膜の形成能力評価。ろ水量過大は切羽崩壊リスクを示す。</div></td>
+                </tr>
+                <tr>
+                  <td><div class="zh-cell" style="font-weight:700;">酸鹼值 (pH)</div><div class="jp-cell" style="color:var(--jp-blue); font-weight:600;">水素イオン濃度 (pH)</div></td>
+                  <td><div class="zh-cell">玻璃電極 pH 計 / 線上 pH 計</div><div class="jp-cell" style="color:var(--jp-blue);">pH計 / 連続pH測定器</div></td>
+                  <td><div class="zh-cell"><strong>循環泥水：pH 8.0 ～ 10.5</strong></div><div class="jp-cell" style="color:var(--jp-blue);"><strong>放流水：pH 5.8 ～ 8.6</strong></div></td>
+                  <td><div class="zh-cell">循環泥水每班 1 次；放流水常時監測</div><div class="jp-cell" style="color:var(--jp-blue);">循環泥水1日1回・放流水は常時監視</div></td>
+                  <td><div class="zh-cell">若背填灌漿水泥混入會使 pH 飆破 11 導致皂土鈣化劣解；放流水受環保法規嚴格管制。</div><div class="jp-cell" style="color:var(--jp-blue);">セメント混入によるベントナイト劣化検知および水質汚濁防止法の遵守。</div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Section 4 -->
+          <h3 style="color:var(--primary-dark); margin:16px 0 8px; font-size:1rem;">第4節 異常狀況應變處置條文（第4節 異常時およびトラブル対応条文）</h3>
+          <div class="bi-pair">
+            <div class="zh-top">4.1 送泥含砂率超標之處置：當送泥水含砂率超過管理基準值時，應立即檢查一次處理旋流器底流噴嘴是否磨耗擴孔及振動篩網是否破損；必要時應降低掘進速度並切換備用旋流器，嚴禁將高含砂泥水直接送入開挖面。</div>
+            <div class="jp-bottom">4.1 送泥の砂分率超過時の措置：送泥水の砂分率が管理基準値を超過した場合は、直ちに一次処理サイクロンの下部ノズル摩耗および振動ふるい網の破損状況を点検する。必要に応じて掘進速度を低下させるとともに予備機へ切り換え、高砂分泥水をそのまま切羽へ送泥してはならない。</div>
+          </div>
+          <div class="bi-pair">
+            <div class="zh-top">4.2 二次處理負荷超載與泥餅脫水不良之處置：當黏土層掘進造成餘剩泥水激增、壓濾機脫水含水率無法降低（產生水餅）時，應檢查濾布是否堵塞並執行高壓水洗，同時重新進行燒杯凝集試驗（ジャーテスト）調整 PAC 與高分子凝集劑添加比例。若儲槽液位達高液位警報，應減緩或暫停潛盾掘進。</div>
+            <div class="jp-bottom">4.2 二次処理の過負荷および脱水不良時の措置：粘性土層の掘進により余剰泥水が急増し、フィルタープレスの脱水ケーキ含水率が低下しない（生ケーキ発生）場合は、ろ布の目詰まりを確認して高圧洗浄を実施するとともに、ジャーテスト（凝集試験）を再実施して PAC および高分子凝集剤の添加率を適正化する。余剰槽・調整槽が満水警報に達した場合は、掘進速度を落とすか掘進を一時停止する。</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== VIEW 4: INTERACTIVE DAILY INSPECTION CHECKLIST ==================== -->
+      <section class="view-section" id="view-checklist">
+        <div class="full-card">
+          <div class="card-header-bar">
+            <div>
+              <span style="font-size:1.15rem;">✅ 《泥水處理設備日常自主點檢表》雙語互動勾選版</span>
+              <p style="font-size:0.84rem; color:var(--text-muted); font-weight:500; margin-top:2px;">
+                點擊右側判定按鈕（○ 良 / △ 要調整 / × 不良）即可即時記錄點檢狀態，並練習日本工地『自主検査チェックシート』特有的文語體判定句型（～なきこと／～であること）。
+              </p>
+            </div>
+            <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+              <span id="checklistSummaryBadge" style="background:var(--primary-light); color:var(--primary-dark); padding:5px 12px; border-radius:99px; font-size:0.82rem; font-weight:700;">完成進度：0 / 11 (0%)</span>
+              <button class="dialogue-btn" onclick="markAllChecklistOk()">☑️ 一鍵全數正常 (一括○)</button>
+              <button class="dialogue-btn" onclick="resetChecklist()">🔄 重置點檢表</button>
+            </div>
+          </div>
+
+          <div style="overflow-x:auto;">
+            <table class="plan-table" id="checklistTable">
+              <thead>
+                <tr>
+                  <th style="width:125px;">系統區分<br>(設備区分)</th>
+                  <th style="width:165px;">點檢部位與項目<br>(点検部位・項目)</th>
+                  <th>檢查方法與判定基準（上：中 / 下：日）<br>(確認方法および判定基準)</th>
+                  <th>異常時之改善對策（上：中 / 下：日）<br>(異常時の是正処置)</th>
+                  <th style="width:90px;">頻率<br>(頻度)</th>
+                  <th style="width:175px; min-width:170px;">自主點檢判定<br>(判定結果)</th>
+                </tr>
+              </thead>
+              <tbody id="checklistTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== VIEW 5: CAUSAL CHAINS, ROLEPLAY & FULL QUIZ ==================== -->
+      <section class="view-section" id="view-causal">
+        <div class="full-card">
+          <div class="card-header-bar">
+            <span>⚠️ 施工管理注意點與「三大異常因果鏈」（トラブル因果連鎖）</span>
+            <span style="font-size:0.8rem; color:var(--danger-red); font-weight:700;">通譯聽懂日方技術主管焦慮的核心邏輯</span>
+          </div>
+
+          <div class="chain-grid">
+            <!-- Chain 1 -->
+            <div class="chain-card">
+              <div style="font-weight:800; color:var(--danger-red); font-size:0.98rem;">因果鏈 1：含砂率過高 ➔ 泥膜不良・塞管與開挖面坍方</div>
+              <div style="font-weight:600; color:var(--jp-blue); font-size:0.84rem; margin-bottom:8px;">砂分率上昇による泥膜不良・排泥管閉塞・切羽崩壊リスク</div>
+              <div class="chain-step">
+                <strong>【起點：一次除砂失效】</strong>旋流器底流噴嘴（下部ノズル）磨耗擴孔或振動篩網破洞（網の破れ）。
+              </div>
+              <div class="chain-arrow">⬇</div>
+              <div class="chain-step">
+                <strong>【中段：送泥含砂率飆升】</strong>74 μm 以上細砂未被分離，直接流入調整槽，送泥含砂率突破 2%～3.5%。
+              </div>
+              <div class="chain-arrow">⬇</div>
+              <div class="chain-step">
+                <strong>【後果：磨耗・塞管・崩塌】</strong>① P1 送泥泵葉輪（インペラ）劇烈磨耗；② 切羽無法形成緻密不透水泥膜導致坍方；③ 停機接管時細砂沉降造成「排泥管閉塞（塞管）」。
+              </div>
+            </div>
+
+            <!-- Chain 2 -->
+            <div class="chain-card" style="border-top-color:var(--warning-amber);">
+              <div style="font-weight:800; color:var(--warning-amber); font-size:0.98rem;">因果鏈 2：黏土層「自造泥」➔ 二次壓濾癱瘓與掘進停機</div>
+              <div style="font-weight:600; color:var(--jp-blue); font-size:0.84rem; margin-bottom:8px;">粘性土層の「自歩造泥」による二次処理パンク・掘進停止</div>
+              <div class="chain-step">
+                <strong>【起點：細粒分解膠】</strong>掘進粉土或黏土層（シルト・粘土層）時，小於 74 μm 的微粒在泥水中自然分散溶解（解膠／自歩造泥）。
+              </div>
+              <div class="chain-arrow">⬇</div>
+              <div class="chain-step">
+                <strong>【中段：水收支失衡與餘剩泥水暴增】</strong>一次旋流器無法分離微粒，泥水比重與黏度急升；被迫大量加清水稀釋，導致「餘剩泥水（余剰泥水）」暴增。
+              </div>
+              <div class="chain-arrow">⬇</div>
+              <div class="chain-step">
+                <strong>【後果：水餅與滿槽停機】</strong>若濾布堵塞或 PAC/高分子配比不當壓出「水餅（生ケーキ）」，壓濾機循環過慢，餘剩槽與調整槽滿水位（オーバーフロー寸前），潛盾機被迫停機！
+              </div>
+            </div>
+
+            <!-- Chain 3 -->
+            <div class="chain-card" style="border-top-color:var(--primary-teal);">
+              <div style="font-weight:800; color:var(--primary-teal); font-size:0.98rem;">因果鏈 3：巨礫卡死與管路接長 ➔ 瞬間失壓與切羽抽坍</div>
+              <div style="font-weight:600; color:var(--jp-blue); font-size:0.84rem; margin-bottom:8px;">巨礫噛み込み・配管延尺（盛替）時の切羽水圧変動リスク</div>
+              <div class="chain-step">
+                <strong>【起點：礫石層與接管切換】</strong>卵礫石層掘進遇大粒徑巨礫，或每推進一環進行送排泥管接長（配管延尺・盛替）。
+              </div>
+              <div class="chain-arrow">⬇</div>
+              <div class="chain-step">
+                <strong>【中段：壓力脈衝與混氣】</strong>巨礫卡死迴轉碎石機（クラッシャ噛み込み），或旁通閥組（バイパスバルブ）・滑球閥切換不同步、排氣（エアー抜き）不完全。
+              </div>
+              <div class="chain-arrow">⬇</div>
+              <div class="chain-step">
+                <strong>【後果：切羽水壓劇烈波動】</strong>泥水艙產生壓力脈衝（サージング）或瞬間失壓，破壞開挖面泥膜平衡，引發切羽抽坍與地表沉陷。
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full Dialogue & Full 8-Question Quiz -->
+        <div class="causal-bottom-grid">
+          <div class="full-card">
+            <div class="card-header-bar">
+              <span>🎙️ 三大實戰場景完整中日口譯劇本</span>
+              <div style="display:flex; gap:4px; flex-wrap:wrap;">
+                <button class="page-btn active" onclick="renderFullDialogue('s1', this)">場景1：黏土層水餅危機</button>
+                <button class="page-btn" onclick="renderFullDialogue('s2', this)">場景2：含砂率超標點檢</button>
+                <button class="page-btn" onclick="renderFullDialogue('s3', this)">場景3：接管旁通與排氣</button>
+              </div>
+            </div>
+            <div id="fullDialogueContainer" style="display:flex; flex-direction:column; gap:10px;"></div>
+          </div>
+
+          <div class="full-card">
+            <div class="card-header-bar">
+              <span>🏆 OJT 綜合理解度測驗（全 8 題完整列表）</span>
+              <button class="page-btn" onclick="resetAllQuizzes()">🔄 重新測驗</button>
+            </div>
+            <div id="fullQuizListContainer" style="display:flex; flex-direction:column; gap:12px; max-height:540px; overflow-y:auto; padding-right:4px;"></div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Audio & Speaking Practice Modal -->
+  <div class="record-modal" id="recordModal" onclick="if(event.target === this) closeRecordModal()">
+    <div class="record-modal-card">
+      <h3 style="color:var(--primary-dark); margin-bottom:8px;">🎙️ 現場口譯發音與跟讀練習室</h3>
+      <p style="font-size:0.84rem; color:var(--text-muted); margin-bottom:14px;">選擇練習句並點擊「示範朗讀」，或啟動模擬跟讀計時練習現場口譯語速。</p>
+      <select id="modalSentenceSelect" onchange="updateModalSentence(this.value)" style="width:100%; padding:8px; margin-bottom:12px; border-radius:6px; border:1px solid var(--border-color); font-size:0.84rem;">
+        <option value="0">練習1：送泥含砂率超標與旋流器底流噴嘴點檢</option>
+        <option value="1">練習2：粉土層比重飆升與壓濾機水餅（生ケーキ）原因回報</option>
+        <option value="2">練習3：管路接長（延尺）滑球閥止水與排氣確認</option>
+      </select>
+      <div style="background:#f8fafc; padding:12px; border-radius:8px; border:1px solid #cbd5e1; margin-bottom:14px; text-align:left;">
+        <div style="font-weight:700; color:var(--jp-blue); font-size:0.92rem; margin-bottom:6px;" id="modalPracticeJP"></div>
+        <div style="font-weight:700; color:var(--text-main); font-size:0.9rem; margin-bottom:4px;" id="modalPracticeTW"></div>
+        <div style="font-size:0.78rem; color:var(--pinyin-color);" id="modalPracticeSub"></div>
+      </div>
+      <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
+        <button class="dialogue-btn" onclick="speakText(document.getElementById('modalPracticeJP').textContent, 'ja-JP')">🔊 日文示範朗讀</button>
+        <button class="dialogue-btn" onclick="speakText(document.getElementById('modalPracticeTW').textContent, 'zh-TW')">🔊 中文示範朗讀</button>
+        <button class="dialogue-btn record-btn" onclick="triggerPracticeToast()">🔴 開始跟讀計時</button>
+        <button class="dialogue-btn" onclick="closeRecordModal()">關閉視窗</button>
+      </div>
+      <div class="toast-msg" id="practiceToast">✅ 跟讀模式已啟動！請先聽一次日文原音，並在 10 秒內完成流暢的台灣現場口譯輸出。</div>
+    </div>
+  </div>
+
+  <!-- Application Data & Interactive Scripts -->
+  <script>
+    // 1. 24 Core 4-Tier Vocabulary Terms
+    const termDatabase = [
+      {
+        id: 1, topic: 'transport', badgeNum: 1, tier: 1, tierLabel: '① 官方標準規範',
+        jp: 'カッターチャンバー・ロータリークラッシャ', kana: 'かったーちゃんばー・ろーたりーくらっしゃ',
+        tw: '泥水艙與迴轉碎石機', pinyin: 'níshuǐcāng yǔ huízhuǎn suìshíjī',
+        mechanism: '潛盾機刀盤切削下的土砂進入隔板（バルクヘッド）前方的泥水艙與加壓泥水混合，在開挖面形成「不透水泥膜」抵抗地下水壓；巨礫則先經由坑內迴轉碎石機破碎至可泵送粒徑，再由排泥泵抽送至地面。',
+        regulation: '【四層對照】官方：泥水室／碎石裝置；現場俗稱：「土艙／碎石機（クラッシャ）」。北捷 DORTS 第02312章規範切羽水壓需動態穩定，嚴防巨礫咬死（噛み込み）。',
+        jpSentence: '巨礫層を掘進する際は、ロータリークラッシャの噛み込みおよび排泥管の閉塞に十分注意する。',
+        twSentence: '於巨礫層掘進時，應特別注意迴轉碎石機卡死及排泥管閉塞之情形。'
+      },
+      {
+        id: 2, topic: 'transport', badgeNum: null, tier: 1, tierLabel: '① 官方標準規範',
+        jp: '不透水泥膜（泥膜形成）', kana: 'ふとうすいでいまく（でいまくけいせい）',
+        tw: '不透水泥膜（造壁泥膜）', pinyin: 'bùtòushuǐ nímó (zàobì nímó)',
+        mechanism: '加壓泥水滲入開挖面土層孔隙時，泥水中的皂土（ベントナイト）與細粒分在切羽表面濾積形成 2～3 mm 的緻密薄層，如同保鮮膜般把泥水壓力轉化為有效支承應力，防止開挖面坍方。',
+        regulation: '【管理指標】以 API 規格濾水試驗器測定 30 分鐘濾水量（ろ水量 ≦ 15～20 mL）；若含砂率過高或皂土鈣化，將導致「泥膜形成不良」。',
+        jpSentence: '切羽に緻密な不透水泥膜を形成させることで、地下水圧および土圧に対抗して切羽の安定を保持する。',
+        twSentence: '藉由在開挖面形成緻密之不透水泥膜，抵抗地下水壓與土壓以維持開挖面穩定。'
+      },
+      {
+        id: 3, topic: 'transport', badgeNum: null, tier: 2, tierLabel: '② 業界慣用名詞',
+        jp: '流体輸送設備（送泥管・排泥管）', kana: 'りゅうたいゆそうせつび（そうでいかん・はいでいかん）',
+        tw: '泥水流體輸送管路（送泥管・排泥管）', pinyin: 'níshuǐ liútǐ yūsòng guǎnlù',
+        mechanism: '以管路封閉迴路代替傳統台車運土：送泥管將地面調整槽的合格泥水打入泥水艙，排泥管則將夾帶切削土碴的排泥水抽送至地面泥水處理廠。',
+        regulation: '【現場俗稱】台灣工地俗稱「打泥管／抽泥管」，日本現場稱「送泥（そうでい）・排泥（はいでい）ライン」。管內流速須大於臨界沉降流速以防沉砂塞管。',
+        jpSentence: '排泥管内の流速が低下すると土砂が沈降し、管内閉塞を引き起こす恐れがある。',
+        twSentence: '一旦排泥管內流速下降，土砂將會沉降並恐引發管路閉塞（塞管）。'
+      },
+      {
+        id: 4, topic: 'transport', badgeNum: 2, tier: 3, tierLabel: '③ 日系JV內部用語',
+        jp: '送泥ポンプ（P1）・排泥ポンプ（P2）', kana: 'そうでいぽんぷ（ぴーわん）・はいでいぽんぷ（ぴーつー）',
+        tw: '送泥泵（P1）與排泥泵（P2）', pinyin: 'sòngníbèng (P1) yǔ páiníbèng (P2)',
+        mechanism: 'P1 負責由地面送泥保壓，P2 負責從潛盾機泥水艙抽排含碴泥水；長距離推進時會於隧道內增設中繼排泥泵（P3、P4 中継ポンプ）。',
+        regulation: '【保守重點】高含砂泥水長期沖刷會磨損泵浦葉輪（インペラ）與內襯（ライナー），每日需點檢軸封水（グランド水）壓力與軸承溫度（≦70℃）。',
+        jpSentence: '送泥の砂分率が上昇すると、P1ポンプのインペラ摩耗が早まり吐出圧が低下する。',
+        twSentence: '若送泥水的含砂率升高，將加速 P1 送泥泵葉輪磨耗並導致吐出壓力下降。'
+      },
+      {
+        id: 5, topic: 'transport', badgeNum: null, tier: 2, tierLabel: '② 業界慣用名詞',
+        jp: 'バイパスバルブセット・スライドボールバルブ', kana: 'ばいぱすばるぶせっと・すらいどぼーるばるぶ',
+        tw: '旁通閥組與滑球閥（接管止水閥）', pinyin: 'pángtōngfázǔ yǔ huáqiúfá',
+        mechanism: '環片組裝停機或管路接長時，切換旁通閥使送排泥水不經過泥水艙而在管路內自行循環（バイパス運転），同時關閉滑球閥止水並排氣，確保拆管接長時不漏漿、不失壓。',
+        regulation: '【安全鐵則】接管作業前務必確認空壓機儲氣桶殘壓充足及滑球閥自動排氣閥（エアー抜き弁）正常，防止切換時產生水錘或切羽壓力急變。',
+        jpSentence: '配管延尺作業にあたっては、バイパスバルブを切り換えてスライドボールバルブの止水性を確認する。',
+        twSentence: '進行管路接長作業時，應先切換旁通閥並確認滑球閥之止水性正常。'
+      },
+      {
+        id: 6, topic: 'transport', badgeNum: null, tier: 4, tierLabel: '④ 現場口語俗稱',
+        jp: '配管延尺（えんしゃく）・盛替（もりかえ）', kana: 'はいかんえんしゃく・もりかえ',
+        tw: '管路接長／延伸改接', pinyin: 'guǎnlù jiēcháng / yánshēn gǎijiē',
+        mechanism: '隨著潛盾機向前推進（每環或透過軟管捲盤式伸縮裝置每推進約 6 m），必須在後方台車處拆開管路、加裝新鋼管以延伸送排泥管線。',
+        regulation: '【口譯要點】日文現場不說「パイプを長くする」，一律說「延尺（えんしゃく）」或「配管盛替（もりかえ）」。',
+        jpSentence: 'ホースドラム式伸縮装置がストロークエンドに達したため、次のリングで配管盛替を実施する。',
+        twSentence: '由於軟管捲盤式伸縮裝置已達行程終點，將於下一環進行管路延伸改接作業。'
+      },
+      {
+        id: 7, topic: 'transport', badgeNum: null, tier: 1, tierLabel: '① 官方標準規範',
+        jp: '電磁流量計・γ線密度計（乾砂量管理）', kana: 'でんじりゅうりょうけい・がんませんみつどけい',
+        tw: '電磁流量計與 γ 射線密度計（乾砂出土量管理）', pinyin: 'diàncí liúliàngjì yǔ gāmǎ shèxiàn mìdùjì',
+        mechanism: '裝設於送泥管與排泥管上，連續量測送排泥之流量差與比重差，由中央控制室自動積分演算出每一環的「實際乾砂出土量（乾燥掘削土量）」，與理論開挖量比對以防超挖。',
+        regulation: '【保守重點】需定期於清水循環時執行「零點校正（ゼロ点校正）」，防止感測器結垢造成出土量演算失準。',
+        jpSentence: '電磁流量計およびγ線密度計の指示値にドリフトがないか、清水循環時にゼロ点校正を行う。',
+        twSentence: '應於清水循環時執行零點校正，確認電磁流量計與 γ 射線密度計之讀數無飄移現象。'
+      },
+      {
+        id: 8, topic: 'primary', badgeNum: 3, tier: 2, tierLabel: '② 業界慣用名詞',
+        jp: '一次処理：トロンメル・一次土砂脱水篩', kana: 'いちじしょり：とろんめる・いちじどしゃだっすいふるい',
+        tw: '一次處理：滾筒篩與一次振動脫水篩', pinyin: 'yīcì chǔlǐ: gǔntǒngshāi yǔ zhèndòng tuōshuǐshāi',
+        mechanism: '排泥水進入地面廠的第一關物理攔截設備：先以旋轉滾筒篩（トロンメル）濾除卵礫石，再經高頻振動脫水篩（加振機驅動）將粗砂（約 2 mm 以上）篩出脫水排入土斗。',
+        regulation: '【點檢要項】每日每班檢查篩網（スクリーン網）有無磨穿破洞或堵塞（目詰まり），以及起振馬達（加振機）螺栓有無鬆動、異音。',
+        jpSentence: '一次土砂脱水篩のスクリーン網に破れがあると、粗砂が調整槽へ混入するため毎直点検する。',
+        twSentence: '若一次振動脫水篩的篩網破損，粗砂將混入調整槽，故每班均須點檢。'
+      },
+      {
+        id: 9, topic: 'primary', badgeNum: 4, tier: 1, tierLabel: '① 官方標準規範',
+        jp: '液体サイクロン（サイクロン付振動ふるい）', kana: 'えきたいさいくろん（さいくろんつきしんどうふるい）',
+        tw: '水力旋流器（旋流器搭振動篩／除砂器）', pinyin: 'shuǐlì xuánliúqì (chúshāqì)',
+        mechanism: '內部無任何旋轉濾網，純靠泵浦將泥水以切線方向高速打入錐形筒內產生強大離心力，將比重較重、粒徑 74 μm（200 Mesh）以上的細砂甩向內壁並從底部噴嘴（アンダーフロー）濃縮排出至下方脫水篩。',
+        regulation: '【故障判讀】正常運轉時底部排砂呈「傘狀（傘状噴射）」；若底部聚氨酯噴嘴（下部ノズル／アペックス）磨損擴孔，會變成水柱狀噴水且除砂效率大減。',
+        jpSentence: '液体サイクロンの流入圧が規定範囲内にあり、下部ノズルから傘状に正常排土されているか確認する。',
+        twSentence: '確認水力旋流器之進口壓力位於規定範圍內，且底部噴嘴呈傘狀正常排砂。'
+      },
+      {
+        id: 10, topic: 'primary', badgeNum: null, tier: 2, tierLabel: '② 業界慣用名詞',
+        jp: '分級点（74 μm・200メッシュ）', kana: 'ぶんきゅうてん（ななじゅうよんまいくろめーとる）',
+        tw: '分級界限粒徑（74 μm／200號篩）', pinyin: 'fēnjí jièxiàn lìjìng',
+        mechanism: '土壤力學與泥水處理的分水嶺：大於 74 μm 為「砂分與礫分（砂・礫）」，可由一次處理的振動篩與旋流器物理分離；小於 74 μm 為「粉土與黏土細粒分（シルト・粘土分）」，不會沉降，必須靠二次處理加藥凝聚。',
+        regulation: '【口譯關鍵】理解 74 μm 分級界限，才能向業主與工務解釋為何進入粉土/黏土層後一次處理篩不出土、必須全靠壓濾機二次處理。',
+        jpSentence: '一次処理のサイクロンでは74マイクロメートル未満のシルト・粘土分は分離できない。',
+        twSentence: '一次處理的旋流器無法分離小於 74 微米的粉土與黏土微粒。'
+      },
+      {
+        id: 11, topic: 'primary', badgeNum: null, tier: 4, tierLabel: '④ 現場口語俗稱',
+        jp: '目詰まり（めづまり）・網の破れ（やぶれ）', kana: 'めづまり・あみのやぶれ',
+        tw: '篩網／濾布堵塞（塞網）與破網', pinyin: 'shāiwǎng / lǜbù dǔsè yǔ pòwǎng',
+        mechanism: '振動篩網目被黏土或礫石卡死稱為「目詰まり（塞網）」，會造成泥水溢流；篩網被尖銳砂石磨破稱為「網の破れ（破網）」，會導致粗砂漏入後段槽體。濾布網孔被細泥糊死亦稱「ろ布の目詰まり」。',
+        regulation: '【點檢表常客】日本點檢表必寫「スクリーン網の破れ・目詰まりなきこと（篩網應無破損及堵塞）」。',
+        jpSentence: 'セグメント組立中の循環停止時間を利用して、スクリーン網の目詰まりを高圧水で洗浄する。',
+        twSentence: '利用環片組裝中的停機時間，以高壓水槍沖洗振動篩網的堵塞部位。'
+      },
+      {
+        id: 12, topic: 'adjust', badgeNum: null, tier: 1, tierLabel: '① 官方標準規範',
+        jp: '作泥材（ベントナイト・CMC・分散剤）', kana: 'さくでいざい（べんとないと・しーえむしー・ぶんさんざい）',
+        tw: '造漿材料（皂土／膨潤土・CMC增黏劑・分散劑）', pinyin: 'zàojiāng cáiliào (zàotǔ / péngrùntǔ)',
+        mechanism: 'ベントナイト（皂土／蒙脫石黏土）遇水膨潤帶負電，是形成不透水泥膜的母材；CMC（羧甲基纖維素）為高分子增黏與保水劑，負責提高漏斗黏度、減少濾水量並防止高透水礫石層逸泥。',
+        regulation: '【台灣現場習慣】台灣現場常直接音譯皂土為「ベントナイト」或稱「皂土」，CMC 則俗稱「高分子／增黏劑」。',
+        jpSentence: '透水性の高い砂礫層に備え、ベントナイトおよびCMCを増量して泥水の粘度と造壁性を高める。',
+        twSentence: '為因應高透水性砂礫層，增加皂土與 CMC 添加量以提高泥水黏度與造壁性。'
+      },
+      {
+        id: 13, topic: 'adjust', badgeNum: 5, tier: 2, tierLabel: '② 業界慣用名詞',
+        jp: '調整槽・自動比重調整装置', kana: 'ちょうせいそう・じどうひじゅうちょうせいそうち',
+        tw: '調整槽與自動比重調整裝置', pinyin: 'tiáozhěngcáo yǔ zìdòng bǐzhòng tiáozhěng zhuāngzhì',
+        mechanism: '匯集一次處理除砂後的泥水，透過密度計連動控制「新泥補給閥」與「清水稀釋閥」，將送泥水比重精準調回設定範圍（1.05～1.20）後，再由 P1 送泥泵打回開挖面。',
+        regulation: '【點檢重點】每日檢查攪拌機（撹拌機）有無異音、槽底有無沉砂堆積，以及超音波液位計（レベル計）與電動稀釋閥作動是否正常。',
+        jpSentence: '調整槽の自動比重調整装置により、希釈水および新泥水を自動添加して送泥比重を1.15に保つ。',
+        twSentence: '透過調整槽的自動比重調整裝置，自動添加稀釋水與新拌泥水，將送泥比重維持於 1.15。'
+      },
+      {
+        id: 14, topic: 'adjust', badgeNum: null, tier: 1, tierLabel: '① 官方標準規範',
+        jp: '泥水比重・ファンネル粘度・砂分率', kana: 'でいすいひじゅう・ふぁんねるねんど・すなぶんりつ',
+        tw: '泥水比重・馬氏漏斗黏度・含砂率', pinyin: 'níshuǐ bǐzhòng · lòudǒu niándù · hánshālǜ',
+        mechanism: '泥水日常試驗三大核心指標：比重（マッドバランス測定，1.05～1.20）控制切羽水壓；漏斗黏度（500cc流下秒數，22～35秒）維持攜砂懸浮力；含砂率（砂分計測定，≦1～2%）監控除砂效率。',
+        regulation: '【試驗頻率】比重與流量為線上連續監測，人工取樣試驗（比重、黏度、含砂率）每班至少執行 2 次以上。',
+        jpSentence: '毎直2回以上、送泥水の比重、ファンネル粘度、および砂分率を試験室にて測定し記録する。',
+        twSentence: '每班至少兩次於試驗室量測並記錄送泥水之比重、漏斗黏度與含砂率。'
+      },
+      {
+        id: 15, topic: 'adjust', badgeNum: null, tier: 3, tierLabel: '③ 日系JV內部用語',
+        jp: '解膠（かいこう）・自歩造泥（じほぞうでい）', kana: 'かいこう・じほぞうでい',
+        tw: '細粒分解膠與黏土層「自造泥」現象', pinyin: 'xìlìfèn jiějiāo yǔ zìzàoní xiànxiàng',
+        mechanism: '掘進黏土或粉土層時，被刀盤切削的黏土顆粒在泥水攪拌下自然分散成小於 74 μm 的膠體微粒融入泥水中（自造泥），使循環泥水不用加皂土比重也會自己不斷上升。',
+        regulation: '【施工注意點】自造泥發生時，必須注入大量清水稀釋比重，進而打破水收支平衡（水収支バランス），產生大量「餘剩泥水」塞爆二次處理廠。',
+        jpSentence: 'シルト質粘土層の掘進に伴い細粒分が解膠し、自歩造泥によって泥水比重が急上昇している。',
+        twSentence: '隨著粉質黏土層的掘進，細粒分發生解膠並產生「自造泥」現象，導致泥水比重急遽上升。'
+      },
+      {
+        id: 16, topic: 'secondary', badgeNum: 6, tier: 1, tierLabel: '① 官方標準規範',
+        jp: '余剰泥水（よじょうでいすい）・シックナー', kana: 'よじょうでいすい・しっくなー',
+        tw: '餘剩泥水（廢泥漿）與濃縮槽', pinyin: 'yúshèng níshuǐ yǔ nóngsuōcáo',
+        mechanism: '因開挖土體積取代或黏土層清水稀釋而多出來、無法再循環使用的泥水稱為「餘剩泥水」。需排往二次處理系統，加藥凝聚後在濃縮槽（シックナー）進行重力沉降濃縮，上澄水回收作稀釋水，底泥打入壓濾機。',
+        regulation: '【現場口語】台灣工地常稱「廢漿／多餘泥漿」，日本現場簡稱「余剰（よじょう）引き抜き」。',
+        jpSentence: '希釈によって増加した余剰泥水を余剰槽へ引き抜き、二次処理設備にて凝集・脱水処理を行う。',
+        twSentence: '將因稀釋而增加的餘剩泥水抽往餘剩槽，於二次處理設備進行凝聚與脫水處理。'
+      },
+      {
+        id: 17, topic: 'secondary', badgeNum: null, tier: 2, tierLabel: '② 業界慣用名詞',
+        jp: '無機凝集剤（PAC）・高分子凝集剤・フロック', kana: 'むきぎょうしゅうざい・こうぶんしぎょうしゅうざい・ふろっく',
+        tw: '無機凝聚劑（PAC）・高分子凝集劑與膠羽', pinyin: 'wújī níngjùjì (PAC) · gāofēnzǐ níngjíjì yǔ jiāoyǔ',
+        mechanism: '泥水中的黏土微粒表面帶負電而互相排斥懸浮；先加入帶正電的「無機凝聚劑 PAC（聚氯化鋁）」中和表面電位，再加入長鏈狀「高分子凝集劑」將微粒架橋抓成肉眼可見的大團塊「膠羽（フロック）」，才能進行脫水。',
+        regulation: '【試驗方法】土質改變導致脫水不良時，需在試驗室進行「燒杯凝集試驗（ジャーテスト / Jar Test）」重新決定最佳加藥率（薬注率）。',
+        jpSentence: 'PACで微粒子の表面電荷を中和した後、高分子凝集剤を添加して強固なフロックを形成させる。',
+        twSentence: '先以 PAC 中和微粒表面電荷後，再添加高分子凝集劑以形成結實的膠羽。'
+      },
+      {
+        id: 18, topic: 'secondary', badgeNum: 7, tier: 1, tierLabel: '① 官方標準規範',
+        jp: '圧搾式フィルタープレス（加圧脱水機）', kana: 'あっさくしきふぃるたーぷれす（かあつだっすいき）',
+        tw: '高壓壓榨式壓濾機（板框式壓濾機）', pinyin: 'gāoyā yāzhàshì yālǜjī',
+        mechanism: '二次處理的核心機械：以高壓進料泵（フィードポンプ）將濃縮污泥打入數十片鋪有濾布（ろ布）的濾板（ろ板）濾室中加壓過濾，接著在橡膠壓榨膜（圧搾膜）背後充入高壓水或高壓空氣二次擠壓，榨出低含水率的固態泥餅。',
+        regulation: '【現場簡稱】日本現場常簡稱「フィルプレ」或「プレス」，台灣現場稱「壓濾機／榨泥機」。サイクルタイム（循環時間）直接決定每日可推進環數。',
+        jpSentence: '二次処理の圧搾式フィルタープレスがフル稼働しているが、余剰泥水の発生量に追いついていない。',
+        twSentence: '二次處理的壓榨式壓濾機雖已全載運轉，仍趕不上餘剩泥水的產生速度。'
+      },
+      {
+        id: 19, topic: 'secondary', badgeNum: null, tier: 2, tierLabel: '② 業界慣用名詞',
+        jp: 'ろ布（ろふ）・ろ板（ろばん）・ろ液（ろえき）', kana: 'ろふ・ろばん・ろえき',
+        tw: '濾布・濾板・濾液（壓濾排出水）', pinyin: 'lǜbù · lǜbǎn · lǜyè',
+        mechanism: '濾板夾住濾布形成密閉濾室；泥漿中的固體被濾布攔截成為泥餅，透濾布流出的水則稱為「濾液（ろ液）」。若濾布破損，泥漿會直接穿漏，使原本清澈的濾液瞬間變白濁（ろ液の白濁）。',
+        regulation: '【點檢基準】每次卸餅循環需目視確認濾液無混濁（白濁なきこと），並定期執行濾布高壓水洗（ろ布洗浄）以防網孔堵塞。',
+        jpSentence: 'フィルタープレスから排出される「ろ液」が白濁している場合は、ろ布の破損箇所を特定して交換する。',
+        twSentence: '若壓濾機排出的「濾液」出現白濁現象，應立即找出濾布破損位置並予以更換。'
+      },
+      {
+        id: 20, topic: 'slang', badgeNum: null, tier: 4, tierLabel: '④ 現場口語俗稱',
+        jp: '脱水ケーキ（だっすいけーき）・生（なま）ケーキ', kana: 'だっすいけーき・なまけーき',
+        tw: '脫水泥餅與「水餅／爛餅（未壓乾泥餅）」', pinyin: 'tuōshuǐ níbǐng yǔ shuǐbǐng / lànbǐng',
+        mechanism: '壓濾機正常卸下的固態土餅稱為「脱水ケーキ」；若因濾布堵塞、加藥凝聚不良或打漿時間不足，導致泥餅中心含水率過高呈軟爛泥漿狀，日本工地俗稱「生（なま）ケーキ」，台灣工地俗稱「水餅／爛餅」。',
+        regulation: '【處置方式】產生水餅時無法直接裝車外運，需以連續式雙軸拌合機（二軸ミキサー）添加水泥系固化材改良，並延長壓濾壓榨時間。',
+        jpSentence: '凝集剤の添加率不足により中心部が生ケーキになっているため、圧搾時間を延長して再調整する。',
+        twSentence: '因凝集劑添加率不足導致泥餅中心變成「水餅（爛餅）」，故延長壓榨時間重新調整。'
+      },
+      {
+        id: 21, topic: 'slang', badgeNum: null, tier: 4, tierLabel: '④ 現場口語俗稱',
+        jp: 'ママコ（未溶解ダマ）', kana: 'ままこ（みようかいだま）',
+        tw: '高分子藥粉結塊／魚眼（未溶解團塊）', pinyin: 'gāofēnzǐ yàofěn jiékuài / yúyǎn',
+        mechanism: '泡製高分子凝集劑粉末時，若撒粉過快或攪拌不均，粉末外層遇水瞬間化為膠膜、包住內部乾粉形成透明偏白的膠團，台灣俗稱「魚眼／結塊」，日本工地俗稱「ママコ（継子）」。',
+        regulation: '【危害影響】產生ママコ不僅浪費藥劑、降低凝聚效果，未溶解的膠塊更會堵塞加藥泵（薬注ポンプ）與管路。',
+        jpSentence: '高分子凝集剤の溶解槽にママコが発生していないか、薬注ポンプの吐出量とともに毎直確認する。',
+        twSentence: '每班應確認高分子凝集劑溶解槽有無產生「結塊（魚眼）」，並檢查加藥泵吐出量。'
+      },
+      {
+        id: 22, topic: 'secondary', badgeNum: 8, tier: 1, tierLabel: '① 官方標準規範',
+        jp: '三次処理：濁水処理設備・pH中和装置', kana: 'さんじしょり：だくすいしょりせつび・ぴーえいちちゅうわそうち',
+        tw: '三次處理：濁水處理設備與 pH 中和裝置', pinyin: 'sāncì chǔlǐ: zhuóshuǐ chǔlǐ yǔ pH zhōnghé zhuāngzhì',
+        mechanism: '將壓濾機濾液與廠區沖洗水進行最終淨化：去除殘留懸浮固體（SS ≦ 25～30 mg/L），並注入二氧化碳（炭酸ガス）或稀硫酸中和因皂土與水泥混入造成的鹼性，達標後方可放流。',
+        regulation: '【法規基準】日本《水質汚濁防止法》一般海域/河川放流基準為 pH 5.8～8.6；台灣則依《水污染防治法》營建工地放流水標準嚴格管控。',
+        jpSentence: '放流水のpHが5.8〜8.6の基準範囲内であることを連続監視計で確認した上で公共用水域へ放流する。',
+        twSentence: '於連續監測計確認放流水之 pH 值位於 5.8～8.6 基準範圍內後，始得排放至公共水體。'
+      },
+      {
+        id: 23, topic: 'slang', badgeNum: null, tier: 3, tierLabel: '③ 日系JV內部用語',
+        jp: '水収支バランス（みずしゅうしばらんす）', kana: 'みずしゅうしばらんす',
+        tw: '全廠水收支平衡（泥水體積平衡）', pinyin: 'quánchǎng shuǐshōuzhī pínghéng',
+        mechanism: '計算「送泥水量、排泥水量、地下水湧入量、新泥補充量、清水稀釋量、一次排砂帶走水量、二次脫水濾液回收量」的動態平衡。若稀釋水量大於壓濾機脫水排出量，水收支就會崩潰並造成調整槽溢流（オーバーフロー）。',
+        regulation: '【工務管理】日方所長每日審核泥水日報表最重視「水収支バランス」，一旦失衡就必須限制潛盾機推進速度。',
+        jpSentence: 'シルト層での大量希釈によりプラントの水収支バランスが崩れ、調整槽がオーバーフロー寸前となっている。',
+        twSentence: '因粉土層大量加清水稀釋導致廠內「水收支平衡」崩潰，調整槽已瀕臨溢流滿槽。'
+      },
+      {
+        id: 24, topic: 'slang', badgeNum: null, tier: 4, tierLabel: '④ 現場口語俗稱',
+        jp: '排泥管閉塞（はいでいかんへいそく）・サージング', kana: 'はいでいかんへいそく・さーじんぐ',
+        tw: '排泥管閉塞（塞管）與管路壓力脈衝', pinyin: 'páiníguǎn bìsè (sāiguǎn) yǔ yālì màichōng',
+        mechanism: '因送泥含砂率過高、流速不足或巨礫卡死，造成土砂在排泥管內沉積堵死稱為「排泥管閉塞（塞管）」；而泵浦轉速不穩或閥門切換混氣導致管內壓力忽高忽低的劇烈震盪則稱為「サージング（壓力脈衝）」。',
+        regulation: '【緊急應變】發生塞管徵兆（排泥流量驟降、管壓異常飆升）時，應立即停止推進、切換旁通閥保壓，並啟動逆洗（逆洗／バックフラッシング）排障。',
+        jpSentence: '排泥流量の急減および圧力脈動（サージング）が検知されたため、直ちに掘進を停止してバイパス運転に切り換える。',
+        twSentence: '因偵測到排泥流量驟減與壓力脈衝，立即停止掘進並切換為旁通循環運轉。'
+      }
+    ];
+
+    // 2. 8 Core Engineering Grammar & Sentence Patterns
+    const grammarDatabase = [
+      {
+        id: 'G01', cat: 'plan',
+        pattern: '～ものとする ／ ～を行う（実施する）',
+        tag: '施工計畫書・原則義務文體',
+        meaning: '應…／原則上須…／辦理…（台灣施工規範標準祈使語氣 ↔ 日本仕様書常體）',
+        rule: '台灣《施工計畫書》習慣寫「應確保…」「須依規定辦理…」。譯為日文正式工程圖說與施工計畫書時，切忌通篇使用口語的「～なければなりません」，而應改用規範文體「～ものとする（表制度原則與義務）」或「～を行う／実施する（表標準作業程序）」。',
+        jpEx: '施工中は送排泥循環システムの流量および圧力バランスを適正に保ち、切羽に緻密な不透水泥膜を形成させるものとする。',
+        twEx: '施工期間應確保送排泥循環系統之流量與壓力平衡，使開挖面形成緻密之不透水泥膜。',
+        pitfall: '⚠ 口譯/筆譯陷阱：在審閱會議口頭說明時可轉為「～ることとしております」，但書面條文務必維持「～ものとする」。'
+      },
+      {
+        id: 'G02', cat: 'plan',
+        pattern: '～してはならない ／ ～を厳禁（げんきん）とする',
+        tag: '施工計畫書・絕對禁止紅線',
+        meaning: '嚴禁…／不得…／絕不可…（違反將導致坍方、工安或違法之禁止條款）',
+        rule: '針對高含砂泥水直排切羽、帶壓拆管或未中和放流等觸犯安全與法規紅線之行為，日文施工計畫書一律以「～してはならない」或「～を厳禁とする」收尾。',
+        jpEx: '送泥水の砂分率が管理基準値を超過した状態で、高砂分泥水をそのまま切羽へ送泥してはならない。',
+        twEx: '於送泥水含砂率超過管理基準值之狀態下，嚴禁將高含砂泥水直接送入開挖面。',
+        pitfall: '⚠ 口譯/筆譯陷阱：現場口頭緊急制止時，日方常直接喊「そのまま送泥するな！」「絶対ダメだ！」，口譯對台灣領班應翻成明確的「絕對不能直接打進去！」。'
+      },
+      {
+        id: 'G03', cat: 'check',
+        pattern: '～なきこと ／ ～であること',
+        tag: '自主點檢表・古典文語體言止',
+        meaning: '應無…之情事 ／ 應處於…之正常狀態（日本工地检查表專用結尾）',
+        rule: '日本營造廠（如大林組、鹿島、清水等）之《自主検査チェックシート》判定基準欄，一律採用古典否定形容詞連體形「～なきこと（＝ないこと，無異常）」與斷定助動詞「～であること（處於正常範圍）」，精簡扼要。',
+        jpEx: '目視にてスクリーン網の破れ・目詰まり、固定ボルトの緩みなきこと。また、ろ液の白濁なきこと。',
+        twEx: '目視檢查篩網應無破損、無網目堵塞、固定螺栓無鬆動；且排出之濾液應無混濁現象。',
+        pitfall: '⚠ 口譯/筆譯陷阱：看到「異音・振動なきこと」切勿漏譯「なき（無）」而翻成「檢查異音與震動」，必須明確譯出「無異音、無異常震動」之合格判定基準。'
+      },
+      {
+        id: 'G04', cat: 'check',
+        pattern: '～毎に（ごとに） ／ ～に先立ち（さきだち）',
+        tag: '自主點檢表・檢驗時機與頻率',
+        meaning: '每逢…時（每次作業循環） ／ 於…開始之前（前置點檢）',
+        rule: '泥水廠許多點檢必須配合潛盾推進循環（例如「毎サイクル＝每次壓濾卸餅」、「延尺作業毎＝每次接管作業」）。「～に先立ち」則用於啟動工序前的強制確認。',
+        jpEx: '配管延尺作業に先立ち、コンプレッサの空気槽残圧およびスライドボールバルブの止水性を延尺作業毎に確認する。',
+        twEx: '於管路接長作業開始前，每次接管均應確認空壓機儲氣桶殘壓及滑球閥之止水性。',
+        pitfall: '⚠ 口譯/筆譯陷阱：「毎直（まいちょく）」在隧道日夜輪班制中是指「每班（日班/夜班交接時）」，不可誤譯為「一直」。'
+      },
+      {
+        id: 'G05', cat: 'causal',
+        pattern: '～に伴い（にともない） ／ ～に起因（きいん）して',
+        tag: '工程因果鏈・地層與設備連動',
+        meaning: '隨著…（伴隨施工階段推進） ／ 肇因於…（故障或異常之物理成因）',
+        rule: '說明「掘進伴隨產生餘剩泥水」等自然工程連動時用「～に伴い」；分析「因噴嘴磨耗或細粒分解膠導致異常」之故障根因（原因究明）時則用「～に起因して／～による」。',
+        jpEx: '粘性土層の掘進に伴う細粒分の解膠に起因して泥水比重が増大し、大量の余剰泥水が発生した。',
+        twEx: '隨著黏性土層掘進所伴隨之細粒分解膠，導致泥水比重上升並產生大量餘剩泥水。',
+        pitfall: '⚠ 口譯/筆譯陷阱：向監造或業主解釋時，區分「正常地質伴隨現象（～に伴い）」與「設備故障成因（～に起因して）」攸關責任歸屬！'
+      },
+      {
+        id: 'G06', cat: 'causal',
+        pattern: '～おそれがある ／ ～懸念（けねん）がある',
+        tag: '工程因果鏈・風險預警與危害告知',
+        meaning: '恐有…之虞 ／ 有引發…之風險與疑慮',
+        rule: '日方工程師在要求台灣工班立即停機檢修時，常以「～おそれがある（客觀物理風險）」或「～懸念がある（工程管理上的擔憂）」說明不處理的嚴重後果。',
+        jpEx: '送泥の砂分率が高いまま送泥し続けると、インペラが摩耗し、掘進停止中に排泥管が閉塞する恐れがある。',
+        twEx: '若在送泥含砂率過高的狀態下持續送泥，不僅葉輪會磨耗，更恐於停機期間引發排泥管閉塞之虞。',
+        pitfall: '⚠ 口譯/筆譯陷阱：「～おそれがある」在工安語境中是非常嚴肅的警告，口譯時語氣應果斷（「很有可能會塞管！」），不可輕描淡寫。'
+      },
+      {
+        id: 'G07', cat: 'causal',
+        pattern: '～ざるを得ない ／ ～を余儀（よぎ）なくされる',
+        tag: '工程因果鏈・物理限制與被迫停機',
+        meaning: '不得不…（別無選擇只能…） ／ 被迫…（陷入不得不停機之處境）',
+        rule: '描述黏土層「自造泥」時最經典的日文句型：因為一次旋流器無法分離 74 μm 以下微粒，現場「不得不（～ざるを得ない）」加清水稀釋；若二次壓濾機來不及消化，潛盾機就「被迫（～を余儀なくされる）」停機。',
+        jpEx: '微粒子は一次処理では分離できないため清水で希釈せざるを得ず、二次処理が追いつかなければ掘進停止を余儀なくされる。',
+        twEx: '因一次處理無法分離微細顆粒，不得不以清水稀釋；一旦二次處理趕不上，潛盾機將被迫停止掘進。',
+        pitfall: '⚠ 口譯/筆譯陷阱：「せざるを得ない」是サ行變格動詞「する」＋「ざるを得ない」，口譯時能精準講出這句，日籍所長會對你的技術理解力刮目相看。'
+      },
+      {
+        id: 'G08', cat: 'plan',
+        pattern: '～ことを確認した上で（うえで）',
+        tag: '施工計畫書・檢驗停留點（Hold Point）',
+        meaning: '於確認…符合基準後，始得…（先決查驗條件）',
+        rule: '工程品管與環保放流最重要的先後邏輯：必須先完成前項檢驗並確認合格（確認した上で），才能執行下一個動作（放流、復工、拆管）。',
+        jpEx: '処理水が排水基準（pH 5.8〜8.6）に適合していることを確認した上で、公共用水域へ放流する。',
+        twEx: '於確認處理水符合放流標準（pH 5.8～8.6）後，始得排放至公共水體。',
+        pitfall: '⚠ 口譯/筆譯陷阱：切勿只翻成「確認後放流」，在施工計畫書中應譯為「確認…符合標準後，始得（方可）…」，以明確標示檢驗停留點責任。'
+      }
+    ];
+
+    // 3. 11 Interactive Daily Inspection Checklist Items
+    const checklistDatabase = [
+      {
+        id: 'C01', sysZh: '1. 一次處理設備', sysJp: '一次処理設備',
+        partZh: '振動脫水篩網', partJp: '土砂脱水篩（スクリーン網）',
+        critZh: '目視檢查篩網有無破洞、網目堵塞，固定螺栓有無鬆動。',
+        critJp: '目視にてスクリーン網の破れ・目詰まり、固定ボルトの緩みなきこと。',
+        actZh: '趁組裝環片停機時沖洗篩網或更換破損網片、鎖緊螺栓。',
+        actJp: 'セグメント組立中に洗浄、または破損網を交換・増し締めする。',
+        freq: '每日/每班 (毎日・毎直)', status: null
+      },
+      {
+        id: 'C02', sysZh: '1. 一次處理設備', sysJp: '一次処理設備',
+        partZh: '水力旋流器底流噴嘴', partJp: 'サイクロン（下部ノズル・圧力）',
+        critZh: '進口壓力維持於設定範圍（0.15～0.25 MPa），底流排砂呈傘狀噴出且無堵塞。',
+        critJp: '流入圧が設定範囲内にあり、下部ノズルから傘状に正常排土され閉塞なきこと。',
+        actZh: '若底流呈柱狀水柱代表噴嘴磨耗擴孔，應立即更換聚氨酯噴嘴。',
+        actJp: '棒状に水流が出る場合はノズル摩耗のため、下部ノズルを交換する。',
+        freq: '每日/每班 (毎日・毎直)', status: null
+      },
+      {
+        id: 'C03', sysZh: '1. 一次處理設備', sysJp: '一次処理設備',
+        partZh: '起振馬達與防振彈簧', partJp: '加振機（かしんき）・防振バネ',
+        critZh: '運轉中無異常噪音、異常發熱，支承彈簧無斷裂或變形。',
+        critJp: '運転中に異音・異常発熱がなく、防振バネの折損・変形なきこと。',
+        actZh: '補充耐熱黃油（グリスアップ），軸承異常時停機檢修更換。',
+        actJp: 'グリス給脂を行い、ベアリング異常時は停止して交換する。',
+        freq: '每日 (毎日)', status: null
+      },
+      {
+        id: 'C04', sysZh: '2. 調漿與儲槽', sysJp: '作泥・調整槽',
+        partZh: '攪拌機與超音波液位計', partJp: '撹拌装置・レベル計',
+        critZh: '攪拌機運轉平穩無異音，槽底無沉砂淤積；液位計顯示正常。',
+        critJp: '撹拌機の異音・槽底の土砂堆積がなく、レベル計の指示値が正常であること。',
+        actZh: '清理液位計感測器泥垢；若槽底淤積嚴重需排空清淤（浚渫）。',
+        actJp: 'レベル計センサーの付着泥を清掃し、堆積時は浚渫（しゅんせつ）する。',
+        freq: '每日 (毎日)', status: null
+      },
+      {
+        id: 'C05', sysZh: '2. 調漿與儲槽', sysJp: '作泥・調整槽',
+        partZh: '自動比重調整閥組', partJp: '自動比重調整装置（電動・空気弁）',
+        critZh: '給水稀釋閥與新泥補給閥開關作動正常，無卡死或漏水。',
+        critJp: '希釈水弁・新泥供給弁の開閉作動が円滑で、固着や水漏れなきこと。',
+        actZh: '檢查氣動電磁閥與空壓源，並比對人工比重計讀數進行校正。',
+        actJp: '電磁弁・エアー源を確認し、手動マッドバランス測定値と照合校正する。',
+        freq: '每日 (毎日)', status: null
+      },
+      {
+        id: 'C06', sysZh: '3. 二次脫水設備', sysJp: '二次処理設備',
+        partZh: '壓濾機濾布與濾板', partJp: 'フィルタープレス（ろ布・ろ板）',
+        critZh: '濾布無破損、無嚴重堵塞；閉板加壓時無噴漿，排出之濾液清澈不混濁。',
+        critJp: 'ろ布の破れ・目詰まりがなく、加圧時に噴き出しや「ろ液」の白濁なきこと。',
+        actZh: '若濾液變混濁代表該片濾布破洞，應立即標記更換；定期執行高壓水洗。',
+        actJp: 'ろ液が白濁した場合は該当箇所のろ布を交換し、定期的に高圧洗浄を行う。',
+        freq: '每次卸餅 (毎サイクル)', status: null
+      },
+      {
+        id: 'C07', sysZh: '3. 二次脫水設備', sysJp: '二次処理設備',
+        partZh: '壓榨膜與油壓鎖緊缸', partJp: '圧搾膜・油圧シリンダー',
+        critZh: '油壓鎖緊壓力達額定值無掉壓；壓榨進氣無漏氣，脫水泥餅無水餅現象。',
+        critJp: '油圧締付圧力が規定値を保ち圧抜けがなく、エアー漏れや「生ケーキ」なきこと。',
+        actZh: '檢查油壓管路油位與止回閥；若產生水餅應延長壓榨時間或調整藥劑。',
+        actJp: '作動油量・逆止弁を点検。生ケーキ発生時は圧入・圧搾時間および薬注率を再調整する。',
+        freq: '每日 (毎日)', status: null
+      },
+      {
+        id: 'C08', sysZh: '3. 二次脫水設備', sysJp: '二次処理設備',
+        partZh: '凝聚劑泡製槽與加藥泵', partJp: '凝集剤（PAC・高分子）溶解・薬注ポンプ',
+        critZh: '藥液存量充足，高分子粉末完全溶解無結塊（魚眼），加藥泵定量吐出正常。',
+        critJp: '薬液残量が十分で、高分子のママコ（未溶解塊）がなく、定量吐出していること。',
+        actZh: '清理加藥管路結晶或堵塞，依進泥濃度微調加藥泵衝程頻率。',
+        actJp: '薬注ラインの詰まりを清掃し、原水濃度に応じてポンプ吐出量を調整する。',
+        freq: '每日/每班 (毎日・毎直)', status: null
+      },
+      {
+        id: 'C09', sysZh: '4. 流體輸送設備', sysJp: '流体輸送設備',
+        partZh: '送排泥泵 (P1/P2)', partJp: '送泥・排泥スラリーポンプ',
+        critZh: '軸封水（グランド水）壓力與流量正常，軸承溫度 ≦ 70℃，葉輪無異音或震動。',
+        critJp: 'グランドパッキン注水圧・流量が適正で、軸受温度異常や異音・振動なきこと。',
+        actZh: '調整軸封壓蓋螺栓或更換盤根（グランドパッキン）；葉輪磨損嚴重時排程更換。',
+        actJp: 'グランドパッキンの増し締めまたは交換を行い、インペラ摩耗時は計画交換する。',
+        freq: '每日/每班 (毎日・毎直)', status: null
+      },
+      {
+        id: 'C10', sysZh: '4. 流體輸送設備', sysJp: '流体輸送設備',
+        partZh: '旁通閥組與滑球閥', partJp: 'バイパスバルブ・スライドボールバルブ',
+        critZh: '氣動閥門切換順暢、開度正確；接管用滑球閥止水良好且排氣閥作動正常。',
+        critJp: '自動バルブの切換が円滑で、スライドボールバルブの止水性・エアー抜きが正常であること。',
+        actZh: '檢查空壓機儲氣桶壓力（確保停電時仍有殘壓關閥），清除閥座卡砂。',
+        actJp: 'コンプレッサの空気槽残圧を確認し、バルブシート部の噛み込み砂を除去する。',
+        freq: '每次接管 (延尺作業毎)', status: null
+      },
+      {
+        id: 'C11', sysZh: '5. 計裝與濁水處理', sysJp: '計装・濁水処理',
+        partZh: '流量計・密度計・中和裝置', partJp: '電磁流量計・γ線密度計・pH中和装置',
+        critZh: '送排泥流量計與密度計讀數穩定無飄移；放流水 pH 維持於 5.8～8.6 且 SS 清澈。',
+        critJp: '流量計・密度計にドリフトがなく、放流水が pH 5.8〜8.6 かつ SS 基準内であること。',
+        actZh: '定期於清水循環時執行零點校正；清洗 pH 電極並補充二氧化碳鋼瓶或中和酸液。',
+        actJp: '清水循環時にゼロ点校正を実施。pH電極を洗浄し、炭酸ガスボンベ・中和剤を補充する。',
+        freq: '每日 (毎日)', status: null
+      }
+    ];
+
+    // 4. 3 Field Interpretation Roleplay Scenarios
+    const dialogueScenarios = {
+      s1: [
+        {
+          role: 'jp', speaker: '🇯🇵 日方機電主任 (日本人機電係長)',
+          main: 'シルト層に入ってから泥水の比重が 1.25 まで上がっているぞ！調整槽で希釈したいが、余剰槽がもう満杯だ。フィルタープレスのサイクルが遅い原因は何だ？ろ布の目詰まりか、それとも凝集剤の効きが悪いのか？',
+          sub: '進到粉土層之後，泥水比重已經升到 1.25 了！本來想在調整槽加清水稀釋，但餘剩槽已經滿了。壓濾機循環這麼慢是什麼原因？是濾布塞住了，還是凝集劑反應不良？',
+          lang: 'ja-JP',
+          note: '💡 口譯機制解析：粉土/黏土細粒分解膠（自造泥）→ 比重飆升 → 必須稀釋排餘剩泥水 → 若壓濾機跟不上，調整槽滿水位將迫使潛盾機停機。'
+        },
+        {
+          role: 'tw', speaker: '🇹🇼 台灣泥水廠領班 (台湾プラント職長)',
+          main: '不是濾布沒洗，是因為這批黏土太細又太黏，原本的 PAC 跟高分子比例抓不住，壓出來中間都是爛餅（水餅）！我們剛才已經重做燒杯試驗把高分子濃度調高，正在打下一槽確認。',
+          sub: 'ろ布の洗浄不足ではなく、今回の粘土分が非常に細かく粘性が強いため、従来の PAC と高分子凝集剤の添加率ではフロックがうまく形成されず、中心部が生ケーキになっていたとのことです。先ほどジャーテストを再実施して高分子濃度を上げたところですので、次サイクルで状態を確認します。',
+          lang: 'zh-TW',
+          note: '💡 口譯黑話轉換：台灣工地的「爛餅／水餅」＝ 日本工地的「生（なま）ケーキ」；「藥水抓不住」＝「フロックがうまく形成されない」。'
+        }
+      ],
+      s2: [
+        {
+          role: 'jp', speaker: '🇯🇵 日方工事長 (日本人工事長)',
+          main: '送泥の砂分率が 3.5% も出ているぞ。このまま送泥し続けると、P1 ポンプのインペラが摩耗するし、掘進停止中に排泥管が閉塞する恐れがある。一次処理のサイクロンの下部ノズルが摩耗していないか、スクリーン網が破れていないか、次のセグメント組立中に必ず点検してくれ。',
+          sub: '現在送泥水的含砂率高達 3.5%！如果繼續這樣打下去，不只 P1 送泥幫浦的葉輪會磨壞，停機時排泥管還恐有沉砂塞管之虞。請務必趁下一環組裝環片（停機旁通循環）時，去檢查一次處理的旋流器底部噴嘴有無磨損擴孔、以及振動篩網有無破洞。',
+          lang: 'ja-JP',
+          note: '💡 口譯時間點判讀：「セグメント組立中（環片組裝中）」在潛盾現場即代表「推進暫停、泥水切換為旁通循環的維修保養空檔」。'
+        },
+        {
+          role: 'tw', speaker: '🇹🇼 台灣機電工程師 (台湾機電エンジニア)',
+          main: '收到！剛才巡檢發現 2 號旋流器底流噴出來的不是傘狀而是水柱狀，應該是底部聚氨酯噴嘴磨損擴孔了。下一環停機組環片時，我們馬上切換備用機並換掉磨損噴嘴！',
+          sub: '了解しました！先ほどのパトロールで、2号サイクロンの下部ノズルからの排土が傘状ではなく棒状の水流になっていたため、アペックスノズルの摩耗拡径と思われます。次リングのセグメント組立中に予備機へ切り換え、摩耗したノズルを直ちに交換します！',
+          lang: 'zh-TW',
+          note: '💡 物理機制對應：旋流器底流正常應呈「傘状（傘狀噴射）」，若磨損擴孔則呈「棒状（水柱狀）」，失去離心濃縮除砂能力。'
+        }
+      ],
+      s3: [
+        {
+          role: 'jp', speaker: '🇯🇵 日方潛盾掘進主任 (シールド掘進係長)',
+          main: 'ホースドラムがストロークエンドに達したから、このリングで送排泥管の延尺（盛替）作業を行う。中央制御室と連絡を取り合って、バイパスバルブの切換タイミングとスライドボールバルブのエアー抜き・止水確認を徹底しろ。切羽圧を絶対に乱すなよ！',
+          sub: '軟管捲盤已經拉到底了，這一環要進行送排泥管的接長（延伸改接）作業。請與中央控制室保持密切聯繫，徹底落實旁通閥的切換時機以及滑球閥的排氣與止水確認，絕對不能讓開挖面水壓產生劇烈波動！',
+          lang: 'ja-JP',
+          note: '💡 安全關鍵詞：配管延尺（えんしゃく）・盛替（もりかえ）＝ 管路接長；エアー抜き ＝ 排氣（防止空氣打入泥水艙造成切羽失壓）。'
+        },
+        {
+          role: 'tw', speaker: '🇹🇼 台灣坑內領班 (台湾坑内職長)',
+          main: '明白！空壓機儲氣桶殘壓已經確認在 0.7 MPa 以上，我們會先等中控室切換成旁通運轉、確認滑球閥完全止水且管內殘壓洩除歸零後，再拆開快速接頭接管。',
+          sub: '了解です！コンプレッサの空気槽残圧が 0.7 MPa 以上あることを確認済みです。中央制御室でバイパス運転に切り換え、スライドボールバルブの完全止水と管内残圧ゼロを確認した上で、ジョイントを外して延尺作業に入ります。',
+          lang: 'zh-TW',
+          note: '💡 語法實戰應用：使用「～ことを確認した上で（於確認…之後，始得…）」精準傳達先確認止水與洩壓、再拆管的安全程序。'
+        }
+      ]
+    };
+
+    // 5. 8 Comprehensive Quiz Questions
+    const quizDatabase = [
+      {
+        q: 'Q1.【一次分級機制】泥水處理廠的「水力旋流器（液体サイクロン）」主要是利用離心力分離多大粒徑以上的細砂？',
+        opts: [
+          'A. 74 μm（200 Mesh）以上之細砂',
+          'B. 2 μm 以下之膠體黏土微粒',
+          'C. 50 mm 以上之巨礫（玉石）',
+          'D. 僅能分離溶解於水中的鈣離子'
+        ],
+        ans: 0,
+        exp: '【解析】74 μm（200號篩）是泥水處理的分級界限：74 μm 以上的細砂可由一次處理的液體旋流器靠離心力甩出分離；小於 74 μm 的粉土與黏土微粒則必須靠二次處理加藥凝聚並以壓濾機脫水。',
+        userAns: null
+      },
+      {
+        q: 'Q2.【現場俗語對譯】當日籍技師在壓濾機旁生氣地說「中心部が生（なま）ケーキになっているぞ！」，台灣現場領班聽得懂的對應俗稱是什麼？',
+        opts: [
+          'A. 篩網破洞（破網）',
+          'B. 高分子藥粉結塊（魚眼／ママコ）',
+          'C. 脫水泥餅沒壓乾，中間都是「水餅／爛餅」',
+          'D. 排泥管發生沉砂塞管（閉塞）'
+        ],
+        ans: 2,
+        exp: '【解析】日本工地稱脫水泥餅為「脱水ケーキ」，若因濾布堵塞（ろ布の目詰まり）或凝集劑配比不當導致含水率過高呈軟爛狀，日文俗稱「生（なま）ケーキ」，對應台灣工地俗稱「水餅／爛餅」。',
+        userAns: null
+      },
+      {
+        q: 'Q3.【點檢表文語語法】日本工地《日常自主検査チェックシート》中常見「ろ液の白濁（はくだく）なきこと」，其精準中文意思與代表的設備異常為何？',
+        opts: [
+          'A. 濾液應呈乳白色，代表高分子完全溶解',
+          'B. 壓濾機排出的濾液應無混濁現象；若變白濁代表濾布（ろ布）破損穿漏',
+          'C. 調整槽泥水應無沉砂，代表攪拌機正常',
+          'D. 放流水應無泡沫，代表二氧化碳中和完成'
+        ],
+        ans: 1,
+        exp: '【解析】「～なきこと」為日本點檢表專用文語體「應無…之情事」。壓濾機正常過濾出的「ろ液（濾液）」應為清澈水；一旦變混濁（白濁），即代表該片「ろ布（濾布）」破洞漏漿，須立即更換。',
+        userAns: null
+      },
+      {
+        q: 'Q4.【黏土層自造泥因果鏈】潛盾機掘進粉土或黏土層（シルト・粘土層）時，為何會造成地面二次處理壓濾機超載甚至迫使潛盾機停機？',
+        opts: [
+          'A. 因為黏土會磨穿迴轉碎石機的刀齒',
+          'B. 因為細粒分在泥水中解膠（自歩造泥）使比重飆升，一次旋流器無法分離，被迫大量加清水稀釋而產生暴增的「餘剩泥水」',
+          'C. 因為黏土層會讓送泥管內的流速變快',
+          'D. 因為黏土層不需要形成不透水泥膜'
+        ],
+        ans: 1,
+        exp: '【解析】黏土與粉土微粒（<74 μm）會在泥水中分散解膠（自歩造泥），使泥水比重與黏度急升；因旋流器抓不到微粒，只能加清水稀釋，導致「水收支平衡（水収支バランス）」崩潰、餘剩泥水塞爆二次處理壓濾機。',
+        userAns: null
+      },
+      {
+        q: 'Q5.【旋流器點檢判讀】日常點檢水力旋流器（サイクロン）時，若發現底部排砂噴嘴（下部ノズル／アペックス）噴出的不是「傘狀」而是「柱狀水柱（棒状）」，代表什麼異常？',
+        opts: [
+          'A. 底部噴嘴因砂石高速沖刷而磨耗擴孔，導致離心濃縮除砂能力喪失',
+          'B. 進口壓力過高，除砂效率達到最佳狀態',
+          'C. 高分子凝集劑添加過量',
+          'D. 二次處理壓濾機油壓掉壓'
+        ],
+        ans: 0,
+        exp: '【解析】旋流器底部噴嘴正常排砂時應呈「傘狀（傘状噴射）」；若聚氨酯噴嘴磨耗擴孔，大量水分會直接從底部呈「柱狀水柱（棒状）」洩出，失去分級濃縮效果。',
+        userAns: null
+      },
+      {
+        q: 'Q6.【施工計畫書規範文體】將台灣施工計畫書條文「嚴禁將高含砂泥水直接送入開挖面」譯為日文標準『施工計画書』文體時，最道地的結尾句型為何？',
+        opts: [
+          'A. ～そのまま切羽へ送泥しない方がいいです。',
+          'B. ～そのまま切羽へ送泥してはならない。（または、送泥することを厳禁とする）',
+          'C. ～そのまま切羽へ送泥なきこと。',
+          'D. ～そのまま切羽へ送泥せざるを得ない。'
+        ],
+        ans: 1,
+        exp: '【解析】日文『施工計画書』中，一般原則規定用「～ものとする」，絕對禁止事項則用「～してはならない」或「～を厳禁とする」。',
+        userAns: null
+      },
+      {
+        q: 'Q7.【化學凝聚與黑話】在泡製高分子凝集劑（ポリマー）時，點檢表寫的「ママコ（未溶解塊）なきこと」，在台灣泥水廠現場俗稱什麼？',
+        opts: [
+          'A. 尾刷（テールブラシ）',
+          'B. 水餅（生ケーキ）',
+          'C. 結塊／魚眼（外層結膠、內部乾粉的未溶解團塊）',
+          'D. 水錘（ウォーターハンマ）'
+        ],
+        ans: 2,
+        exp: '【解析】高分子粉末若撒入水中過快，外層瞬間膠化包住內部乾粉，形似白色魚眼狀膠團，台灣現場俗稱「結塊／魚眼」，日本現場則稱為「ママコ」。',
+        userAns: null
+      },
+      {
+        q: 'Q8.【三次濁水處理與環保法規】泥水廠三次處理（濁水処理設備）利用二氧化碳（炭酸ガス）或酸液進行 pH 中和時，日本《水質汚濁防止法》規定的一般放流水 pH 基準範圍為何？',
+        opts: [
+          'A. pH 2.0 ～ 4.0（強酸性）',
+          'B. pH 5.8 ～ 8.6（中性至弱鹼/弱酸合格範圍）',
+          'C. pH 10.5 ～ 12.5（高鹼性）',
+          'D. 不需管控 pH，只需管控比重'
+        ],
+        ans: 1,
+        exp: '【解析】循環泥水因含皂土與背填水泥混入常呈鹼性（pH 8.0～10.5以上），放流前必須經三次處理設備將 SS 降至合格值並將 pH 中和至 5.8～8.6 方可排放。',
+        userAns: null
+      }
+    ];
+
+    // Practice Sentences for Modal
+    const modalSentences = [
+      {
+        jp: '送泥の砂分率が3.5%も出ている。次のセグメント組立中に、一次処理サイクロンの下部ノズル摩耗とスクリーン網の破れを必ず点検してくれ。',
+        tw: '現在送泥水的含砂率高達 3.5%。請務必趁下一環組裝環片停機時，去檢查一次處理旋流器的底部噴嘴磨耗與振動篩網有無破洞。',
+        sub: 'Sòngníshuǐ de hánshālǜ gāodá 3.5%. Qǐng wùbì chèn xiàyīhuán zǔzhuāng huánpiàn tíngjī shí, jiǎnchá xuánliúqì dǐbù pēnzuǐ...'
+      },
+      {
+        jp: '今回の粘土分は非常に細かく粘性が強いため、従来のPACと高分子凝集剤の添加率ではフロックがうまく形成されず、中心部が生ケーキになっていました。',
+        tw: '因為這批黏土非常細又很黏，原本的 PAC 與高分子凝集劑比例無法順利形成膠羽，導致壓出來中間都是水餅（爛餅）。',
+        sub: 'Yīnwèi zhè pī niántǔ fēicháng xì yòu hěn nián, yuánběn de PAC yǔ gāofēnzǐ bǐlì wúfǎ xíngchéng jiāoyǔ, dǎozhì zhōngjiān dōu shì shuǐbǐng.'
+      },
+      {
+        jp: '中央制御室でバイパス運転に切り換え、スライドボールバルブの完全止水と管内残圧ゼロを確認した上で、延尺作業に入ります。',
+        tw: '我們會先在中控室切換為旁通運轉，於確認滑球閥完全止水且管內殘壓歸零後，再開始進行管路接長作業。',
+        sub: 'Wǒmen huì xiān zài zhōngkòngshì qiēhuàn wéi pángtōng yùnzhuǎn, yú quèrèn huáqiúfá wánquán zhǐshuǐ qiě cányā guīlíng hòu...'
+      }
+    ];
+
+    // State Variables
+    let currentTerm = termDatabase[0];
+    let filteredTerms = [...termDatabase];
+    let currentPage = 1;
+    const pageSize = 8;
+    let viewedTermIds = new Set([1]);
+    let currentQuizIdx = 0;
+    let selectedQuizOpt = null;
+
+    // Initialize Application
+    window.addEventListener('DOMContentLoaded', () => {
+      renderLegend();
+      selectTermById(1);
+      renderVocabTable();
+      renderQuickDialogue('s1');
+      renderFullDialogue('s1', null);
+      renderGrammarCards('all');
+      renderChecklistTable();
+      renderQuickQuiz();
+      renderFullQuizList();
+      updateModalSentence(0);
+    });
+
+    
+    function downloadSelfHtml() {
+      const htmlContent = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+      const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'slurry-plant-ojt.html';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 200);
+    }
+
+    function goBackToPortfolio() {
+      if (window.opener) { window.close(); return; }
+      try {
+        if (window.location.pathname && window.location.pathname.includes('/works/')) {
+          window.location.href = '/#portfolio';
+          return;
+        }
+      } catch(e) {}
+      window.location.href = 'https://fobee.netlify.app/#portfolio';
+    }
+
+    // Top Navigation Switcher
+    function switchNav(viewKey, btnEl) {
+      document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active'));
+      const target = document.getElementById('view-' + viewKey);
+      if (target) target.classList.add('active');
+
+      if (btnEl) {
+        document.querySelectorAll('#topNavTabs .nav-tab-item').forEach(b => b.classList.remove('active'));
+        btnEl.classList.add('active');
+      }
+    }
+
+    // Render 8 Diagram Pin Legends
+    function renderLegend() {
+      const legendNames = {
+        1: '泥水艙與迴轉碎石機',
+        2: '送排泥泵 (P1/P2) 與旁通閥',
+        3: '一次處理：滾筒篩與振動篩',
+        4: '一次處理：水力旋流器 (除砂)',
+        5: '調整槽與自動比重調整裝置',
+        6: '二次處理：餘剩泥水與凝聚濃縮',
+        7: '二次處理：高壓壓榨式壓濾機',
+        8: '三次處理：濁水與 pH 中和設備'
+      };
+      const pinTerms = termDatabase.filter(t => t.badgeNum !== null).sort((a, b) => a.badgeNum - b.badgeNum);
+      const grid = document.getElementById('diagramLegendGrid');
+      grid.innerHTML = pinTerms.map(t => `
+        <div class="legend-item ${currentTerm.id === t.id ? 'active' : ''}" id="leg-${t.badgeNum}" onclick="selectTermById(${t.id})">
+          <span class="legend-num">${t.badgeNum}</span>
+          <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${legendNames[t.badgeNum] || t.tw.split('（')[0]}</span>
+        </div>
+      `).join('');
+    }
+
+    // Select a Term by ID
+    function selectTermById(id) {
+      const found = termDatabase.find(t => t.id === id);
+      if (!found) return;
+      currentTerm = found;
+      viewedTermIds.add(id);
+      document.getElementById('statViewedTerms').textContent = `${viewedTermIds.size} / ${termDatabase.length}`;
+
+      // Update detail card
+      document.getElementById('detailIdBadge').textContent = '#' + found.id;
+      const tierEl = document.getElementById('detailTierBadge');
+      tierEl.textContent = found.tierLabel;
+      tierEl.className = 'tier-badge tier-' + found.tier;
+
+      document.getElementById('detailTitleMain').textContent = `${found.tw} (${found.jp})`;
+      const catMap = {
+        transport: '[流體輸送與坑內粗碎]',
+        primary: '[一次處理：物理分級除砂]',
+        adjust: '[調漿槽與泥水品質管理]',
+        secondary: '[二次壓濾與三次濁水中和]',
+        slang: '[異常因果與現場俗語]'
+      };
+      document.getElementById('detailCategory').textContent = catMap[found.topic] || '';
+      document.getElementById('detailJpTerm').textContent = found.jp;
+      document.getElementById('detailKana').textContent = found.kana;
+      document.getElementById('detailTwTerm').textContent = found.tw;
+      document.getElementById('detailPinyin').textContent = found.pinyin;
+      document.getElementById('detailMechanism').textContent = found.mechanism;
+      document.getElementById('detailRegulation').textContent = found.regulation;
+      document.getElementById('detailJpSentence').textContent = found.jpSentence;
+      document.getElementById('detailTwSentence').textContent = found.twSentence;
+
+      // Highlight pin & legend
+      document.querySelectorAll('.pin-badge').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.legend-item').forEach(l => l.classList.remove('active'));
+      if (found.badgeNum) {
+        const pin = document.getElementById('pin-' + found.badgeNum);
+        const leg = document.getElementById('leg-' + found.badgeNum);
+        if (pin) pin.classList.add('active');
+        if (leg) leg.classList.add('active');
+      }
+
+      renderVocabTable();
+    }
+
+    // Filter by Topic in Sidebar
+    function filterTopic(topicKey, btnEl) {
+      if (btnEl) {
+        document.querySelectorAll('#sidebarTopicList .topic-btn').forEach(b => b.classList.remove('active'));
+        btnEl.classList.add('active');
+      }
+      // Switch to overview tab if not active
+      switchNav('overview', document.querySelectorAll('#topNavTabs .nav-tab-item')[0]);
+
+      const q = (document.getElementById('globalSearch').value || '').trim().toLowerCase();
+      filteredTerms = termDatabase.filter(t => {
+        const matchTopic = (topicKey === 'all' || t.topic === topicKey);
+        const matchQ = !q || (t.jp + t.kana + t.tw + t.pinyin + t.mechanism).toLowerCase().includes(q);
+        return matchTopic && matchQ;
+      });
+      currentPage = 1;
+      if (filteredTerms.length > 0) selectTermById(filteredTerms[0].id);
+      else renderVocabTable();
+    }
+
+    // Search Input Handler
+    function handleSearch(val) {
+      document.getElementById('globalSearch').value = val;
+      document.getElementById('sidebarSearch').value = val;
+      const q = val.trim().toLowerCase();
+      filteredTerms = termDatabase.filter(t =>
+        (t.jp + t.kana + t.tw + t.pinyin + t.mechanism + t.regulation).toLowerCase().includes(q)
+      );
+      currentPage = 1;
+      renderVocabTable();
+    }
+
+    // Render Paginated Vocabulary Table
+    function renderVocabTable() {
+      const tbody = document.getElementById('vocabTableBody');
+      const countBadge = document.getElementById('vocabCountBadge');
+      countBadge.textContent = `共 ${filteredTerms.length} 詞`;
+
+      const totalPages = Math.max(1, Math.ceil(filteredTerms.length / pageSize));
+      if (currentPage > totalPages) currentPage = totalPages;
+      const startIdx = (currentPage - 1) * pageSize;
+      const pageItems = filteredTerms.slice(startIdx, startIdx + pageSize);
+
+      tbody.innerHTML = pageItems.map(t => `
+        <tr class="${t.id === currentTerm.id ? 'selected' : ''}" onclick="selectTermById(${t.id})">
+          <td>${t.id}</td>
+          <td class="zh-cell">
+            <div style="font-weight:700; color:var(--text-main);">${t.tw}</div>
+            <div class="pinyin-val" style="font-size:0.74rem;">${t.pinyin}</div>
+          </td>
+          <td class="jp-cell">
+            <div style="font-weight:700; color:var(--jp-blue);">${t.jp}</div>
+            <div class="kana-val" style="font-size:0.74rem;">${t.kana}</div>
+          </td>
+          <td><span class="tier-badge tier-${t.tier}" style="font-size:0.7rem; padding:2px 5px;">L${t.tier}</span></td>
+        </tr>
+      `).join('');
+
+      const endIdx = Math.min(startIdx + pageSize, filteredTerms.length);
+      document.getElementById('pageInfo').textContent = filteredTerms.length
+        ? `顯示 ${startIdx + 1}-${endIdx} / ${filteredTerms.length} 詞`
+        : '無符合詞彙';
+
+      const btnGroup = document.getElementById('paginationBtns');
+      let btnsHtml = '';
+      for (let i = 1; i <= totalPages; i++) {
+        btnsHtml += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="setPage(${i})">${i}</button>`;
+      }
+      btnGroup.innerHTML = btnsHtml;
+    }
+
+    function setPage(p) {
+      currentPage = p;
+      renderVocabTable();
+    }
+
+    // Render Quick Dialogue in Overview Tab
+    function renderQuickDialogue(scenarioKey) {
+      const box = document.getElementById('quickDialogueBox');
+      const list = dialogueScenarios[scenarioKey] || dialogueScenarios.s1;
+      box.innerHTML = list.map(d => `
+        <div class="speech-bubble ${d.role === 'jp' ? 'role-jp' : 'role-tw'}">
+          <div class="speaker-row">
+            <span class="speaker-name">${d.speaker}</span>
+            <button class="speech-icon-btn" onclick="speakText(${JSON.stringify(d.main).replace(/"/g, '&quot;')}, '${d.lang}')">🔊</button>
+          </div>
+          <div class="speech-text-main ${d.role === 'jp' ? 'jp-cell' : 'zh-cell'}">${d.main}</div>
+          <div class="speech-text-sub ${d.role === 'jp' ? 'zh-cell' : 'jp-cell'}">${d.sub}</div>
+          <div class="speech-note">${d.note}</div>
+        </div>
+      `).join('');
+    }
+
+    // Render Full Dialogue in Causal/Roleplay Tab
+    function renderFullDialogue(scenarioKey, btnEl) {
+      if (btnEl && btnEl.parentElement) {
+        btnEl.parentElement.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
+        btnEl.classList.add('active');
+      }
+      const container = document.getElementById('fullDialogueContainer');
+      const list = dialogueScenarios[scenarioKey] || dialogueScenarios.s1;
+      container.innerHTML = list.map(d => `
+        <div class="speech-bubble ${d.role === 'jp' ? 'role-jp' : 'role-tw'}" style="padding:12px 14px;">
+          <div class="speaker-row">
+            <span class="speaker-name" style="font-size:0.85rem;">${d.speaker}</span>
+            <button class="speech-icon-btn" onclick="speakText(${JSON.stringify(d.main).replace(/"/g, '&quot;')}, '${d.lang}')">🔊 播放原音</button>
+          </div>
+          <div class="speech-text-main ${d.role === 'jp' ? 'jp-cell' : 'zh-cell'}" style="font-size:0.94rem; margin-bottom:6px;">${d.main}</div>
+          <div class="speech-text-sub ${d.role === 'jp' ? 'zh-cell' : 'jp-cell'}" style="font-size:0.9rem;">${d.sub}</div>
+          <div class="speech-note" style="font-size:0.8rem; margin-top:6px;">${d.note}</div>
+        </div>
+      `).join('');
+    }
+
+    // Render Grammar Cards
+    function renderGrammarCards(catKey) {
+      const container = document.getElementById('grammarGridContainer');
+      const items = grammarDatabase.filter(g => catKey === 'all' || g.cat === catKey);
+      container.innerHTML = items.map(g => `
+        <div class="grammar-card">
+          <div class="grammar-header">
+            <span class="grammar-pattern">${g.id}. ${g.pattern}</span>
+            <span class="grammar-tag">${g.tag}</span>
+          </div>
+          <div class="grammar-meaning">對應中文：${g.meaning}</div>
+          <div class="grammar-rule"><strong>【台日文體轉換規則】</strong>${g.rule}</div>
+          <div class="bi-pair" style="margin-bottom:4px;">
+            <div class="zh-top">🇹🇼 ${g.twEx}</div>
+            <div class="jp-bottom">🇯🇵 ${g.jpEx} <button class="speech-icon-btn" onclick="speakText(${JSON.stringify(g.jpEx).replace(/"/g, '&quot;')}, 'ja-JP')">🔊</button></div>
+          </div>
+          <div class="grammar-pitfall">${g.pitfall}</div>
+        </div>
+      `).join('');
+    }
+
+    function filterGrammar(catKey, btnEl) {
+      if (btnEl && btnEl.parentElement) {
+        btnEl.parentElement.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
+        btnEl.classList.add('active');
+      }
+      renderGrammarCards(catKey);
+    }
+
+    // Render Interactive Checklist Table
+    function renderChecklistTable() {
+      const tbody = document.getElementById('checklistTableBody');
+      tbody.innerHTML = checklistDatabase.map((c, idx) => `
+        <tr>
+          <td>
+            <div style="font-weight:700; color:var(--primary-dark);">${c.sysZh}</div>
+            <div style="font-size:0.78rem; color:var(--jp-blue); font-weight:600;">${c.sysJp}</div>
+          </td>
+          <td>
+            <div class="zh-cell" style="font-weight:700;">${c.partZh}</div>
+            <div class="jp-cell" style="font-size:0.8rem; color:var(--jp-blue); font-weight:600;">${c.partJp}</div>
+          </td>
+          <td>
+            <div class="zh-cell" style="font-weight:600; margin-bottom:4px;">${c.critZh}</div>
+            <div class="jp-cell" style="color:var(--jp-blue); font-size:0.83rem; border-top:1px dashed #cbd5e1; padding-top:3px;">${c.critJp}</div>
+          </td>
+          <td>
+            <div class="zh-cell" style="margin-bottom:4px;">${c.actZh}</div>
+            <div class="jp-cell" style="color:var(--jp-blue); font-size:0.83rem; border-top:1px dashed #cbd5e1; padding-top:3px;">${c.actJp}</div>
+          </td>
+          <td style="font-size:0.78rem; font-weight:600;">${c.freq}</td>
+          <td>
+            <div class="status-btn-group">
+              <button class="status-btn ${c.status === 'ok' ? 'active-ok' : ''}" onclick="setChecklistStatus(${idx}, 'ok')">○ 良</button>
+              <button class="status-btn ${c.status === 'warn' ? 'active-warn' : ''}" onclick="setChecklistStatus(${idx}, 'warn')">△ 調</button>
+              <button class="status-btn ${c.status === 'ng' ? 'active-ng' : ''}" onclick="setChecklistStatus(${idx}, 'ng')">× 否</button>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+      updateChecklistProgress();
+    }
+
+    function setChecklistStatus(idx, status) {
+      checklistDatabase[idx].status = (checklistDatabase[idx].status === status) ? null : status;
+      renderChecklistTable();
+    }
+
+    function markAllChecklistOk() {
+      checklistDatabase.forEach(c => c.status = 'ok');
+      renderChecklistTable();
+    }
+
+    function resetChecklist() {
+      checklistDatabase.forEach(c => c.status = null);
+      renderChecklistTable();
+    }
+
+    function updateChecklistProgress() {
+      const done = checklistDatabase.filter(c => c.status !== null).length;
+      const total = checklistDatabase.length;
+      const pct = Math.round((done / total) * 100);
+      document.getElementById('checklistSummaryBadge').textContent = `完成進度：${done} / ${total} (${pct}%)`;
+      document.getElementById('statChecklistPct').textContent = `${pct}% (${done}/${total})`;
+    }
+
+    // Quick Quiz in Overview Tab
+    function renderQuickQuiz() {
+      const qObj = quizDatabase[currentQuizIdx];
+      selectedQuizOpt = qObj.userAns;
+      document.getElementById('quizIndexBadge').textContent = `${currentQuizIdx + 1} / ${quizDatabase.length}`;
+      document.getElementById('quizQuestion').textContent = qObj.q;
+
+      const optContainer = document.getElementById('quizOptionsContainer');
+      optContainer.innerHTML = qObj.opts.map((optText, idx) => {
+        let cls = 'quiz-opt-btn';
+        if (qObj.userAns !== null) {
+          if (idx === qObj.ans) cls += ' correct';
+          else if (idx === qObj.userAns) cls += ' wrong';
+        } else if (selectedQuizOpt === idx) {
+          cls += ' selected-opt';
+        }
+        return `<button class="${cls}" onclick="selectQuickQuizOpt(${idx})">${optText}</button>`;
+      }).join('');
+
+      const expBox = document.getElementById('quizExplanation');
+      if (qObj.userAns !== null) {
+        expBox.style.display = 'block';
+        expBox.innerHTML = qObj.exp;
+      } else {
+        expBox.style.display = 'none';
+      }
+      updateQuizScoreStat();
+    }
+
+    function selectQuickQuizOpt(idx) {
+      if (quizDatabase[currentQuizIdx].userAns !== null) return;
+      selectedQuizOpt = idx;
+      document.querySelectorAll('#quizOptionsContainer .quiz-opt-btn').forEach((b, i) => {
+        b.classList.toggle('selected-opt', i === idx);
+      });
+    }
+
+    function handleQuizSubmit() {
+      if (selectedQuizOpt === null) return;
+      quizDatabase[currentQuizIdx].userAns = selectedQuizOpt;
+      renderQuickQuiz();
+      renderFullQuizList();
+    }
+
+    function nextQuizQuestion() {
+      currentQuizIdx = (currentQuizIdx + 1) % quizDatabase.length;
+      selectedQuizOpt = quizDatabase[currentQuizIdx].userAns;
+      renderQuickQuiz();
+    }
+
+    // Full 8-Question Quiz List in Tab 5
+    function renderFullQuizList() {
+      const container = document.getElementById('fullQuizListContainer');
+      container.innerHTML = quizDatabase.map((qObj, qIdx) => `
+        <div style="background:#f8fafc; border:1px solid var(--border-color); border-radius:8px; padding:12px;">
+          <div style="font-weight:700; color:var(--primary-dark); margin-bottom:8px; font-size:0.88rem;">${qObj.q}</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+            ${qObj.opts.map((optText, oIdx) => {
+              let cls = 'quiz-opt-btn';
+              if (qObj.userAns !== null) {
+                if (oIdx === qObj.ans) cls += ' correct';
+                else if (oIdx === qObj.userAns) cls += ' wrong';
+              }
+              return `<button class="${cls}" onclick="answerFullQuiz(${qIdx}, ${oIdx})">${optText}</button>`;
+            }).join('')}
+          </div>
+          <div class="quiz-explain-box" style="display:${qObj.userAns !== null ? 'block' : 'none'};">${qObj.exp}</div>
+        </div>
+      `).join('');
+      updateQuizScoreStat();
+    }
+
+    function answerFullQuiz(qIdx, oIdx) {
+      quizDatabase[qIdx].userAns = oIdx;
+      if (qIdx === currentQuizIdx) renderQuickQuiz();
+      renderFullQuizList();
+    }
+
+    function resetAllQuizzes() {
+      quizDatabase.forEach(q => q.userAns = null);
+      selectedQuizOpt = null;
+      renderQuickQuiz();
+      renderFullQuizList();
+    }
+
+    function updateQuizScoreStat() {
+      const answered = quizDatabase.filter(q => q.userAns !== null);
+      const correct = answered.filter(q => q.userAns === q.ans).length;
+      document.getElementById('statQuizScore').textContent = answered.length
+        ? `${correct} / ${answered.length} 題正確`
+        : '尚未作答';
+    }
+
+    // Display Order & Masking Controls
+    function setOrderMode(mode) {
+      const isJpFirst = (mode === 'JP_FIRST');
+      document.body.classList.toggle('order-jp-first', isJpFirst);
+      document.getElementById('btnOrderZH').classList.toggle('active', !isJpFirst);
+      document.getElementById('btnOrderJP').classList.toggle('active', isJpFirst);
+    }
+
+    function togglePhonetic() {
+      document.body.classList.toggle('hide-phonetic');
+      const isHidden = document.body.classList.contains('hide-phonetic');
+      const btn = document.getElementById('btnPhonetic');
+      btn.classList.toggle('active', !isHidden);
+      btn.textContent = isHidden ? 'あ/拼 讀音：關' : 'あ/拼 讀音：開';
+    }
+
+    function setMaskMode(mode) {
+      document.body.classList.remove('mask-jp', 'mask-zh');
+      if (mode === 'MASK_JP') document.body.classList.add('mask-jp');
+      if (mode === 'MASK_ZH') document.body.classList.add('mask-zh');
+
+      document.getElementById('btnMaskNone').style.background = (mode === 'NONE') ? 'var(--primary-teal)' : '#f8fafc';
+      document.getElementById('btnMaskNone').style.color = (mode === 'NONE') ? '#fff' : 'var(--text-main)';
+      document.getElementById('btnMaskJP').style.background = (mode === 'MASK_JP') ? 'var(--primary-teal)' : '#f8fafc';
+      document.getElementById('btnMaskJP').style.color = (mode === 'MASK_JP') ? '#fff' : 'var(--text-main)';
+      document.getElementById('btnMaskZH').style.background = (mode === 'MASK_ZH') ? 'var(--primary-teal)' : '#f8fafc';
+      document.getElementById('btnMaskZH').style.color = (mode === 'MASK_ZH') ? '#fff' : 'var(--text-main)';
+    }
+
+    // Web Speech API Pronunciation
+    function speakText(text, lang) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = lang || 'ja-JP';
+        u.rate = 0.95;
+        window.speechSynthesis.speak(u);
+      }
+    }
+
+    // Modal Functions
+    function openRecordModal() {
+      document.getElementById('recordModal').classList.add('active');
+      document.getElementById('practiceToast').classList.remove('show');
+    }
+
+    function closeRecordModal() {
+      document.getElementById('recordModal').classList.remove('active');
+    }
+
+    function updateModalSentence(idx) {
+      const s = modalSentences[idx] || modalSentences[0];
+      document.getElementById('modalPracticeJP').textContent = s.jp;
+      document.getElementById('modalPracticeTW').textContent = s.tw;
+      document.getElementById('modalPracticeSub').textContent = s.sub;
+      document.getElementById('practiceToast').classList.remove('show');
+    }
+
+    function triggerPracticeToast() {
+      const toast = document.getElementById('practiceToast');
+      toast.classList.add('show');
+      speakText(document.getElementById('modalPracticeJP').textContent, 'ja-JP');
+    }
+  </script>
+</body>
+</html>
